@@ -24,6 +24,7 @@ import (
 var templates = make(map[string]*template.Template)
 var baseTemplates = [...]string{
 	"templates/base.html",
+	"templates/login_box.html",
 	"templates/navbar.html",
 	"templates/simplepag.html",
 }

@@ -1,219 +1,156 @@
 {{ define "tpl" }}
-<div class="ui container">
-	{{ if .UserID }}
+{{ if .UserID }}
+		{{ $ac := eq .UserID 999 }}
 		{{ $gqm := atoi (.Gin.Query "mode") }}
 		{{ $global := . }}
 		{{ with (.Get "users/full?id=%d" .UserID) }}
 			{{ $favouritemode := _or $gqm .favourite_mode }}
-			<script>
-				window.favouriteMode = {{ $favouritemode }};
-				window.userID = {{ .id }};
+			<div class="js-user-verification--reference"></div>
+			<div class="osu-page osu-page--notification-banners js-notification-banners"></div>
+			<div class="js-react--profile-page osu-layout osu-layout--full"></div>
+			<div class="osu-layout__section osu-layout__section--full js-content community_profile"></div>
+			<script data-turbolinks-eval="always">
+				var postEditorToolbar = {"html":"<div class=\"post-box-toolbar\">\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--bold\"\n        title=\"Bold\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-bold\"><\/i>\n        <\/span>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--italic\"\n        title=\"Italic\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-italic\"><\/i>\n        <\/span>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--strikethrough\"\n        title=\"Strike Out\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-strikethrough\"><\/i>\n        <\/span>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--heading\"\n        title=\"Header\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-heading\"><\/i>\n        <\/span>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--link\"\n        title=\"Link\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-link\"><\/i>\n        <\/span>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--spoilerbox\"\n        title=\"Spoiler Box\"\n        type=\"button\"\n    >\n        <i class=\"fas fa-barcode\"><\/i>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--list-numbered\"\n        title=\"Numbered List\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-list-ol\"><\/i>\n        <\/span>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--list\"\n        title=\"List\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-list\"><\/i>\n        <\/span>\n    <\/button>\n\n    <button\n        class=\"btn-circle btn-circle--bbcode js-bbcode-btn--image\"\n        title=\"Image\"\n        type=\"button\"\n    >\n        <span class=\"btn-circle__content\">\n            <i class=\"fas fa-image\"><\/i>\n        <\/span>\n    <\/button>\n\n    <label class=\"bbcode-size-select\" title=\"Font Size\">\n        <span class=\"bbcode-size-select__label\">\n            Font Size\n        <\/span>\n        <i class=\"fas fa-chevron-down\"><\/i>\n\n        <select class=\"bbcode-size-select__select js-bbcode-btn--size\">\n            <option value=\"50\">Tiny<\/option>\n            <option value=\"85\">Small<\/option>\n            <option value=\"100\" selected>Normal<\/option>\n            <option value=\"150\">Large<\/option>\n        <\/select>\n    <\/label>\n<\/div>\n"};
 			</script>
-			{{ if after .silence_info.end }}
-				<div class="ui error centered message">{{ $global.T "User is <b>silenced</b> for %s, expires %s." (.silence_info.reason | htmlescaper) (time .silence_info.end) | html }}</div>
-			{{ end }}
-			{{ if hasAdmin $global.Context.User.Privileges }}
-				{{ $restr := not (has .privileges 1) }}
-				{{ $disab := not (has .privileges 2) }}
-				{{ $pend  := has .privileges 1048576 }}
-				{{ if and $disab $restr }}
-					{{ if $pend }}
-						<div class="ui warning centered message">{{ $global.T "User is <b>%s</b>" "pending verification" | html }}.</div>
-					{{ else }}
-						<div class="ui error centered message">{{ $global.T "User is <b>%s</b>" "banned" | html }}.</div>
-					{{ end }}
-				{{ else if $restr }}
-					<div class="ui error centered message">{{ $global.T "User is <b>%s</b>" "restricted" | html }}.</div>
-				{{ else if $disab }}
-					<div class="ui error centered message">{{ $global.T "User is <b>%s</b>" "locked" | html }}.</div>
-				{{ end }}
-			{{ end }}
-			{{ with $global.Get "users/userpage?id=%.0f" .id }}
-				{{ if .userpage }}
-					{{ with parseUserpage .userpage }}
-						<div class="ui raised segment twemoji" id="userpage-content">
-							{{ html . }}
-						</div>
-					{{ end }}
-				{{ end }}
-			{{ end }}
-			<div class="ui top attached segment overflow auto">
-				<div class="magic table">
-					<div class="table element">
-						{{ if eq $global.UserID $global.Context.User.ID }}
-							<a href="/settings/avatar">
-						{{ end }}
-								<img src="{{ config "AvatarURL" }}/{{ .id }}" alt="avatar" class="user avatar">
-						{{ if eq $global.UserID $global.Context.User.ID }}
-							</a>
-						{{ end }}
-					</div>
-					<div class="table element">
-						<h1 class="ui header">
-							{{ .username }}
-						</h1>
-						{{ if .username_aka }}
-							<div class="subtitle">
-								{{ $global.T "(aka <b>%s</b>)" (.username_aka | htmlescaper) | html }}
-							</div>
-						{{ end }}
-						{{ with bget "isOnline?id=%.0f" .id }}
-							<div class="subtitle">
-								<i class="{{ if .result }}green{{ else }}grey{{ end }} circle icon"></i>
-								{{ if .result }}{{ $global.T "Online" }}{{ else }}{{ $global.T "Offline" }}{{ end }}
-							</div>
-						{{ end }}
-					</div>
-				</div>
-				<div class="magic table floating right">
-					<div class="table element">
-						{{ range $k, $v := (slice .std .taiko .ctb .mania) }}
-							<h1 data-mode="{{ $k }}"{{ if ne $k (int $favouritemode) }} hidden{{ end }}>{{ with and $v $v.global_leaderboard_rank }}#{{ . }}{{ else }}{{ $global.T "Unknown" }}{{ end }}</h1>
-						{{ end }}
-						<div id="profile-actions">
-							{{ if and (ne $global.Context.User.ID $global.UserID) (ne $global.Context.User.ID 0) }}
-								<button class="ui circular mini icon loading button" id="add-friend-button">
-									<i class="horizontal ellipsis icon"></i>
-								</button>
-							{{ end }}
-							{{ if eq $global.Context.User.ID $global.UserID }}
-								<a href="/settings" class="ui circular mini teal icon button"
-									title="{{ $global.T "Settings" }}">
-									<i class="edit icon"></i>
-								</a>
-							{{ end }}
-							{{ if hasAdmin $global.Context.User.Privileges }}
-								<a href="https://old.ripple.moe/index.php?p=103&id={{ $global.UserID }}"
-									target="_blank" title="Quick edit" class="ui circular mini blue icon button">
-									<i class="folder open outline icon"></i>
-								</a>
-							{{ end }}
-						</div>
-					</div>
-				</div>
-			</div>
-			{{ $user := . }}
-			<div class="ui four item bottom attached menu" id="mode-menu">
-				{{ range $k, $v := modes }}
-					<a class="{{ favMode $favouritemode $k }}item" data-mode="{{ $k }}" href="/u/{{ $user.id }}?mode={{ $k }}">{{ $v }}</a>
-				{{ end }}
-			</div>
-			<div class="ui segment">
-				<div class="ui three column divided stackable grid">
-					<div class="row">
-						<div class="column">
-							{{ $global.T "<b>%s</b> is a Ripple player from <b>%s</b>." .username (country .country true) | html }}
-							<br>{{ $global.T "They signed up on Ripple %s." (time $user.registered_on) | html }}
-							<br>{{ $global.T "Last seen: %s." (time $user.latest_activity) | html }}
-							<br>{{ with playstyle .play_style $global }}{{ $global.T "They play with %s." . }}{{ end }}
-						</div>
-						<div class="column">
-							{{ if and (not .badges) (not .custom_badge) }}
-								{{ $global.T "This user hasn't got any badges!" }}
-							{{ else }}
-								<div class="ui grid">
-									{{ range .badges }}
-										<div class="eight wide centered column">
-											<i class="circular {{ faIcon .icon }} big icon"></i><br>
-											<b>{{ .name }}</b>
-										</div>
-									{{ end }}
-									{{ with .custom_badge }}
-										<div class="eight wide centered column">
-											<i class="circular {{ faIcon .icon }} big icon"></i><br>
-											<b><i>{{ .name }}</i></b>
-										</div>
-									{{ end }}
-								</div>
-							{{ end }}
-						</div>
-						<div class="column">
-							{{ range $k, $v := (slice .std .taiko .ctb .mania) }}
-								<div data-mode="{{ $k }}" {{ if ne $k (int $favouritemode) }} hidden{{ end }}>
-									<table class="ui very basic two column compact table nopad">
-										<tbody>
-											{{ with .global_leaderboard_rank }}
-												<tr>
-													<td><b>{{ $global.T "Global rank" }}</b></td>
-													<td class="right aligned">#{{ . }}</td>
-												</tr>
-											{{ end }}
-											{{ with .country_leaderboard_rank }}
-												<tr>
-													<td><b>{{ $global.T "Country rank" }} &nbsp;{{ country $user.country false }}</b></td>
-													<td class="right aligned">#{{ . }}</td>
-												</tr>
-											{{ end }}
-											<tr>
-												<td><b>{{ $global.T "PP" }}</b></td>
-												<td class="right aligned">{{ humanize .pp }}</td>
-											</tr>
-											<tr>
-												<td><b>{{ $global.T "Ranked score" }}</b></td>
-												<td class="right aligned">{{ humanize .ranked_score }}</td>
-											</tr>
-											<tr>
-												<td><b>{{ $global.T "Total score" }}</b></td>
-												<td class="right aligned">{{ humanize .total_score }}</td>
-											</tr>
-											<tr>
-												<td><b>{{ $global.T "Playcount" }}</b></td>
-												<td class="right aligned">{{ humanize .playcount }}</td>
-											</tr>
-											<tr>
-												<td><b>{{ $global.T "Total Play Time" }}</b></td>
-												<td class="right aligned">{{ hhmm .play_time }}</td>
-											</tr>
-											<tr>
-												<td><b>{{ $global.T "Replays watched" }}</b></td>
-												<td class="right aligned">{{ humanize .replays_watched }}</td>
-											</tr>
-											<tr>
-												<td><b>{{ $global.T "Total hits" }}</b></td>
-												<td class="right aligned">{{ humanize .total_hits }}</td>
-											</tr>									<tr>
-												<td><b>{{ $global.T "Accuracy" }}</b></td>
-												<td class="right aligned">{{ printf "%.2f" .accuracy }}%</td>
-											</tr>
-										</tbody>
-									</table>
-									<div class="ui blue progress little margin top" data-percent="{{ levelPercent .level }}">
-										<div class="bar">
-											<div class="progress">{{ levelPercent .level }}%</div>
-										</div>
-										<div class="label">{{ $global.T "Level %s" (level .level) }}</div>
-									</div>
-								</div>
-							{{ end }}
-						</div>
-					</div>
-				</div>
-			</div> <!-- end grid segment -->
-			<div id="scores-zone">
-				{{ range _range 4 }}
-					<div data-mode="{{ . }}" {{ if ne . (int $favouritemode) }} hidden{{ end }} data-loaded="0">
-					</div>
-				{{ end }}
-			</div>
-
-			<div class="ui segment">
-				<h2 class="ui header">{{ $global.T "Achievements" }}</h2>
-				<div id="achievements" class="ui grid">
-				</div>
-				<div class="right aligned">
-					<button class="ui disabled button" id="load-more-achievements">
-						{{ $global.T "Load more" }}
-					</button>
-				</div>
-			</div>
-			<div class="ui modal">
-				<i class="close icon"></i>
-				<div class="content">
-					<table class="ui definition table" id="score-data-table">
-					</table>
-				</div>
-			</div>
-		{{ end }}
-	{{ end }}
-</div>
-{{ end }}
+            <script id="json-achievements" type="application/json">
+            [{"id":7,"name":"Video Game Pack vol.1","grouping":"Beatmap Packs","ordering":0,"slug":"all-packs-gamer-1","description":"A whole pack of video game goodness, done and dusted. Go you!","mode":"osu","instructions":null},{"id":11,"name":"Video Game Pack vol.2","grouping":"Beatmap Packs","ordering":0,"slug":"all-packs-gamer-2","description":"The sequel was no match for your skills, obviously.","mode":"osu","instructions":null},{"id":14,"name":"Video Game Pack vol.3","grouping":"Beatmap Packs","ordering":0,"slug":"all-packs-gamer-3","description":"True dedication to the gaming art.","mode":"osu","instructions":null},{"id":37,"name":"Video Game Pack vol.4","grouping":"Beatmap Packs","ordering":0,"slug":"all-packs-gamer-4","description":"You are Player 1.","mode":"osu","instructions":null},{"id":10,"name":"Anime Pack vol.1","grouping":"Beatmap Packs","ordering":1,"slug":"all-packs-anime-1","description":"I-it's not like I'm proud of you or anything..","mode":"osu","instructions":null},{"id":12,"name":"Anime Pack vol.2","grouping":"Beatmap Packs","ordering":1,"slug":"all-packs-anime-2","description":"Truly dedicated to 2D.","mode":"osu","instructions":null},{"id":25,"name":"Anime Pack vol.3","grouping":"Beatmap Packs","ordering":1,"slug":"all-packs-anime-3","description":"You did it for the waifus.","mode":"osu","instructions":null},{"id":34,"name":"Anime Pack vol.4","grouping":"Beatmap Packs","ordering":1,"slug":"all-packs-anime-4","description":"Has your ship not sailed?","mode":"osu","instructions":null},{"id":9,"name":"Internet! Pack vol.1","grouping":"Beatmap Packs","ordering":2,"slug":"all-packs-internet-1","description":"Did somebody say something about IRC and ICQ?","mode":"osu","instructions":null},{"id":18,"name":"Internet! Pack vol.2","grouping":"Beatmap Packs","ordering":2,"slug":"all-packs-internet-2","description":"Straight from an albino black sheep. Wait, what?","mode":"osu","instructions":null},{"id":27,"name":"Internet! Pack vol.3","grouping":"Beatmap Packs","ordering":2,"slug":"all-packs-internet-3","description":"You didn't stumble upon this one, I'm guessing.","mode":"osu","instructions":null},{"id":36,"name":"Internet! Pack vol.4","grouping":"Beatmap Packs","ordering":2,"slug":"all-packs-internet-4","description":"Must.. have.. more.. memes..","mode":"osu","instructions":null},{"id":8,"name":"Rhythm Game Pack vol.1","grouping":"Beatmap Packs","ordering":3,"slug":"all-packs-rhythm-1","description":"Many beats were clicked, but the rhythm isn't over yet.","mode":"osu","instructions":null},{"id":19,"name":"Rhythm Game Pack vol.2","grouping":"Beatmap Packs","ordering":3,"slug":"all-packs-rhythm-2","description":"You just can't stop the beat.","mode":"osu","instructions":null},{"id":26,"name":"Rhythm Game Pack vol.3","grouping":"Beatmap Packs","ordering":3,"slug":"all-packs-rhythm-3","description":"Everyone knows the classics play better on osu! anyway.","mode":"osu","instructions":null},{"id":35,"name":"Rhythm Game Pack vol.4","grouping":"Beatmap Packs","ordering":3,"slug":"all-packs-rhythm-4","description":"A click away? More like, right here.","mode":"osu","instructions":null},{"id":179,"name":"MOtOLOiD","grouping":"Beatmap Packs","ordering":4,"slug":"all-packs-motoloid","description":"Legends made manifest, by the mappers of the Guild.","mode":null,"instructions":"<i>Play all of the MOtOLOiD Mapper's Guild pack.<\/i>"},{"id":189,"name":"Cranky","grouping":"Beatmap Packs","ordering":4,"slug":"all-packs-cranky","description":"The grandfather of rhythm gaming music, brought to life by the mappers of the Guild and guests alike.","mode":null,"instructions":"<i>Play all of the Cranky pack.<\/i>"},{"id":208,"name":"HyuN","grouping":"Beatmap Packs","ordering":4,"slug":"all-packs-hyun","description":"Digital punk goes into overdrive!","mode":null,"instructions":"<i>Play all of the HyuN pack.<\/i>"},{"id":185,"name":"Mappers' Guild Pack I","grouping":"Beatmap Packs","ordering":5,"slug":"all-packs-mappersguild-01","description":"The first among many to come.","mode":null,"instructions":"<i>Complete all of the beatmaps in the Mappers' Guild I pack..<\/i>"},{"id":190,"name":"Mappers' Guild Pack II","grouping":"Beatmap Packs","ordering":5,"slug":"all-packs-mappersguild-02","description":"A variable dream of the future.","mode":null,"instructions":"<i>Complete all of the beatmaps in the Mappers' Guild II pack..<\/i>"},{"id":191,"name":"Mappers' Guild Pack III","grouping":"Beatmap Packs","ordering":5,"slug":"all-packs-mappersguild-03","description":"Silently journeying to invade the skies.","mode":null,"instructions":"<i>Complete all of the beatmaps in the Mappers' Guild III pack..<\/i>"},{"id":206,"name":"Mappers' Guild Pack IV","grouping":"Beatmap Packs","ordering":5,"slug":"all-packs-mappersguild-04","description":"A dream of whispers, light, and things to come.","mode":null,"instructions":"<i>Complete all of the beatmaps in the Mappers' Guild IV pack.<\/i>"},{"id":162,"name":"January\/February 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-01","description":"Two for the price of one.","mode":null,"instructions":"<i>Complete any gamemode version of the January\/Feburary Spotlights for 2017.<\/i>"},{"id":163,"name":"March 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-03","description":"March ever onwards.","mode":null,"instructions":"<i>Complete any gamemode version of the March Spotlights for 2017.<\/i>"},{"id":164,"name":"April 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-04","description":"Pitch.. WHAT?","mode":null,"instructions":"<i>Complete any gamemode version of the April Spotlights for 2017.<\/i>"},{"id":165,"name":"May 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-05","description":"May your accuracy forever be swift and true.","mode":null,"instructions":"<i>Complete any gamemode version of the May Spotlights for 2017.<\/i>"},{"id":166,"name":"June 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-06","description":"Innocence destroyed.","mode":null,"instructions":"<i>Complete any gamemode version of the June Spotlights for 2017.<\/i>"},{"id":167,"name":"July 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-07","description":"Where it all begins.","mode":null,"instructions":"<i>Complete any gamemode version of the July Spotlights for 2017.<\/i>"},{"id":169,"name":"August 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-08","description":"Ah, yes. Something just like this.","mode":null,"instructions":"<i>Complete any gamemode version of the August Spotlights for 2017.<\/i>"},{"id":180,"name":"September 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-09","description":"New beginnings, time travelers, and airborne robots. Oh my!","mode":null,"instructions":"<i>Complete any gamemode version of the September Spotlights for 2017.<\/i>"},{"id":181,"name":"October 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-10","description":"First, one must distract a punk rock girl. Then, they must put on the radio.","mode":null,"instructions":"<i>Complete any gamemode version of the October Spotlights for 2017.<\/i>"},{"id":182,"name":"November 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-11","description":"The end of an era, and the start of something new!","mode":null,"instructions":"<i>Complete any gamemode version of the November Spotlights for 2017.<\/i>"},{"id":183,"name":"December 2017 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2017-12","description":"Impulse to end the year!","mode":null,"instructions":"<i>Complete any gamemode version of the December Spotlights for 2017.<\/i>"},{"id":184,"name":"January 2018 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2018-01","description":"Reality distorts.","mode":null,"instructions":"<i>Complete any gamemode version of the January Spotlights for 2018.<\/i>"},{"id":186,"name":"February 2018 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2018-02","description":"Let's jump for dreams of future candy!","mode":null,"instructions":"<i>Complete any gamemode version of the February Spotlights for 2018.<\/i>"},{"id":187,"name":"March 2018 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2018-03","description":"Transport me to Nirvana on the backs of angels!","mode":null,"instructions":"<i>Complete any gamemode version of the March Spotlights for 2018.<\/i>"},{"id":188,"name":"April 2018 Spotlight","grouping":"Beatmap Spotlights","ordering":0,"slug":"spotlight-2018-04","description":"A lesson from a DJ: drop kick captivatingly.","mode":null,"instructions":"<i>Complete any gamemode version of the April Spotlights for 2018.<\/i>"},{"id":20,"name":"5,000 Plays","grouping":"Dedication","ordering":0,"slug":"osu-plays-5000","description":"There's a lot more where that came from.","mode":"osu","instructions":null},{"id":21,"name":"15,000 Plays","grouping":"Dedication","ordering":0,"slug":"osu-plays-15000","description":"Must.. click.. circles..","mode":"osu","instructions":null},{"id":22,"name":"25,000 Plays","grouping":"Dedication","ordering":0,"slug":"osu-plays-25000","description":"There's no going back.","mode":"osu","instructions":null},{"id":28,"name":"50,000 Plays","grouping":"Dedication","ordering":0,"slug":"osu-plays-50000","description":"You're here forever.","mode":"osu","instructions":null},{"id":13,"name":"Catch 20,000 fruits","grouping":"Dedication","ordering":1,"slug":"fruits-hits-20000","description":"That is a lot of dietary fiber.","mode":"fruits","instructions":null},{"id":23,"name":"Catch 200,000 fruits","grouping":"Dedication","ordering":1,"slug":"fruits-hits-200000","description":"So, I heard you like fruit..","mode":"fruits","instructions":null},{"id":24,"name":"Catch 2,000,000 fruits","grouping":"Dedication","ordering":1,"slug":"fruits-hits-2000000","description":"Downright healthy.","mode":"fruits","instructions":null},{"id":31,"name":"30,000 Drum Hits","grouping":"Dedication","ordering":2,"slug":"taiko-hits-30000","description":"Did that drum have a face?","mode":"taiko","instructions":null},{"id":32,"name":"300,000 Drum Hits","grouping":"Dedication","ordering":2,"slug":"taiko-hits-300000","description":"The rhythm never stops.","mode":"taiko","instructions":null},{"id":33,"name":"3,000,000 Drum Hits","grouping":"Dedication","ordering":2,"slug":"taiko-hits-3000000","description":"Truly, the Don of dons.","mode":"taiko","instructions":null},{"id":46,"name":"40,000 Keys","grouping":"Dedication","ordering":3,"slug":"mania-hits-40000","description":"Just the start of the rainbow.","mode":"mania","instructions":null},{"id":47,"name":"400,000 Keys","grouping":"Dedication","ordering":3,"slug":"mania-hits-400000","description":"Four hundred thousand and still not even close.","mode":"mania","instructions":null},{"id":48,"name":"4,000,000 Keys","grouping":"Dedication","ordering":3,"slug":"mania-hits-4000000","description":"Is this the end of the rainbow?","mode":"mania","instructions":null},{"id":6,"name":"Don't let the bunny distract you!","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-bunny","description":"The order was indeed, not a rabbit.","mode":"osu","instructions":null},{"id":15,"name":"S-Ranker","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-rank-s","description":"Accuracy is really underrated.","mode":"osu","instructions":null},{"id":16,"name":"Most Improved","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-improved","description":"Now THAT is improvement.","mode":"osu","instructions":null},{"id":17,"name":"Non-stop Dancer","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-dancer","description":"Can you still feel your feet after that?","mode":"osu","instructions":null},{"id":38,"name":"Consolation Prize","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-consolation_prize","description":"Well, it could be worse.","mode":"osu","instructions":null},{"id":39,"name":"Challenge Accepted","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-challenge_accepted","description":"Oh, you're ON.","mode":"osu","instructions":null},{"id":40,"name":"Stumbler","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-stumbler","description":"No regrets.","mode":"osu","instructions":null},{"id":41,"name":"Jackpot","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-jackpot","description":"Lucky sevens is a mild understatement.","mode":null,"instructions":null},{"id":42,"name":"Quick Draw","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-quick_draw","description":"It's high noon.","mode":null,"instructions":null},{"id":43,"name":"Obsessed","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-obsessed","description":"COMPLETION AT ALL COSTS.","mode":null,"instructions":null},{"id":44,"name":"Nonstop","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-nonstop","description":"Breaks? What are those?","mode":null,"instructions":null},{"id":45,"name":"Jack of All Trades","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-jack","description":"Good at everything.","mode":null,"instructions":null},{"id":54,"name":"A meganekko approaches","grouping":"Hush-Hush","ordering":0,"slug":"mania-secret-meganekko","description":"Congratulations, you met Maria!","mode":"mania","instructions":null},{"id":132,"name":"Perseverance","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-perseverance","description":"Endure.","mode":null,"instructions":"<i>Endurance is the key.<\/i>"},{"id":133,"name":"Feel The Burn","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-ftb","description":"It isn't all about how fast you manage.","mode":null,"instructions":"<i>Endurance <strong>and<\/strong> precision is essential.<\/i>"},{"id":134,"name":"Time Dilation","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-tidi","description":"Longer is shorter when all is said and done.","mode":null,"instructions":"<i>Time often flies when one is having fun, though rarely does it last forever.<\/i>"},{"id":135,"name":"Just One Second","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-onesecond","description":"And suddenly.. gone.","mode":null,"instructions":"<i>Blink and you'll miss it.<\/i>"},{"id":136,"name":"Afterimage","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-afterimage","description":"But a glimpse of its true self.","mode":"osu","instructions":"<i>Always coming behind the original image.<\/i>"},{"id":137,"name":"To The Core","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-tothecore","description":"In for a penny, in for a pound. Pounding bass, that is.","mode":null,"instructions":"<i>Double negatives sometimes <strong>do<\/strong> make a positive.<\/i>"},{"id":138,"name":"Prepared","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-prepared","description":"Do it for real next time.","mode":null,"instructions":"<i>Preparation is key for all successful endeavours.<\/i>"},{"id":139,"name":"Eclipse","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-eclipse","description":"Something new born from absence.","mode":"osu","instructions":"<i>Do it just because you can, even if the stakes are high.<\/i>"},{"id":140,"name":"Reckless Abandon","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-reckless","description":"Throw it all to the wind.","mode":null,"instructions":"<i>Do it just because you can, even if the stakes are high.<\/i>"},{"id":141,"name":"Tunnel Vision","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-tunnelvision","description":"But it was right there..","mode":"osu","instructions":"<i>Afraid of the dark?<\/i>"},{"id":142,"name":"Behold No Deception","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-deception","description":"That wasn't easy at all!","mode":"osu","instructions":"<i>Sometimes the hard way is in fact, easier.<\/i>"},{"id":143,"name":"Up For The Challenge","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-challenge","description":"Turn it up to eleven.","mode":null,"instructions":"<i>Everything's better at eleven.<\/i>"},{"id":144,"name":"Lights Out","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-lightsout","description":"The party's just getting started.","mode":null,"instructions":"<i>Set the mood.<\/i>"},{"id":145,"name":"Unstoppable","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-superhardhddt","description":"Holy shit.","mode":"osu","instructions":"<i>Reaching the limits of mortal skill.<\/i>"},{"id":146,"name":"Is This Real Life?","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-supersuperhardhddt","description":"You did NOT just pull that off.","mode":"osu","instructions":"<i>The absolute height of perfection.<\/i>"},{"id":147,"name":"Camera Shy","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-uguushy","description":"Stop being cute.","mode":null,"instructions":"<i>Uguu.<\/i>"},{"id":148,"name":"The Sum Of All Fears","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-nuked","description":"Unfortunate.","mode":null,"instructions":"<i>The end comes when you least expect it.<\/i>"},{"id":149,"name":"Dekasight","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-deka","description":"So big, yet so hard to see.","mode":"osu","instructions":"<i>Size isn't everything.<\/i>"},{"id":150,"name":"Hour Before The Dawn","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-hourbeforethedawn","description":"Eleven skies of everlasting sunrise.","mode":null,"instructions":"<i>The night where we belong.<\/i>"},{"id":151,"name":"Slow And Steady","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-slowandsteady","description":"Win the race, or start again.","mode":null,"instructions":"<i>Take your time.<\/i>"},{"id":152,"name":"No Time To Spare","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-ntts","description":"Places to be, things to do.","mode":null,"instructions":"<i>Think fast, click fast, be fast.<\/i>"},{"id":153,"name":"Sognare","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-sognare","description":"A dream in stop-motion, soon forever gone.","mode":null,"instructions":"<i>\"I saw three spires all around, and a world in halted time..\"<\/i>"},{"id":154,"name":"Realtor Extraordinaire","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-realtor","description":"An acre-wide stride.","mode":null,"instructions":"<i>The wrong kind of house.<\/i>"},{"id":155,"name":"Realit\u00e4t","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-realitat","description":"A moonlight butterfly, and beacons of three.","mode":null,"instructions":"<i>Dream of greater heights.<\/i>"},{"id":156,"name":"Our Mechanical Benefactors","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-ourbenefactors","description":"Human, please explain directive \"GREED\".","mode":null,"instructions":"<i>Close, yet so far.<\/i>"},{"id":157,"name":"Meticulous","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-meticulous","description":"The circle goes here, and then here, and then here..","mode":"osu","instructions":"<i>This is the way it's SUPPOSED to be.<\/i>"},{"id":158,"name":"Infinitesimal","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-infinitesimal","description":"Big word for something so very, very small.","mode":"osu","instructions":"<i>Tiny in scope, big in meaning.<\/i>"},{"id":159,"name":"Equilibrium","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-equilibrium","description":"Balance in all things.","mode":"osu","instructions":"<i>Seek the middle ground.<\/i>"},{"id":160,"name":"Impeccable","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-impeccable","description":"Speed matters not to the exemplary.","mode":null,"instructions":"<i>Simply superb.<\/i>"},{"id":161,"name":"Elite","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-elite","description":"Dangerous beat agents.","mode":null,"instructions":"<i>A challenge for status, prestige and fame is not always the smartest thing to do in the middle of something.<\/i>"},{"id":168,"name":"50\/50","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-5050","description":"Half full or half empty, that's a whole lot of fifty.","mode":null,"instructions":"<i>Strong opinions about this, one way or another.<\/i>"},{"id":170,"name":"Thrill of the Chase","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-thrillofthechase","description":"My heart's beating, my hands are shaking, and I'm STILL clicking.","mode":"osu","instructions":"<i>Is there anything better than the hunt? Such a classic pursuit.<\/i>"},{"id":171,"name":"The Girl in the Forest","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-girlintheforest","description":"Not even the Elite Four could stop you now.","mode":null,"instructions":"<i>Think back to where it all began, in shades of red and blue..<\/i>"},{"id":172,"name":"You Can't Hide","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-youcanthide","description":"I will find you, and I will click you. All of you.","mode":null,"instructions":"<i>Don't even try to hide.<\/i>"},{"id":173,"name":"True Torment","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-truetorment","description":"It lasts forever.","mode":"osu","instructions":"<i>Note the ghosts.<\/i>"},{"id":174,"name":"The Firmament Moves","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-celestialmovement","description":"Number fourteen? More like number one.","mode":null,"instructions":"<i>Three times does it move, but most only know one. What you seek is something different yet again, warped three times over.<\/i>"},{"id":175,"name":"Too Fast, Too Furious","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-toofasttoofurious","description":"A march if you have eight feet, maybe!","mode":null,"instructions":"<i>Something you don't do when you're afraid.<\/i>"},{"id":176,"name":"Feelin' It","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-feelinit","description":"Got with the times.","mode":null,"instructions":"<i>Beats multiplied. A lot of them.<\/i>"},{"id":177,"name":"Overconfident","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-overconfident","description":"Try again later, maybe?","mode":null,"instructions":"<i>The 's' in progress stands for hubris.<\/i>"},{"id":178,"name":"Spooked","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-spooked","description":"Something moved. It wasn't your cursor!","mode":null,"instructions":"<i>Don't look behind you.<\/i>"},{"id":192,"name":"Skylord","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-skylord","description":"Never miss a wingbeat.","mode":"osu","instructions":"<i>Flight among the sky requires nothing but perfection.<\/i>"},{"id":193,"name":"B-Rave","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-brave","description":"It takes courage to stand before the master.","mode":null,"instructions":"<i>Ill-tempered bosses make for excellent final battles.<\/i>"},{"id":194,"name":"Any%","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-anypercent","description":"A speedrunner's best friend.","mode":null,"instructions":"<i>Sometimes you have to break the rules to work with speed.<\/i>"},{"id":195,"name":"Mirage","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-mirage","description":"The horizon goes on forever, and ever, and ever...","mode":null,"instructions":"<i>The light is far harder than it seems.<\/i>"},{"id":196,"name":"Under The Stars","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-underthestars","description":"Onwards, to where the darkness can never stop us.","mode":null,"instructions":"<i>Walk beneath the stars on a journey to elsewhere.<\/i>"},{"id":197,"name":"Senseless","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-senseless","description":"I hear nothing. I see nothing.","mode":null,"instructions":"<i>A song that is, and something that is not.<\/i>"},{"id":199,"name":"Aeon","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-aeon","description":"In the mire of thawing time, memory shall be your guide.","mode":null,"instructions":"<i>When time runs slow and sight fails you, how will you succeed?<\/i>"},{"id":200,"name":"Upon The Wind","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-uponthewind","description":"And in that gale, no eye could hope to follow.","mode":null,"instructions":"<i>In the heart of a storm of flowers, a world unseen.<\/i>"},{"id":201,"name":"Vantage","grouping":"Hush-Hush","ordering":0,"slug":"osu-secret-vantage","description":"There we stood, where the spires pierced the sky, and dreamed of the future to come.","mode":"osu","instructions":"<i>Where ground was broken to critical acclaim.<\/i>"},{"id":202,"name":"Quick Maths","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-quickmaffs","description":"Beats per minute over... this isn't quick at all!","mode":null,"instructions":"<i>Where x equals beats per minute, and a variable unknown...<\/i>"},{"id":204,"name":"Efflorescence","grouping":"Hush-Hush","ordering":0,"slug":"all-secret-efflorescence","description":"A lament for the past, and a glimpse into tomorrow.","mode":null,"instructions":"<i>The horizon thunders with a portentous bloom.<\/i>"},{"id":119,"name":"Finality","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-suddendeath","description":"High stakes, no regrets.","mode":null,"instructions":"completing a map with the <b>Sudden Death<\/b> mod enabled!"},{"id":120,"name":"Perfectionist","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-perfect","description":"Accept nothing but the best.","mode":null,"instructions":"completing a map with the <b>Perfect<\/b> mod enabled!"},{"id":121,"name":"Rock Around The Clock","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-hardrock","description":"You can't stop the rock.","mode":null,"instructions":"completing a map with the <b>Hard Rock<\/b> mod enabled!"},{"id":122,"name":"Time And A Half","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-doubletime","description":"Having a right ol' time. One and a half of them, almost.","mode":null,"instructions":"completing a map with the <b>DoubleTime<\/b> mod enabled!"},{"id":123,"name":"Sweet Rave Party","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-nightcore","description":"Founded in the fine tradition of changing things that were just fine as they were.","mode":null,"instructions":"completing a map with the <b>Nightcore<\/b> mod enabled!"},{"id":124,"name":"Blindsight","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-hidden","description":"I can see just perfectly.","mode":null,"instructions":"completing a map with the <b>Hidden<\/b> mod enabled!"},{"id":125,"name":"Are You Afraid Of The Dark?","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-flashlight","description":"Harder than it looks, probably because it's hard to look.","mode":null,"instructions":"completing a map with the <b>Flashlight<\/b> mod enabled!"},{"id":126,"name":"Dial It Right Back","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-easy","description":"Sometimes you just want to take it easy.","mode":null,"instructions":"completing a map with the <b>Easy<\/b> mod enabled!"},{"id":127,"name":"Risk Averse","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-nofail","description":"Safety nets are fun!","mode":null,"instructions":"completing a map with the <b>No Fail<\/b> mod enabled!"},{"id":128,"name":"Slowboat","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-halftime","description":"You got there. Eventually.","mode":null,"instructions":"completing a map with the <b>HalfTime<\/b> mod enabled!"},{"id":131,"name":"Burned Out","grouping":"Mod Introduction","ordering":10,"slug":"all-intro-spunout","description":"One cannot always spin to win.","mode":null,"instructions":"completing a map with the <b>Spun Out<\/b> mod enabled!"},{"id":205,"name":"Summer 2018 Beatmap Spotlights","grouping":"Seasonal Spotlights","ordering":0,"slug":"spotlight-2018-summer","description":"The hottest beatmaps from Summer 2018!","mode":null,"instructions":"<i>Play all of the maps from one mode of the Summer 2018 Beatmap Spotlights.<\/i>"},{"id":207,"name":"Fall 2018 Beatmap Spotlights","grouping":"Seasonal Spotlights","ordering":0,"slug":"spotlight-2018-autumn","description":"The most fabulous beatmaps from Fall 2018!","mode":null,"instructions":"<i>Play all of the maps from one mode of the Fall 2018 Beatmap Spotlights.<\/i>"},{"id":209,"name":"Winter 2019 Beatmap Spotlights","grouping":"Seasonal Spotlights","ordering":1,"slug":"spotlight-2019-winter","description":"The chillest beatmaps from Winter 2019!","mode":null,"instructions":"<i>Play all of the maps from one mode of the Winter 2019 Beatmap Spotlights.<\/i>"},{"id":210,"name":"Spring 2019 Beatmap Spotlights","grouping":"Seasonal Spotlights","ordering":1,"slug":"spotlight-2019-spring","description":"A bloomin' good time from Spring 2019!","mode":null,"instructions":"<i>Play all of the maps from one mode of the Spring 2019 Beatmap Spotlights.<\/i>"},{"id":215,"name":"Summer 2019 Beatmap Spotlights","grouping":"Seasonal Spotlights","ordering":1,"slug":"spotlight-2019-summer","description":"Blaze a trail through the best of Summer 2019!","mode":null,"instructions":"<i>Play all of the maps from one mode of the Summer 2019 Beatmap Spotlights.<\/i>"},{"id":1,"name":"500 Combo","grouping":"Skill","ordering":0,"slug":"osu-combo-500","description":"500 big ones! You're moving up in the world!","mode":"osu","instructions":"aiming for a combo of 500 or higher on any beatmap"},{"id":3,"name":"750 Combo","grouping":"Skill","ordering":0,"slug":"osu-combo-750","description":"750 notes back to back? Woah.","mode":"osu","instructions":"aiming for a combo of 750 or higher on any beatmap"},{"id":4,"name":"1,000 Combo","grouping":"Skill","ordering":0,"slug":"osu-combo-1000","description":"A thousand reasons why you rock at this game.","mode":"osu","instructions":"aiming for a combo of at least 1,000 on any beatmap (try a <a href='\/p\/beatmaplist?q=marathon'>marathon<\/a>)"},{"id":5,"name":"2,000 Combo","grouping":"Skill","ordering":0,"slug":"osu-combo-2000","description":"Nothing can stop you now.","mode":"osu","instructions":"aiming for a combo of at least 2,000 on any beatmap (try a <a href='\/p\/beatmaplist?q=marathon'>marathon<\/a>)"},{"id":50,"name":"I can see the top","grouping":"Skill","ordering":1,"slug":"all-skill-highranker-1","description":"Your dedication has paid off. Welcome to the top 50,000!","mode":null,"instructions":null},{"id":51,"name":"The gradual rise","grouping":"Skill","ordering":1,"slug":"all-skill-highranker-2","description":"There's no stopping you, is there? Welcome to the top 10,000!","mode":null,"instructions":null},{"id":52,"name":"Scaling up","grouping":"Skill","ordering":1,"slug":"all-skill-highranker-3","description":"Welcome to the top 5,000. Never give up!","mode":null,"instructions":null},{"id":53,"name":"Approaching the summit","grouping":"Skill","ordering":1,"slug":"all-skill-highranker-4","description":"Pro tier. Welcome to the top 1,000!","mode":null,"instructions":null},{"id":55,"name":"Rising Star","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-1","description":"Can't go forward without the first steps.","mode":"osu","instructions":null},{"id":56,"name":"Constellation Prize","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-2","description":"Definitely not a consolation prize. Now things start getting hard!","mode":"osu","instructions":null},{"id":57,"name":"Building Confidence","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-3","description":"Oh, you've SO got this.","mode":"osu","instructions":null},{"id":58,"name":"Insanity Approaches","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-4","description":"You're not twitching, you're just ready.","mode":"osu","instructions":null},{"id":59,"name":"These Clarion Skies","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-5","description":"Everything seems so clear now.","mode":"osu","instructions":null},{"id":60,"name":"Above and Beyond","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-6","description":"A cut above the rest.","mode":"osu","instructions":null},{"id":61,"name":"Supremacy","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-7","description":"All marvel before your prowess.","mode":"osu","instructions":null},{"id":62,"name":"Absolution","grouping":"Skill","ordering":2,"slug":"osu-skill-pass-8","description":"My god, you're full of stars!","mode":"osu","instructions":null},{"id":63,"name":"Totality","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-1","description":"All the notes. Every single one.","mode":"osu","instructions":null},{"id":64,"name":"Business As Usual","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-2","description":"Two to go, please.","mode":"osu","instructions":null},{"id":65,"name":"Building Steam","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-3","description":"Hey, this isn't so bad.","mode":"osu","instructions":null},{"id":66,"name":"Moving Forward","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-4","description":"Bet you feel good about that.","mode":"osu","instructions":null},{"id":67,"name":"Paradigm Shift","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-5","description":"Surprisingly difficult.","mode":"osu","instructions":null},{"id":68,"name":"Anguish Quelled","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-6","description":"Don't choke.","mode":"osu","instructions":null},{"id":69,"name":"Never Give Up","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-7","description":"Excellence is its own reward.","mode":"osu","instructions":null},{"id":70,"name":"Aberration","grouping":"Skill","ordering":3,"slug":"osu-skill-fc-8","description":"They said it couldn't be done. They were wrong.","mode":"osu","instructions":null},{"id":71,"name":"My First Don","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-1","description":"Marching to the beat of your own drum. Literally.","mode":"taiko","instructions":null},{"id":72,"name":"Katsu Katsu Katsu","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-2","description":"Hora! Ikuzo!","mode":"taiko","instructions":null},{"id":73,"name":"Not Even Trying","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-3","description":"Muzukashii? Not even.","mode":"taiko","instructions":null},{"id":74,"name":"Face Your Demons","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-4","description":"The first trials are now behind you, but are you a match for the Oni?","mode":"taiko","instructions":null},{"id":75,"name":"The Demon Within","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-5","description":"No rest for the wicked.","mode":"taiko","instructions":null},{"id":76,"name":"Drumbreaker","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-6","description":"Too strong.","mode":"taiko","instructions":null},{"id":77,"name":"The Godfather","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-7","description":"You are the Don of Dons.","mode":"taiko","instructions":null},{"id":78,"name":"Rhythm Incarnate","grouping":"Skill","ordering":4,"slug":"taiko-skill-pass-8","description":"Feel the beat. Become the beat.","mode":"taiko","instructions":null},{"id":95,"name":"Keeping Time","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-1","description":"Don, then katsu. Don, then katsu..","mode":"taiko","instructions":null},{"id":96,"name":"To Your Own Beat","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-2","description":"Straight and steady.","mode":"taiko","instructions":null},{"id":97,"name":"Big Drums","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-3","description":"Bigger scores to match.","mode":"taiko","instructions":null},{"id":98,"name":"Adversity Overcome","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-4","description":"Difficult? Not for you.","mode":"taiko","instructions":null},{"id":99,"name":"Demonslayer","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-5","description":"An Oni felled forevermore.","mode":"taiko","instructions":null},{"id":100,"name":"Rhythm's Call","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-6","description":"Heralding true skill.","mode":"taiko","instructions":null},{"id":101,"name":"Time Everlasting","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-7","description":"Not a single beat escapes you.","mode":"taiko","instructions":null},{"id":102,"name":"The Drummer's Throne","grouping":"Skill","ordering":5,"slug":"taiko-skill-fc-8","description":"Percussive brilliance befitting royalty alone.","mode":"taiko","instructions":null},{"id":79,"name":"A Slice Of Life","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-1","description":"Hey, this fruit catching business isn't bad.","mode":"fruits","instructions":null},{"id":80,"name":"Dashing Ever Forward","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-2","description":"Fast is how you do it.","mode":"fruits","instructions":null},{"id":81,"name":"Zesty Disposition","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-3","description":"No scurvy for you, not with that much fruit.","mode":"fruits","instructions":null},{"id":82,"name":"Hyperdash ON!","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-4","description":"Time and distance is no obstacle to you.","mode":"fruits","instructions":null},{"id":83,"name":"It's Raining Fruit","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-5","description":"And you can catch them all.","mode":"fruits","instructions":null},{"id":84,"name":"Fruit Ninja","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-6","description":"Legendary techniques.","mode":"fruits","instructions":null},{"id":85,"name":"Dreamcatcher","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-7","description":"No fruit, only dreams now.","mode":"fruits","instructions":null},{"id":86,"name":"Lord of the Catch","grouping":"Skill","ordering":6,"slug":"fruits-skill-pass-8","description":"Your kingdom kneels before you.","mode":"fruits","instructions":null},{"id":103,"name":"Sweet And Sour","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-1","description":"Apples and oranges, literally.","mode":"fruits","instructions":null},{"id":104,"name":"Reaching The Core","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-2","description":"The seeds of future success.","mode":"fruits","instructions":null},{"id":105,"name":"Clean Platter","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-3","description":"Clean only of failure. It is completely full, otherwise.","mode":"fruits","instructions":null},{"id":106,"name":"Between The Rain","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-4","description":"No umbrella needed.","mode":"fruits","instructions":null},{"id":107,"name":"Addicted","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-5","description":"That was an overdose?","mode":"fruits","instructions":null},{"id":108,"name":"Quickening","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-6","description":"A dash above normal limits.","mode":"fruits","instructions":null},{"id":109,"name":"Supersonic","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-7","description":"Faster than is reasonably necessary.","mode":"fruits","instructions":null},{"id":110,"name":"Dashing Scarlet","grouping":"Skill","ordering":7,"slug":"fruits-skill-fc-8","description":"Speed beyond mortal reckoning.","mode":"fruits","instructions":null},{"id":87,"name":"First Steps","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-1","description":"It isn't 9-to-5, but 1-to-9. Keys, that is.","mode":"mania","instructions":null},{"id":88,"name":"No Normal Player","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-2","description":"Not anymore, at least.","mode":"mania","instructions":null},{"id":89,"name":"Impulse Drive","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-3","description":"Not quite hyperspeed, but getting close.","mode":"mania","instructions":null},{"id":90,"name":"Hyperspeed","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-4","description":"Woah.","mode":"mania","instructions":null},{"id":91,"name":"Ever Onwards","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-5","description":"Another challenge is just around the corner.","mode":"mania","instructions":null},{"id":92,"name":"Another Surpassed","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-6","description":"Is there no limit to your skills?","mode":"mania","instructions":null},{"id":93,"name":"Extra Credit","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-7","description":"See me after class.","mode":"mania","instructions":null},{"id":94,"name":"Maniac","grouping":"Skill","ordering":8,"slug":"mania-skill-pass-8","description":"There's just no stopping you.","mode":"mania","instructions":null},{"id":111,"name":"Keystruck","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-1","description":"The beginning of a new story.","mode":"mania","instructions":null},{"id":112,"name":"Keying In","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-2","description":"Finding your groove.","mode":"mania","instructions":null},{"id":113,"name":"Hyperflow","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-3","description":"You can *feel* the rhythm.","mode":"mania","instructions":null},{"id":114,"name":"Breakthrough","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-4","description":"Many skills mastered, rolled into one.","mode":"mania","instructions":null},{"id":115,"name":"Everything Extra","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-5","description":"Giving your all is giving everything you have.","mode":"mania","instructions":null},{"id":116,"name":"Level Breaker","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-6","description":"Finesse beyond reason.","mode":"mania","instructions":null},{"id":117,"name":"Step Up","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-7","description":"A precipice rarely seen.","mode":"mania","instructions":null},{"id":118,"name":"Behind The Veil","grouping":"Skill","ordering":9,"slug":"mania-skill-fc-8","description":"Supernatural!","mode":"mania","instructions":null}]
+        </script>
+            <script id="json-currentMode" type="application/json">
+            "osu"
+        </script>
+            <script id="json-extras" type="application/json">
+            {"scoresBest":[],"scoresFirsts":[],"scoresRecent":[],"beatmapPlaycounts":[],"favouriteBeatmapsets":[],"rankedAndApprovedBeatmapsets":[{"id":241526,"title":"Renatus","artist":"Soleily","play_count":25730828,"favourite_count":4219,"has_favourited":false,"submitted_date":"2014-12-08T09:59:23+00:00","last_updated":"2015-02-18T16:52:21+00:00","ranked_date":"2015-02-25T17:20:15+00:00","creator":"Multiple Creators","user_id":3,"bpm":182,"source":"","covers":{"cover":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/cover.jpg?1521086997","cover@2x":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/cover@2x.jpg?1521086997","card":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/card.jpg?1521086997","card@2x":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/card@2x.jpg?1521086997","list":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/list.jpg?1521086997","list@2x":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/list@2x.jpg?1521086997","slimcover":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/slimcover.jpg?1521086997","slimcover@2x":"https:\/\/assets.ppy.sh\/beatmaps\/241526\/covers\/slimcover@2x.jpg?1521086997"},"preview_url":"\/\/b.ppy.sh\/preview\/241526.mp3","tags":"mbc7 unisphere \u5730\u7403\u30e4\u30d0\u30a4ep chikyu yabai gamu mmzz deif expew","video":false,"storyboard":false,"ranked":1,"status":"ranked","has_scores":true,"discussion_enabled":false,"discussion_locked":false,"can_be_hyped":false,"availability":{"download_disabled":false,"more_information":null},"hype":{"current":0,"required":5},"nominations":{"current":0,"required":2},"legacy_thread_url":"https:\/\/osu.ppy.sh\/forum\/t\/264971","beatmaps":[{"id":557810,"beatmapset_id":241526,"mode":"fruits","mode_int":2,"convert":null,"difficulty_rating":3.45585,"version":"Platter","total_length":228,"hit_length":218,"cs":3.5,"drain":5,"accuracy":8,"ar":8,"playcount":226674,"passcount":9480,"count_circles":314,"count_sliders":420,"count_spinners":3,"count_total":1163,"last_updated":"2015-02-18T16:52:21+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557810","deleted_at":null},{"id":557811,"beatmapset_id":241526,"mode":"fruits","mode_int":2,"convert":null,"difficulty_rating":4.78145,"version":"Rain","total_length":228,"hit_length":218,"cs":4,"drain":6,"accuracy":9,"ar":9,"playcount":109264,"passcount":7529,"count_circles":684,"count_sliders":408,"count_spinners":3,"count_total":1509,"last_updated":"2015-02-18T16:52:21+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557811","deleted_at":null},{"id":557812,"beatmapset_id":241526,"mode":"fruits","mode_int":2,"convert":null,"difficulty_rating":2.52349,"version":"Salad","total_length":228,"hit_length":218,"cs":3,"drain":4,"accuracy":7,"ar":7,"playcount":1066252,"passcount":52183,"count_circles":167,"count_sliders":317,"count_spinners":5,"count_total":816,"last_updated":"2015-02-18T16:52:21+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557812","deleted_at":null},{"id":557813,"beatmapset_id":241526,"mode":"mania","mode_int":3,"convert":null,"difficulty_rating":3.15772,"version":"[7K] Hyper","total_length":228,"hit_length":227,"cs":7,"drain":7.5,"accuracy":7.5,"ar":5,"playcount":188590,"passcount":32337,"count_circles":1657,"count_sliders":49,"count_spinners":0,"count_total":1755,"last_updated":"2015-02-18T16:52:21+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557813","deleted_at":null},{"id":557814,"beatmapset_id":241526,"mode":"osu","mode_int":0,"convert":null,"difficulty_rating":3.46895,"version":"Hard","total_length":207,"hit_length":189,"cs":4,"drain":6,"accuracy":6,"ar":7.5,"playcount":6647627,"passcount":480949,"count_circles":160,"count_sliders":396,"count_spinners":2,"count_total":958,"last_updated":"2015-02-18T16:52:21+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557814","deleted_at":null},{"id":557815,"beatmapset_id":241526,"mode":"osu","mode_int":0,"convert":null,"difficulty_rating":2.09573,"version":"Normal","total_length":207,"hit_length":189,"cs":3,"drain":3,"accuracy":3,"ar":4,"playcount":10173916,"passcount":3136242,"count_circles":67,"count_sliders":209,"count_spinners":2,"count_total":491,"last_updated":"2015-02-18T16:52:21+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557815","deleted_at":null},{"id":557816,"beatmapset_id":241526,"mode":"taiko","mode_int":1,"convert":null,"difficulty_rating":2.17437,"version":"Futsuu","total_length":228,"hit_length":227,"cs":5,"drain":4,"accuracy":4,"ar":5,"playcount":1864676,"passcount":446244,"count_circles":441,"count_sliders":7,"count_spinners":2,"count_total":461,"last_updated":"2015-02-18T16:52:22+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557816","deleted_at":null},{"id":557817,"beatmapset_id":241526,"mode":"taiko","mode_int":1,"convert":null,"difficulty_rating":2.92783,"version":"Muzukashii","total_length":228,"hit_length":227,"cs":5,"drain":5,"accuracy":5,"ar":5,"playcount":459347,"passcount":37114,"count_circles":748,"count_sliders":4,"count_spinners":1,"count_total":759,"last_updated":"2015-02-18T16:52:22+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557817","deleted_at":null},{"id":557818,"beatmapset_id":241526,"mode":"taiko","mode_int":1,"convert":null,"difficulty_rating":5.73818,"version":"Oni","total_length":228,"hit_length":227,"cs":5,"drain":6,"accuracy":6,"ar":5,"playcount":791555,"passcount":26693,"count_circles":1314,"count_sliders":3,"count_spinners":1,"count_total":1323,"last_updated":"2015-02-18T16:52:22+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557818","deleted_at":null},{"id":557819,"beatmapset_id":241526,"mode":"mania","mode_int":3,"convert":null,"difficulty_rating":4.80211,"version":"[7K] Another","total_length":228,"hit_length":227,"cs":7,"drain":8,"accuracy":8,"ar":5,"playcount":94425,"passcount":20136,"count_circles":2162,"count_sliders":442,"count_spinners":0,"count_total":3046,"last_updated":"2015-02-18T16:52:22+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557819","deleted_at":null},{"id":557820,"beatmapset_id":241526,"mode":"mania","mode_int":3,"convert":null,"difficulty_rating":1.9264,"version":"[7K] Normal","total_length":228,"hit_length":227,"cs":7,"drain":7,"accuracy":7,"ar":5,"playcount":1032222,"passcount":69969,"count_circles":766,"count_sliders":27,"count_spinners":0,"count_total":820,"last_updated":"2015-02-18T16:52:22+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557820","deleted_at":null},{"id":557821,"beatmapset_id":241526,"mode":"osu","mode_int":0,"convert":null,"difficulty_rating":4.97329,"version":"Insane","total_length":207,"hit_length":189,"cs":4,"drain":6.5,"accuracy":8,"ar":9,"playcount":3076271,"passcount":319959,"count_circles":586,"count_sliders":309,"count_spinners":2,"count_total":1210,"last_updated":"2015-02-18T16:52:22+00:00","ranked":1,"status":"ranked","url":"https:\/\/osu.ppy.sh\/beatmaps\/557821","deleted_at":null}]}],"lovedBeatmapsets":[],"unrankedBeatmapsets":[],"graveyardBeatmapsets":[],"recentActivity":[],"recentlyReceivedKudosu":[{"id":1038088,"action":"vote.give","amount":1,"model":"beatmap_discussion","created_at":"2019-09-29T18:09:07+00:00","giver":null,"post":{"url":"https:\/\/osu.ppy.sh\/beatmapsets\/beatmap-discussions\/1194033","title":"Sora wa Takaku Kaze wa Utau (TV Size)"},"details":{"event":"vote"}},{"id":1038082,"action":"recalculate.give","amount":2,"model":"beatmap_discussion","created_at":"2019-09-29T17:36:44+00:00","giver":null,"post":{"url":"https:\/\/osu.ppy.sh\/beatmapsets\/beatmap-discussions\/1184431","title":"testo"},"details":{"event":"recalculate"}},{"id":1037963,"action":"vote.give","amount":1,"model":"beatmap_discussion","created_at":"2019-09-29T14:15:56+00:00","giver":null,"post":{"url":"https:\/\/osu.ppy.sh\/beatmapsets\/beatmap-discussions\/1193093","title":"MEGALOVANIA (Camellia Remix)"},"details":{"event":"vote"}},{"id":1037673,"action":"vote.give","amount":1,"model":"beatmap_discussion","created_at":"2019-09-29T04:03:28+00:00","giver":null,"post":{"url":"https:\/\/osu.ppy.sh\/beatmapsets\/beatmap-discussions\/1192917","title":"sync"},"details":{"event":"vote"}},{"id":1037122,"action":"vote.give","amount":1,"model":"beatmap_discussion","created_at":"2019-09-28T05:12:50+00:00","giver":null,"post":{"url":"https:\/\/osu.ppy.sh\/beatmapsets\/beatmap-discussions\/1191468","title":"Donna Toki mo Zutto (TV Size)"},"details":{"event":"vote"}},{"id":1035610,"action":"vote.give","amount":1,"model":"beatmap_discussion","created_at":"2019-09-25T15:54:52+00:00","giver":null,"post":{"url":"https:\/\/osu.ppy.sh\/beatmapsets\/beatmap-discussions\/1184553","title":"Ima Suki ni Naru."},"details":{"event":"vote"}}]}
+        </script>
+            <script id="json-perPage" type="application/json">
+            {"scoresBest":5,"scoresFirsts":5,"scoresRecent":5,"beatmapPlaycounts":5,"favouriteBeatmapsets":6,"rankedAndApprovedBeatmapsets":6,"lovedBeatmapsets":6,"unrankedBeatmapsets":6,"graveyardBeatmapsets":2,"recentActivity":5,"recentlyReceivedKudosu":5}
+        </script>
+            <script id="json-rankHistory" type="application/json">
+            null
+        </script>
+		{{ $user := . }}
+		<script id="json-user" type="application/json">
+		{
+  "id": {{ .id }},
+  "username": "{{ .username }}",
+  "join_date": "2019-09-17T15:36:04+00:00",
+  "country": {
+    "code": "{{ .country }}",
+    "name": "{{ .country }}"
+  },
+  "avatar_url": "{{ config "AvatarURL" }}/{{ .id }}",
+  "is_supporter": false,
+  "has_supported": true,
+  "is_gmt": false,
+  "is_nat": false,
+  "is_bng": false,
+  "is_full_bn": false,
+  "is_limited_bn": false,
+  "is_bot": false,
+  "is_active": true,
+  "can_moderate": false,
+  "interests": null,
+  "occupation": null,
+  "title": {{ if .username_aka }}{{ $global.T "(aka %s)" (.username_aka | htmlescaper) | html }}{{ else }}null{{ end }},
+  "location": null,
+  "last_visit": "2019-09-17T15:36:04+00:00",
+  "is_online": true,
+  "twitter": null,
+  "lastfm": null,
+  "skype": null,
+  "website": "https://twitter.com/banchoboat",
+  "discord": null,
+  "playstyle": null,
+  "playmode": "osu",
+  "pm_friends_only": false,
+  "post_count": null,
+  "profile_colour": "#e45678",
+  "profile_order": [
+    "me",
+    "recent_activity",
+    "top_ranks",
+    "medals",
+    "historical"
+  ],
+  {{ $d := qb "SELECT type, value FROM profile_backgrounds WHERE uid = ? LIMIT 1" .id }}
+  {{ $type  := or $d.type.Int -1 }}
+  {{ $value := or $d.value.String "" }}
+  "cover_url": {{ if and (eq $type 1) $value }}"https://bigtu.vip/static/profbackgrounds/{{ $value }}"{{ else }}"https://new.bigtu.vip/static/public/images/headers/profile-covers/c4.jpg"{{ end }},
+  "cover": {
+    "custom_url": {{ if eq $type 1 }}true{{ else }}false{{ end }},
+    "url": {{ if and (eq $type 1) $value }}"https://bigtu.vip/static/profbackgrounds/{{ $value }}"{{ else }}"https://new.bigtu.vip/static/public/images/headers/profile-covers/c4.jpg"{{ end }},
+    "id": "{{ if eq $type 1 }}null{{ else }}4{{ end }}"
+  },
+  "kudosu": {
+    "total": null,
+    "available": null
+  },
+  "max_blocks": 25,
+  "max_friends": 250,
+  "account_history": [],
+  "active_tournament_banner": [],
+  "badges": [],
+  "favourite_beatmapset_count": 0,
+  "follower_count": 0,
+  "graveyard_beatmapset_count": 0,
+  "loved_beatmapset_count": 0,
+  "monthly_playcounts": [],
+  {{ if $ac }}
+  "page": {
+    "html": "<div class='bbcode bbcode--profile-page'><span class=\"size-150\"></span><center>Hello! I'm AC and I'm the bot here!</center><br /><center><img src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\" data-normal=\"https://i.ppy.sh/35e1889b4ccc5f13a12f44c24efba0b8852c7a4f/687474703a2f2f7075752e73682f326c6466652f38653736313136323132\" alt=\"\" /></center></div>",
+    "raw": "[size=150][centre]helping you help yourself[/centre][/size]\n[centre][img]http://puu.sh/2ldfe/8e76116212[/img][/centre]"
+  },
+  {{ else }}
+  "page": {
+	"html": "<div class='bbcode bbcode--profile-page'>{{ with $global.Get "users/userpage?id=%.0f" .id }}{{ if .userpage }}{{ with parseUserpage .userpage }}{{ html . }}</div>{{ end }}{{ end }}",
+	"raw": "{{ .userpage }}{{ end }}"
+  },
+  {{ end }}
+  "previous_usernames": [],
+  "ranked_and_approved_beatmapset_count": 1,
+  "replays_watched_counts": [],
+  "scores_first_count": 0,
+  "statistics": {
+    "level": {
+      "current": 1,
+      "progress": 0
+    },
+    "pp": 0,
+    "pp_rank": 1,
+    "ranked_score": 12345678,
+    "hit_accuracy": 99.99,
+    "play_count": 1337,
+    "play_time": 1,
+    "total_score": 8313131131313,
+    "total_hits": 381831,
+    "maximum_combo": 0,
+    "replays_watched_by_others": 931,
+    "is_ranked": false,
+    "grade_counts": {
+      "ss": 1,
+      "ssh": 2,
+      "s": 3,
+      "sh": 4,
+      "a": 5
+    },
+    "rank": {
+      "global": 1,
+      "country": 1
+    },
+    "scoreRanks": {
+      "XH": 1,
+      "SH": 2,
+      "X": 3,
+      "S": 4,
+      "A": 5
+    }
+  },
+  "support_level": 0,
+  "unranked_beatmapset_count": 0,
+  "user_achievements": []
+}
+		</script>
+    
+		<script>
+			turbolinksReload.load('https://bigtu.vip/static/--copy--/osu.ppy.sh/users/../js/react/profile-paged3d5.js')
+		</script>
+{{ end }}{{ end }}{{ end }}

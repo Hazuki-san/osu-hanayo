@@ -3,84 +3,869 @@ Handler=/about
 TitleBar=About
 */}}
 {{ define "tpl" }}
-<div class="ui container">
-	<div class="ui centered segments">
-		<div class="ui segment">
-			<img src="/static/logos/logo-pink.svg">
-			<h1 class="ui no bottom margin header">
-				{{ .T "Welcome to Ripple." }}
-			</h1>
-			<div class="about subtitle">{{ .T "Ripple is a private osu! server." }}<br>
-			{{ .T "There are many like it, but this one is ours." }}</div>
-		</div>
-		<div class="ui segment">
-			<img src="/static/about/intro.jpg">
-			<div class="about title twemoji">{{ .T "Don't you like %s?" "🍆" }}</div>
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "We have leaderboards." }}
-			</h1>
-			<img src="/static/about/leaderboards.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "Online user listing." }}
-			</h1>
-			<img src="/static/about/onlineusers.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "Free osu!direct." }}
-			</h1>
-			<img src="/static/about/osudirect.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui no bottom margin header">
-				{{ .T "Global leaderboards." }}
-			</h1>
-			<p class="about subtitle">{{ .T "and PP for all game modes" }}</p>
-			<img src="/static/about/global_leaderboards.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "Ranking queue for unranked beatmaps." }}
-			</h1>
-			<img src="/static/about/request_beatmaps.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "Spectator." }}
-			</h1>
-			<img src="/static/about/spectator.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "Multiplayer." }}
-			</h1>
-			<img src="/static/about/multi.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "FokaBot, our chat bot" }}
-			</h1>
-			<p class="about subtitle">{{ .T "with plenty of functions for just about anything, <a href=\"/doc/4\">check it out!</a>" | html }}</p>
-			<img src="/static/about/foka.jpg">
-		</div>
-		<div class="ui segment">
-			<h1 class="ui header">
-				{{ .T "And a lot more to come!" }}
-			</h1>
-			<p class="about title">
-				{{ .T "Ripple is the result of the hard work of two Italian developers, who got tired about the whole osu! ecosystem, and also because they wanted to play with a few banned friends." }}
-			</p>
-			<p class="about title twemoji">
-				{{ .T "It has now evolved into the largest available osu! private server, with more than 50,000 registered users. <a href=\"/register\">Signing up</a> on Ripple won't result in getting your account on osu! restricted, so what are you waiting for?! Come join us! %s" "😉" | html }}
-			</p>
-			<p class="about subtitle">
-				{{ .T "In case you want to make sure we're not doing shady stuff with your data, you can also check the <a href=\"https://zxq.co/ripple/ripple\">source code</a> Ripple is running on." | html }}
-			</p>
-		</div>
-	</div>
+
+                <div class="osu-layout__section osu-layout__section--full js-content help_wiki-show">
+                                            <div class="osu-layout__row">
+        <div class="osu-page-header osu-page-header--wiki">
+            <div class="osu-page-header__title-box">
+                
+                <h1 class="osu-page-header__title osu-page-header__title--main">
+                    <a class="osu-page-header__link osu-page-header__link--plain" href="FAQ.html">
+                        FAQ
+                    </a>
+                </h1>
+            </div>
+
+            <div class="osu-page-header__actions">
+    <div class="forum-post-actions">
+        <div class="forum-post-actions__action">
+            <a
+                class="btn-circle"
+                href="https://github.com/ppy/osu-wiki/tree/master/wiki/FAQ/en.md"
+                title="Show on GitHub"
+                data-tooltip-position="left center"
+            >
+                <span class="btn-circle__content">
+                    <i class="fab fa-github"></i>
+                </span>
+            </a>
+        </div>
+
+            </div>
 </div>
+        </div>
+    </div>
+
+    <div class="osu-page osu-page--wiki">
+        
+        <div class="wiki-page">
+            <div class="hidden-xs wiki-page__toc u-fancy-scrollbar">
+                <div class="wiki-toc">
+                    <h2 class="wiki-toc__title">
+                        Contents
+                    </h2>
+
+                                            <ol class="wiki-toc-list wiki-toc-list--top">
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#osu!-introduction"
+            class="wiki-toc-list__link "
+        >
+            osu! Introduction
+        </a>
+
+        
+    
+                    <ol class="wiki-toc-list ">
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#i&#039;ve-never-played-this-&quot;ouendan&quot;-thing---what-is-it?"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            I&#039;ve never played this &quot;Ouendan&quot; thing - what is it?
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#how-to-play?"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            How to play?
+        </a>
+
+        
+                    </ol>
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#alternative-game-modes"
+            class="wiki-toc-list__link "
+        >
+            Alternative Game Modes
+        </a>
+
+        
+    
+                    <ol class="wiki-toc-list ">
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#changing-the-game-mode"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            Changing the game mode
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#what-is-osu!taiko?"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            What is osu!taiko?
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#what-is-osu!catch?"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            What is osu!catch?
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#what-is-osu!mania?"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            What is osu!mania?
+        </a>
+
+        
+                    </ol>
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#scoring"
+            class="wiki-toc-list__link "
+        >
+            Scoring
+        </a>
+
+        
+    
+                    <ol class="wiki-toc-list ">
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#grades"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            Grades
+        </a>
+
+        
+                    </ol>
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#performance-points"
+            class="wiki-toc-list__link "
+        >
+            Performance Points
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#common-issues-and-questions"
+            class="wiki-toc-list__link "
+        >
+            Common issues and questions
+        </a>
+
+        
+    
+                    <ol class="wiki-toc-list ">
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#general"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            General
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#osu!"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            osu!
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#osu!taiko"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            osu!taiko
+        </a>
+
+        
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#beatmapping"
+            class="wiki-toc-list__link wiki-toc-list__link--small"
+        >
+            Beatmapping
+        </a>
+
+        
+                    </ol>
+    
+    
+    
+    <li class="wiki-toc-list__item">
+        <a
+            href="#credits"
+            class="wiki-toc-list__link "
+        >
+            Credits
+        </a>
+
+                                                                                </div>
+            </div>
+
+            <div class="wiki-page__content">
+                                    <div class='osu-md'>
+
+
+
+
+<h2 id="osu!-introduction" class="osu-md__header osu-md__header--2">osu! Introduction</h2>
+<h3 id="i've-never-played-this-&quot;ouendan&quot;-thing---what-is-it?" class="osu-md__header osu-md__header--3">I've never played this &quot;Ouendan&quot; thing - what is it?</h3>
+<p class="osu-md__paragraph"><em><a class="osu-md__link" href="https://en.wikipedia.org/wiki/Osu!_Tatakae!_Ouendan" title="Wikipedia entry for Osu! Tatakae! Ouendan">Osu! Tatakae! Ouendan</a></em> is a rhythm game for the <em>Nintendo DS</em>.<br />The gameplay consists of only three elements: tapping circles on the touchscreen, dragging a ball across a fixed path and rotating a spinner very fast.<br />All these elements are timed to (covers of) popular Japanese songs.<br />It looks like this on the <em>DS</em>:-</p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/b40d744266a1c1ab3f36ddc69fc05e3e5d79d229/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f4f75656e64616e2e6a7067" alt="Gameplay example of Osu! Tatakae! Ouendan in Nintendo DS" title="Gameplay example of Osu! Tatakae! Ouendan in Nintendo DS" /><em class="osu-md__figure-caption">Gameplay example of Osu! Tatakae! Ouendan in Nintendo DS</em></p>
+<p class="osu-md__paragraph"><em>Gameplay example of Osu! Tatakae! Ouendan in Nintendo DS</em></p>
+<p class="osu-md__paragraph">The gameplay circles can be seen on the bottom screen, and the story on the top screen.<br />Each stage is basically a self-contained story about a person in trouble.<br />That is where the <em>Ouendan</em> (Cheer squad) comes in.<br />Through the magical power of male cheerleading, the player have to help the people in trouble.</p>
+<h3 id="how-to-play?" class="osu-md__header osu-md__header--3">How to play?</h3>
+<p class="osu-md__paragraph"><em>Full explanation: <a class="osu-md__link" href="Game_Modes/osu%21/index.html" title="osu!">osu!</a></em></p>
+<p class="osu-md__paragraph">While most players may not have a touchscreen at their disposal, the game was made to be playable with a normal mouse in mind, as well as any creative variations of input devices usage.<br />Different play styles can be found in the <a class="osu-md__link" href="Play_Styles/index.html" title="Play Styles">play styles</a> page.<br />There are some songs which will push the limits of the normal mouse and the player, but all the (ranked and approved) beatmaps have been tested and (most can be) passable using only a mouse.</p>
+<h4 class="osu-md__header osu-md__header--4">Gameplay Basics</h4>
+<p class="osu-md__paragraph"><em>Tutorial: <a class="osu-md__link" href="https://osu.ppy.sh/beatmapsets/3756" title="Installer's osu!tutorial by peppy">(Bundled with PC osu!) Original tutorial</a>, <a class="osu-md__link" href="https://osu.ppy.sh/beatmapsets/19928" title="Ranked osu!tutorial by Sushi">Ranked beatmap version</a></em></p>
+<p class="osu-md__paragraph">The gameplay puts emphasis on:-</p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">Adaptability and reaction to stimuli (that is, the hittable objects appearing all over the screen at lightning speed).</li>
+<li class="osu-md__list-item">Understanding of the song's beat and design.</li>
+<li class="osu-md__list-item">Input device control.</li>
+<li class="osu-md__list-item">Timing of hits on the object that appeared on the screen.</li>
+<li class="osu-md__list-item">Ability to spin the mouse (or pen for tablet) on spinners.</li>
+<li class="osu-md__list-item">Physical stamina and mental fortitude (especially longer, marathon-type songs).</li>
+<li class="osu-md__list-item">Proper positioning and hand-eye coordination.</li>
+</ul>
+<p class="osu-md__paragraph">These are some of the vital skills to become an <em>osu! rhythm master</em>.<br />The first step to begin the journey is to learn the basics (and theories) of the hittable objects (referred as <em>hit objects</em> from here onwards).</p>
+<h5 class="osu-md__header osu-md__header--5">Hit circles</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/f51d0f096d4a7d49861d5edf437016aaf246940a/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6f73755f686974636972636c65732e6a7067" alt="Hit circles" title="osu! hit circles" /><em class="osu-md__figure-caption">osu! hit circles</em></p>
+<p class="osu-md__paragraph"><em>Some hit circles placed in a path to tap to the beat</em></p>
+<p class="osu-md__paragraph">A thin, similarly-coloured approach circle on the outside of the hit circle will shrink over time.<br />Tap on the note at the exact point when it touches the white border of the hit circle.<br />A score burst will appear after tapping the hit circle, showing the score and health changes depending on timing of the tap to the beat.<br />The hit circle will disappear after the score burst.</p>
+<p class="osu-md__paragraph">To understand the hidden charm of hit circles, do not rely on perception only; feel the beatmap's beats and rhythm.<br />It will help in juggling some of the visually-complex hit circles patterns found in later difficulties.</p>
+<h5 class="osu-md__header osu-md__header--5">Sliders</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/52566e929577654a87e3694e70181f4094d3a7b9/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6f73755f736c696465722e6a7067" alt="Sliders" title="osu! Slider" /><em class="osu-md__figure-caption">osu! Slider</em></p>
+<p class="osu-md__paragraph"><em>A single-repeat straight slider with active orange followcircle surrounding the slider ball and a slider tick inside the slider (small white circle)</em></p>
+<p class="osu-md__paragraph">First, tap on it at the right moment, however, it does not end there.<br />A ball will begin to move across the path.<br />Hold the mouse/keyboard-button (or keep the pen onto the tablet) and follow the ball within the thick orange circle, surrounding the ball, as it moves.<br />The orange outer circle, called the follow circle, will appear if when holding onto the slider's ball, but will disappear when released.</p>
+<p class="osu-md__paragraph">Sometimes, as seen in the screenshot above, the ball may reverse its direction and the player must follow the ball back to the start of the path or vice versa.<br />The visual cue is a reverse arrow at the ending/starting circle of the path.</p>
+<h5 class="osu-md__header osu-md__header--5">Spinners</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/59921959fb80c9fca6d0414b0c4df363a497a8ba/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6f73755f7370696e6e65722e6a7067" alt="Spinner" title="osu! Spinner" /><em class="osu-md__figure-caption">osu! Spinner</em></p>
+<p class="osu-md__paragraph"><em>A cleared spinner with spinner bonus</em></p>
+<p class="osu-md__paragraph">Hold on the mouse/keyboard-button (or keep the pen onto the tablet).<br />From there, use the mouse (or pen) and spin the spinner in a circular motion (in either direction) until the spinner circle grows outwards completely.<br />A <em>Clear</em> notice will appear to indicate that the spinner was completed.<br />If the spinner was cleared early, continue spinning to collect score bonus and gain some health back.</p>
+<p class="osu-md__paragraph">The outer white circle shows how much time left to complete the spinner.<br />This circle will turn red to notify that time is almost out.<br />Older beatmaps, using <em>skin version 1.0</em>, will have a meter/gauge to indicate how close to clearing the spinner.</p>
+<p class="osu-md__paragraph">The small box below the spinner shows spins per minute.<br />The number inside that box translates to the number of spins possible, if to continue to spin the spinner at that speed for one minute.<br />If mouse/keyboard-button was released (or pen did not touch the tablet) early during the spin, the spinner will stop reading the spin.</p>
+<p class="osu-md__paragraph">On the <em>DS</em>, this is a good way to scratch the touchscreen (or screen protector), especially on the higher difficulties.<br />In osu!, spinners have been toned down as to not be such a nuisance to complete.<br />The maximum number of spins per minute achievable is 477 which is also the rate at which the <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Auto">Auto</a> game modifier spins while the <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Spun Out">Spun Out</a> game modifier spins slower at 287 spins per minute.</p>
+<h4 class="osu-md__header osu-md__header--4">In-Game Interface</h4>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/aa6276fdd08e5df7a6e8ede4552b5640d20de526/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f496e746572666163655f6f73752e6a7067" alt="osu! interface" title="osu! Interface" /><em class="osu-md__figure-caption">osu! Interface</em></p>
+<p class="osu-md__paragraph"><em>In-game interface of osu!</em></p>
+<p class="osu-md__paragraph">The top-left bar is the health bar, which will decrease at a steady rate (depending on the beatmap's difficulty settings), but can be replenished by tapping notes at the right time or spinning the spinner.<br />A perfectly timed hit (a 300 or Geki) will recover health more than a badly timed hit (50).<br />A total miss will take a good chunk of health out of the health bar.</p>
+<p class="osu-md__paragraph">On the right of the health bar is the total score.<br />Below that is the accuracy.<br />The circle beside the accuracy (and below the score) is a timer for the duration of the beatmap.<br />The number on the bottom left is the combo counter/score multiplier.</p>
+<h4 class="osu-md__header osu-md__header--4">Controls</h4>
+<p class="osu-md__paragraph">The default controls for osu! are:-</p>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data-- osu-md__table-data--header">Mouse</th>
+<th class="osu-md__table-data osu-md__table-data-- osu-md__table-data--header">Keyboard</th>
+<th class="osu-md__table-data osu-md__table-data-- osu-md__table-data--header">Tablet/Touchscreen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--">Left click(M1) / Right click(M2)</td>
+<td class="osu-md__table-data osu-md__table-data--"><code>Z</code>(K1) / <code>X</code>(K2)</td>
+<td class="osu-md__table-data osu-md__table-data--">Touching the screen(M1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="osu-md__paragraph">The hit objects in osu! will accept any input from the input device, as long as each hit objects was tapped in time.</p>
+<p class="osu-md__paragraph">If <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Relax">Relax</a> game modifer was used, only the in-game cursor will work.<br />Use the in-game cursor to follow the hit objects with automated tap.<br />Spinners must still be completed.</p>
+<p class="osu-md__paragraph">If <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Auto Pilot">Auto Pilot</a> game modifier was used, only the input from the input device will work.<br />Time the tap on the hit objects with automated cursor movement.<br />Spinners will follow the <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Spun Out">Spun Out</a> mod speed.</p>
+<hr />
+<h2 id="alternative-game-modes" class="osu-md__header osu-md__header--2">Alternative Game Modes</h2>
+<h3 id="changing-the-game-mode" class="osu-md__header osu-md__header--3">Changing the game mode</h3>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/f65763f40ac403ba9ed6652b6eb08aae77387b40/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f496e746572666163655f6d6f64652e706e67" alt="Mode change interface" title="Mode change interface" /><em class="osu-md__figure-caption">Mode change interface</em></p>
+<p class="osu-md__paragraph"><em>Image showcasing the Mode toolbox in Song Selection (Solo)</em></p>
+<p class="osu-md__paragraph">Click on the <code>Mode</code> button to <strong>open up a list of gameplay modes available on osu!</strong>.<br />Click on the desired gameplay mode, and osu! will switch to that gameplay mode style, along with relevant leaderboard change.<br />Alternatively, press <code>Ctrl</code> key and <code>1</code> (<img class="osu-md__image" src="https://i.ppy.sh/f8b581f28db6b637343cdb6f351653b120dee167/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f6f73752e706e67" alt="osu! icon" title="osu! icon" /> <em><a class="osu-md__link" href="Game_Modes/osu%21/index.html" title="osu!">osu!standard</a>)</em> / <code>2</code> ( <img class="osu-md__image" src="https://i.ppy.sh/996a535f73b2d6eb62aa707984fb25a4685ee5b0/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f7461696b6f2e706e67" alt="osu!taiko icon" title="osu!taiko icon" /> <em><a class="osu-md__link" href="Game_Modes/osu%21taiko/index.html" title="osu!taiko">osu!taiko</a></em>) / <code>3</code> (<img class="osu-md__image" src="https://i.ppy.sh/faf037998e655ae49f63d048793bde88d6e190aa/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f63617463682e706e67" alt="osu!catch icon" title="osu!catch icon" /> <em><a class="osu-md__link" href="Game_Modes/osu%21catch/index.html" title="osu!catch">osu!catch</a></em>) / <code>4</code> (<img class="osu-md__image" src="https://i.ppy.sh/bf55b75bd40964972041d66bb0d741a779293279/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f6d616e69612e706e67" alt="osu!mania icon" title="osu!mania icon" /> <em><a class="osu-md__link" href="Game_Modes/osu%21mania/index.html" title="osu!mania">osu!mania</a></em>) key on the keyboard to quickly switch to the desired gameplay mode.</p>
+<h3 id="what-is-osu!taiko?" class="osu-md__header osu-md__header--3">What is osu!taiko?</h3>
+<p class="osu-md__paragraph"><em>Full explanation: <a class="osu-md__link" href="Game_Modes/osu%21taiko/index.html" title="osu!taiko">osu!taiko</a></em></p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/c4b5baec2954c3a88abb6411f594be185ad1d0aa/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f496e746572666163655f7461696b6f2e6a7067" alt="osu!taiko Interface" title="osu!taiko Interface" /><em class="osu-md__figure-caption">osu!taiko Interface</em></p>
+<p class="osu-md__paragraph"><em>In-game interface of osu!taiko</em></p>
+<p class="osu-md__paragraph"><em><a class="osu-md__link" href="https://en.wikipedia.org/wiki/Taiko_no_Tatsujin" title="Wikipedia entry for Taiko no Tatsujin">Taiko no Tatsujin</a></em> is a taiko drum rhythm game made by <em>Namco</em> (now Namco Bandai).<br />The game involves the simulation of playing the taiko drum to the beat of the music.<br />In osu!, beatmaps can be played in the styling of <em>Taiko no Tatsujin</em> through the use of osu!taiko game mode.</p>
+<h4 class="osu-md__header osu-md__header--4">Basic explanation</h4>
+<h5 class="osu-md__header osu-md__header--5">Playfield</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/4d0411b19951831ac10cdc8f0256f8e991e2abc5/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f5461696b6f5f706c61796669656c642e6a7067" alt="Taiko playfield" title="osu!taiko playfield" /><em class="osu-md__figure-caption">osu!taiko playfield</em></p>
+<p class="osu-md__paragraph"><em>In-game playfield interface of osu!taiko</em></p>
+<p class="osu-md__paragraph">For players with prior <em>Taiko no Tatsujin</em> experience:-</p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">No chibi dancers at the bottom (must be storyboarded)</li>
+<li class="osu-md__list-item">The health bar must be at least 50% full to pass the song (which is not really obvious using the default skin; please look in the <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/686664/" title="Completed Skins Compendium by RockRoller">Skin Compendium</a> for a decent osu!taiko skin)</li>
+<li class="osu-md__list-item">
+<em>Kiai Time</em> triggers the <em>&quot;Go-Go Time&quot;</em>
+<ul class="osu-md__list">
+<li class="osu-md__list-item osu-md__list-item--deep">Gameplay gimmicks like the hit balloons or forked paths are not implemented (only the barebone basics)</li>
+</ul>
+</li>
+<li class="osu-md__list-item">Background display difference
+<ul class="osu-md__list">
+<li class="osu-md__list-item osu-md__list-item--deep">osu!taiko-specific beatmap usually has its own custom background, leaving upper section empty</li>
+<li class="osu-md__list-item osu-md__list-item--deep">A video or static background image-only beatmap will take the lower portion only</li>
+<li class="osu-md__list-item osu-md__list-item--deep">If there is an element of storyboard, it will take over all the available screen space except the gameplay-important parts</li>
+</ul>
+</li>
+</ul>
+<p class="osu-md__paragraph">For newcomers of osu!taiko mode, the screen is split to two different sections; the upper section contains the gameplay elements while the lower section contains an image or video for the beatmap.<br />At the upper section, there is the health bar, which unlike other game modes, starts off empty and must be filled up to at least 50% full or half-full to pass the difficulty.<br />At the top-middle part below the health bar, a taiko drum is located at the left-side and a moving conveyor belt which carries the hit objects from right to left passing through a double white circles which serves as judgement circle near the taiko drum.<br />Above the taiko drum is the animated taiko mascot which will react based on judgement received along with upper background colour changes.<br />Lastly, there is the usual score, accuracy, and timer of the beatmap at the upper-right.</p>
+<p class="osu-md__paragraph">Please note that health drain is disabled in osu!taiko, so only the hit objects will affect the health bar.<br />Combo will not break when playing on an empty field.<br />Unlike osu!, the combo milestone celebration is every 50 consecutive hits.<br />The base score will be boosted after obtaining a combo that is a multiple of 10, but stops at 100 (max combo limit for the boost).<br />If the combo is broken, the boost resets back to the base score.<br />During <em>Kiai Time</em>, every successful hit will give the player 20% more points over the current score amount.<br />Score gained from a hit can be checked below the accuracy at the upper-right corner in red.</p>
+<h5 class="osu-md__header osu-md__header--5">Taiko notes</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/b5f2ea46b466599b1f05975c7e441908882fb89a/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f5461696b6f5f686974636972636c65732e6a7067" alt="Taiko hit circles" title="osu!taiko hit circles" /><em class="osu-md__figure-caption">osu!taiko hit circles</em></p>
+<p class="osu-md__paragraph"><em>osu!taiko notes of various colour and size</em></p>
+<p class="osu-md__paragraph">Each taiko notes (or notes, for brevity) will appear as either a red or a pale-blue circle.<br />Those coloured circles were named Don (red notes) and Katu (blue notes), respectively.</p>
+<p class="osu-md__paragraph">If it is a small red note, press the button bound to the inner portion of the taiko drum or hit the large flat area (center) of the <em>TaTaCon</em>.<br />If it is a small blue note, press the button bound to the outer ring of the taiko drum or hit the sides of the <em>TaTaCon</em>.<br />If the note is a <strong>LARGE</strong> circle, press or hit both of either inner or outer drum depending on the colour of the note for double point (a single correct hit will give single point instead).</p>
+<p class="osu-md__paragraph">The notes must be pressed or hit in the small white judgement circle next to the drum.<br />Hitting the wrong colour, or both red and blue colours at the same time, will be considered a miss.</p>
+<h5 class="osu-md__header osu-md__header--5">Drumrolls</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/a3f889b95d450198447650935f0ed52e18bf5f09/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f5461696b6f5f6472756d726f6c6c2e6a7067" alt="Taiko drumroll" title="osu!taiko drumroll" /><em class="osu-md__figure-caption">osu!taiko drumroll</em></p>
+<p class="osu-md__paragraph"><em>Drumrolls appears as yellow bar with a starting yellow circle in the playfield with tiny white/yellow hit circles evenly-spaced inside</em></p>
+<p class="osu-md__paragraph">Hit the inner (or outer) drum continuously for points until the end of the drumroll.<br />For <strong>LARGE</strong> note, hit both buttons on the inner (or outer) drum simultaneously and continuously until it is done.<br />Do note that drumrolls hits were hardcapped and only counted when hitting on the tiny hit circles, rather than drumrolling as fast as possible as in <em>Taiko no Tatsujin</em>.</p>
+<p class="osu-md__paragraph">Drumrolls can be ignored with no health penalty, as it does not recover the health bar at all.<br />However, it will cost possible points gained from the drumroll.<br />Each successful hit on the tiny hit circle gives a static 300 score.</p>
+<h5 class="osu-md__header osu-md__header--5">Dendens</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/1001ca1ea20774d02a250779e1384c4b5838a093/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f5461696b6f5f7370696e6e65722e6a7067" alt="Taiko spinner" title="osu!taiko spinner (denden)" /><em class="osu-md__figure-caption">osu!taiko spinner (denden)</em></p>
+<p class="osu-md__paragraph"><em>These appear as spinners, with a countdown displaying the number of hits remaining (denden counter) to clear it, and a shirking blue circle showing the time left to clear it</em></p>
+<p class="osu-md__paragraph">Hit the inner and outer drum <strong>in order</strong> (like red, blue, red, blue, red, blue, ...) until the denden counter reached 0.<br />Starting colour does not matter (allowed to start with blue if desired), and failing to complete it will incur miss health penalty but no combo break.<br />Hitting the same colour will not decrement the denden counter, until a different colour is hit instead.</p>
+<p class="osu-md__paragraph">It does not increment the combo counter, and does not recover the health bar in any way.<br />Each successful denden hit only gives a static 300 score, and denden completion will give a perfect(GREAT) large note score.</p>
+<h4 class="osu-md__header osu-md__header--4">Controls</h4>
+<p class="osu-md__paragraph">The default controls for osu!taiko are:-</p>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data-- osu-md__table-data--header">Type</th>
+<th class="osu-md__table-data osu-md__table-data-- osu-md__table-data--header">Mouse</th>
+<th class="osu-md__table-data osu-md__table-data-- osu-md__table-data--header">Keyboard</th>
+<th class="osu-md__table-data osu-md__table-data-- osu-md__table-data--header">TaTaCon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--">Red</td>
+<td class="osu-md__table-data osu-md__table-data--">Left click(L)</td>
+<td class="osu-md__table-data osu-md__table-data--"><code>X</code>(L) / <code>C</code>(R)</td>
+<td class="osu-md__table-data osu-md__table-data--">Flat surface of the drum</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--">Blue</td>
+<td class="osu-md__table-data osu-md__table-data--">Right click(L)</td>
+<td class="osu-md__table-data osu-md__table-data--"><code>Z</code>(L) / <code>V</code>(R)</td>
+<td class="osu-md__table-data osu-md__table-data--">Outer surface of the drum</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="osu-md__paragraph">The placement of in-game cursor does not matter when playing.</p>
+<p class="osu-md__paragraph">If <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Relax">Relax</a> mod was used, the score judgement only account for hit timing only (automatically rectify wrong colour hit with correct colour).</p>
+<p class="osu-md__paragraph"><em>TaTaCon</em> drum controller were primarily made for the home ports of <em>Taiko no Tatsujin</em> and <em>Taiko: Drum Master</em>.</p>
+<h3 id="what-is-osu!catch?" class="osu-md__header osu-md__header--3">What is osu!catch?</h3>
+<p class="osu-md__paragraph"><em>Full explanation: <a class="osu-md__link" href="Game_Modes/osu%21catch/index.html" title="osu!catch">osu!catch</a></em></p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/a0f6156190382ff2718202048dd995d6c1117e45/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f496e746572666163655f6374622e6a7067" alt="osu!catch Interface" title="osu!catch Interface" /><em class="osu-md__figure-caption">osu!catch Interface</em></p>
+<p class="osu-md__paragraph"><em>In-game interface of osu!catch</em></p>
+<p class="osu-md__paragraph">osu!catch (formerly known as <em>Catch the Beat</em>) is the second game mode added to osu!, after the osu!taiko game mode.</p>
+<p class="osu-md__paragraph">Instead of tapping circles to the beat, move the catcher at the bottom of the screen while the fruits fall from above.</p>
+<h4 class="osu-md__header osu-md__header--4">Basic explanation</h4>
+<h5 class="osu-md__header osu-md__header--5">Playfield</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/01cf31aba20bbfbc2322e5cbc8032e5abc70b560/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f43617463685f506c61796669656c645f32372e6a7067" alt="osu!catch playfield difference between CS2 and CS7" title="osu!catch playfield difference based on CS" /><em class="osu-md__figure-caption">osu!catch playfield difference based on CS</em></p>
+<p class="osu-md__paragraph"><em>Left is CS2 playfield and right is CS7 playfield</em></p>
+<p class="osu-md__paragraph">The zoom size of the playfield is based on CS (Circle Size) settings, with lower CS means much more zoomed in and smaller space, while higher CS means much more zoomed out and larger movement space.</p>
+<p class="osu-md__paragraph">The catcher can move from left to right, with the fruits falling from top to bottom.<br />The catcher cannot move pass the left and right walls of the playfield.</p>
+<p class="osu-md__paragraph">All fruits will stay at the plate until its combo ends, which the fruits will bounce out of the plate.<br />Timing and where it falls on the plate does not matter; either a full score for successful catch or miss.</p>
+<h5 class="osu-md__header osu-md__header--5">Fruits</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/e1a0edc5315bd9441a6f5be696993ff06fb9a77f/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f43617463685f6672756974732e6a7067" alt="Fruits" title="osu!catch fruits" /><em class="osu-md__figure-caption">osu!catch fruits</em></p>
+<p class="osu-md__paragraph"><em>Fruits are the hit circles of osu!catch, and it rains down from top of the screen</em></p>
+<p class="osu-md__paragraph">To catch these fruits, make sure it falls to the plate and not over the plate.<br />Collected fruits will always give 300 points each, increment combo by 1, and treated as 300 in result screen.</p>
+<h5 class="osu-md__header osu-md__header--5">Fruit trails</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/d27af50e14238d825057c87e5fde5a16d6a15ee6/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f43617463685f747261696c732e6a7067" alt="Fruit trails" title="osu!catch fruit trails" /><em class="osu-md__figure-caption">osu!catch fruit trails</em></p>
+<p class="osu-md__paragraph"><em>Fruit trails are the sliders of osu!catch</em></p>
+<p class="osu-md__paragraph">A typical fruit trail will contains two fruits (start and end), droplets (slider path), juice drop (slider ticks), and more fruits for each reverse arrow points along with a reversed slider path.<br />Droplet gives 10 points each and treated as 50 in result screen.<br />Juice drop gives 30 points each, increment combo by 1, and treated as 100 in result screen.</p>
+<p class="osu-md__paragraph">Missing the juice drop will break the combo (as it is a slider tick), but missing the droplet will not break the combo.<br />However, missed droplets will not be shown in the local result screen, but will be shown in the website's leaderboard as <em>Miss Droplet</em>, which notably affects accuracy (missed out the droplet, which is a 50) and score (10 points for each droplet missed).</p>
+<h5 class="osu-md__header osu-md__header--5">Bananas</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/49f6f6f87595d4f495a9698b7ea7e40c083831a7/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f43617463685f62616e616e61732e6a7067" alt="Bananas" title="osu!catch bananas" /><em class="osu-md__figure-caption">osu!catch bananas</em></p>
+<p class="osu-md__paragraph"><em>Bananas serves as spinners in osu!catch.</em></p>
+<p class="osu-md__paragraph">Here, large bananas will rain down and shrink down to catch size as it falls down to the plate (or not).<br />Each collected bananas will give a static score of 1,100 regardless of mod and combo multiplier.</p>
+<p class="osu-md__paragraph">The bananas can be ignored with no health penalty.<br />However, it can cost the extra points and health recovery from collecting the bananas.<br />Notably, <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Auto">Auto</a> mod will go above and beyond to catch <em>all</em> of the bananas without fail.</p>
+<h5 class="osu-md__header osu-md__header--5">Hyperfruits</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/69c9c77ee6f499889633e50cf42f8fc1b372196b/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f43617463685f68797065726672756974732e6a7067" alt="Hyperfruits, and catcher hyperdashing from collecting previous hyperfruit" title="osu!catch hyperfruits" /><em class="osu-md__figure-caption">osu!catch hyperfruits</em></p>
+<p class="osu-md__paragraph"><em>Left: Before collecting the hyperfruit. Right: Catcher hyperdash to the next fruit and leaving an afterimage.</em></p>
+<p class="osu-md__paragraph">Hyperfruits are special fruits that will appear to help the catcher to catch the next fruit when normal dash is considered impossible to catch it in a strict timespan allocated.<br />All hyperfruits have a signature red colour surrounding the hyperfruit itself by default.</p>
+<p class="osu-md__paragraph">Collecting the hyperfruit will make the catcher's dash upgraded to <em>hyperdash</em> (just fast enough to catch the next fruit), glows red, and leaves a temporary red <em>afterimage</em> at the collection point, until the next one fruit was caught or dropped, which the catcher will then be back to normal.</p>
+<h4 class="osu-md__header osu-md__header--4">Controlling the catcher</h4>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">By default, the left <code>&lt;-</code>(L) and right <code>-&gt;</code>(R) arrow keys to move the catcher.</li>
+<li class="osu-md__list-item">Press and hold the <code>leftShift</code>(D) key with one of the arrow keys will make the catcher <em>dash</em> in that direction at x2.0 speed (indicated with a <strong>bright glow</strong> from the catcher).
+<ul class="osu-md__list">
+<li class="osu-md__list-item osu-md__list-item--deep">Alternatively, press and hold the Left Click(D) button on the mouse to trigger the dash.</li>
+</ul>
+</li>
+</ul>
+<p class="osu-md__paragraph">The placement of in-game cursor does not matter when playing normally.<br />If <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Relax">Relax</a> mod was enabled, the control of the catcher will be the in-game cursor instead.<br />However, the play unrankable when Relax mod was enabled (as it defeats the only challenge of osu!catch; fixed catcher speed and catcher plate control).</p>
+<h3 id="what-is-osu!mania?" class="osu-md__header osu-md__header--3">What is osu!mania?</h3>
+<p class="osu-md__paragraph"><em>Full explanation: <a class="osu-md__link" href="Game_Modes/osu%21mania/index.html" title="osu!mania">osu!mania</a></em></p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/2b8ecfe2440889b26cb351737e76f739470f7e44/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f496e746572666163655f6d616e69612e6a7067" alt="osu!mania Interface" title="osu!mania Interface" /><em class="osu-md__figure-caption">osu!mania Interface</em></p>
+<p class="osu-md__paragraph"><em>In-game interface of osu!mania</em></p>
+<p class="osu-md__paragraph">osu!mania is the third game mode added to osu!, after osu!taiko and osu!catch game modes.</p>
+<p class="osu-md__paragraph">The mode has been widely used in almost all of the major rhythm games.<br />It require good hand and/or leg coordination where the notes (with their quantity depending on BPM and difficulty) move on a conveyer.<br />The player will have to press the correct key for that specific note in time.<br />Though the game mode was originally made as an imitation of the <em>Beatmania</em> style of playing, osu!mania allows changing the number of keys or vertically flipping the orientation of the playfield (this means that it can be made to look more like <em>Guitar Hero</em> [5 keys] or <em>Dance Dance Revolution</em> [4 keys] and so on).</p>
+<p class="osu-md__paragraph">When converting a non-specific beatmap, the default key range would be around 4 to 7 keys.</p>
+<p class="osu-md__paragraph">With the <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under xK">xK</a> game modifier, the player can manually set the number of keys from 1 to a total of 9 keys with a score multiplier reduction.<br />However, the game modifier will not work with osu!mania-specific beatmaps.</p>
+<p class="osu-md__paragraph">With the <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Co-Op">Co-Op</a> game modifier, the stage will be split in two, use Co-Op's control scheme, and will allows the player to play from 2 to a total of 18 keys with a score multiplier reduction.<br />Do note that while the preset number of keys will not be doubled on osu!mania-specific beatmaps, it will split the stage in two (left stage priority if odd-numbered), use Co-Op's control scheme, and no score multiplier reduction.</p>
+<h4 class="osu-md__header osu-md__header--4">Basic explanation</h4>
+<h5 class="osu-md__header osu-md__header--5">Playfield</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/eac75d41d57e106c8e53b5a47ea6d6c38687ba3b/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f4d616e69615f706c61796669656c642e6a7067" alt="osu!mania playfield" title="osu!mania playfield" /><em class="osu-md__figure-caption">osu!mania playfield</em></p>
+<p class="osu-md__paragraph"><em>In-game playfield interface of osu!mania</em></p>
+<p class="osu-md__paragraph">By default, the flow of the notes falls from top to bottom of the conveyor (the starting arrow will show where notes will flow to), with the key control at the bottom and the judgement line above the key control.<br />To change the flow of the playfield from bottom-to-top instead, it can be changed in the <code>Options</code> sidebar; click on <code>osu!mania layout</code> button to set osu!mania keys settings and enable <code>Vertically flip playfield (DDR style)</code> for this key setting manually.</p>
+<p class="osu-md__paragraph">Health bar is located at the right side of the conveyor belt.<br />Please note that health drain is disabled in osu!mania, so only the hit objects will affect the health bar.<br />Combo will not break when playing the keys on empty judgement line.</p>
+<p class="osu-md__paragraph"><strong>Scrolling speed of the beat notes</strong> can be changed by pressing <code>Ctrl</code> (or <code>Shift</code>) with <code>+</code> (faster) / <code>-</code> (slower) or just <code>F3</code> (faster) / <code>F4</code> (slower).</p>
+<h5 class="osu-md__header osu-md__header--5">Notes</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/69e890521f7a232bcaad47c3aac7a5b27309118c/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f4d616e69615f6e6f7465732e6a7067" alt="osu!mania's notes" title="osu!mania notes" /><em class="osu-md__figure-caption">osu!mania notes</em></p>
+<p class="osu-md__paragraph"><em>A typical play with consecutive and simultaneous notes</em></p>
+<p class="osu-md__paragraph">Notes are the hit circles of osu!mania.<br />The falling notes must be tapped on the judgement line, with correct key corresponding to each of the note it falls to.<br />More keys corresponding to the falling notes must be tapped simultaneously if the notes fall simultaneously.<br />A score burst will be given when tapped a correct key corresponding to the note in the judgement line.</p>
+<h5 class="osu-md__header osu-md__header--5">Hold notes</h5>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/199747594318a37708a88d29423b54e306961e06/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f4d616e69615f686f6c646e6f7465732e6a7067" alt="osu!mania's hold notes" title="osu!mania hold notes" /><em class="osu-md__figure-caption">osu!mania hold notes</em></p>
+<p class="osu-md__paragraph"><em>A typical play with some hold notes</em></p>
+<p class="osu-md__paragraph">Hold notes are the sliders and spinners of osu!mania.<br />When the hold note reaches the judgement line, tap the starting note in time with correct key, hold, and release it at the ending note of the hold note.</p>
+<p class="osu-md__paragraph">Health bar regeneration occurs slowly while holding the hold note(s).<br />Depending on the song and mapping quirks, it is possible that other notes or hold notes to appear while holding the previous hold note(s).</p>
+<h4 class="osu-md__header osu-md__header--4">Controls</h4>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/7927363abc1b0ef923831b98dcc1b39145911ac0/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f4d616e69615f6b65795f6c61796f7574732e6a7067" alt="Default Key layouts of osu!mania (Options-&amp;gt;Input)" title="osu!mania key layout" /><em class="osu-md__figure-caption">osu!mania key layout</em></p>
+<p class="osu-md__paragraph">There two different binding-styles, <em>Symmetrical</em> and <em>Left to Right</em>.</p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">
+<em>Symmetrical</em> style mimics the button placement of <em>DJMAX</em>, in which the center key is <code>Spacebar</code> to simulate a feeling of stepping the pedal similar to the arcade version.<br />Centre key matches the middle column (odd numbered keys only) and the other column matches the keys in its corresponding place.</li>
+<li class="osu-md__list-item">
+<em>Left to Right</em> style mimics the button placement of <em>Beatmania IIDX</em>, where the first column matches to the <em>key1</em>, then the second column matches the <em>key2</em> and so on.</li>
+</ul>
+<p class="osu-md__paragraph"><em>Symmetrical</em> key binding (For <em>DJMAX</em> style)</p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">For <em>left</em> hand buttons — (K1)<code>A</code>, (K2)<code>S</code>, (K3)<code>D</code>, (K4)<code>F</code>
+</li>
+<li class="osu-md__list-item">For <em>right</em> hand buttons — (K6)<code>J</code>, (K7)<code>K</code>, (K8)<code>L</code>, (K9)<code>;</code>.</li>
+<li class="osu-md__list-item">
+<em>Center</em> button — (K5)<code>Spacebar</code>. [odd numbered keys only]</li>
+<li class="osu-md__list-item">The <em>Special</em> button — <code>leftShift</code> and <code>leftCtrl</code>.</li>
+</ul>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data--center osu-md__table-data--header" style="text-align: center">Key</th>
+<th class="osu-md__table-data osu-md__table-data--left osu-md__table-data--header" style="text-align: left">L</th>
+<th class="osu-md__table-data osu-md__table-data--center osu-md__table-data--header" style="text-align: center">C</th>
+<th class="osu-md__table-data osu-md__table-data--right osu-md__table-data--header" style="text-align: right">R</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">4K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K3, K4</td>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">-</td>
+<td class="osu-md__table-data osu-md__table-data--right" style="text-align: right">K6, K7</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">5K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K3, K4</td>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">K5</td>
+<td class="osu-md__table-data osu-md__table-data--right" style="text-align: right">K6, K7</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">6K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K2, K3, K4</td>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">-</td>
+<td class="osu-md__table-data osu-md__table-data--right" style="text-align: right">K6, K7, K8</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">7K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K2, K3, K4</td>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">K5</td>
+<td class="osu-md__table-data osu-md__table-data--right" style="text-align: right">K6, K7, K8</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">8K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K1, K2, K3, K4</td>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">-</td>
+<td class="osu-md__table-data osu-md__table-data--right" style="text-align: right">K6, K7, K8, K9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="osu-md__paragraph"><em>Left to Right</em> key binding (For <em>Beatmania IIDX</em> style)</p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">From down to up then down to up again: (K1)<code>Z</code>, (K2)<code>S</code>, (K3)<code>X</code>, (K4)<code>D</code>, (K5)<code>C</code>, (K6)<code>F</code>, (K7)<code>V</code>, (K8)<code>G</code>, (K9)<code>B</code> [K9 is not used]</li>
+<li class="osu-md__list-item">The <em>Special</em> button — <code>leftShift</code> and <code>leftCtrl</code>.</li>
+</ul>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data--center osu-md__table-data--header" style="text-align: center">Key</th>
+<th class="osu-md__table-data osu-md__table-data--left osu-md__table-data--header" style="text-align: left">Bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">4K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K1, K2, -, K4, K5</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">5K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K1, K2, K3, K4, K5</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">6K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K1, K2, K3, K4, K5, K6</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">7K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K1, K2, K3, K4, K5, K6, K7</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">8K</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">K1, K2, K3, K4, K5, K6, K7, K8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h2 id="scoring" class="osu-md__header osu-md__header--2">Scoring</h2>
+<p class="osu-md__paragraph"><em>Detailed explanation of scoring can be found at the game style's own respective page or <a class="osu-md__link" href="Score/index.html" title="Score">the Score page</a>.</em></p>
+<p class="osu-md__paragraph"><em>Detailed explanation of accuracy calculation can be found at the game style's own respective page or <a class="osu-md__link" href="Accuracy.html" title="Accuracy">the Accuracy page</a>.</em></p>
+<h3 id="grades" class="osu-md__header osu-md__header--3">Grades</h3>
+<h4 class="osu-md__header osu-md__header--4"><img class="osu-md__image" src="https://i.ppy.sh/f8b581f28db6b637343cdb6f351653b120dee167/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f6f73752e706e67" alt="osu! icon" title="osu! icon" /> osu!</h4>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data--center osu-md__table-data--header" style="text-align: center">Grade</th>
+<th class="osu-md__table-data osu-md__table-data--left osu-md__table-data--header" style="text-align: left">Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">SS</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">100% accuracy</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">S</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 90% 300s, less than 1% 50s and no misses</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">A</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 80% 300s and no misses <strong>OR</strong> over 90% 300s</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">B</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 70% 300s and no misses <strong>OR</strong> over 80% 300s</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">C</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 60% 300s</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">D</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Anything else</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 class="osu-md__header osu-md__header--4"><img class="osu-md__image" src="https://i.ppy.sh/996a535f73b2d6eb62aa707984fb25a4685ee5b0/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f7461696b6f2e706e67" alt="osu!taiko icon" title="osu!taiko icon" /> osu!taiko</h4>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data--center osu-md__table-data--header" style="text-align: center">Grade</th>
+<th class="osu-md__table-data osu-md__table-data--left osu-md__table-data--header" style="text-align: left">Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">SS</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">100% Accuracy.</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">S</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 95% Accuracy (90+% GREATs, or less than 1 GOOD for every 10 notes).</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">A</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 90% Accuracy (80+% GREATs, or less than 1 GOOD for every 5 notes).</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">B</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 80% Accuracy (70+% GREATs, or less than 1 GOOD for every 3.33 notes).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 class="osu-md__header osu-md__header--4"><img class="osu-md__image" src="https://i.ppy.sh/faf037998e655ae49f63d048793bde88d6e190aa/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f63617463682e706e67" alt="osu!catch icon" title="osu!catch icon" /> osu!catch</h4>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data--center osu-md__table-data--header" style="text-align: center">Grade</th>
+<th class="osu-md__table-data osu-md__table-data--left osu-md__table-data--header" style="text-align: left">Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">SS</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">100.00% Accuracy</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">S</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">98.01% to 99.99% Accuracy (an 'S' rank is possible even with several misses, like in osu!mania).</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">A</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">94.01% to 98.00% Accuracy</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">B</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">90.01% to 94.00% Accuracy</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">C</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">85.01% to 90.00% Accuracy</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">D</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Any other accuracy under 85.00%.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 class="osu-md__header osu-md__header--4"><img class="osu-md__image" src="https://i.ppy.sh/bf55b75bd40964972041d66bb0d741a779293279/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f6d616e69612e706e67" alt="osu!mania icon" title="osu!mania icon" /> osu!mania</h4>
+<div class="osu-md__table">
+<table>
+<thead>
+<tr>
+<th class="osu-md__table-data osu-md__table-data--center osu-md__table-data--header" style="text-align: center">Grade</th>
+<th class="osu-md__table-data osu-md__table-data--left osu-md__table-data--header" style="text-align: left">Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">SS</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">100% Accuracy (only MAX and/or 300).</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">S</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 95% Accuracy (an 'S' rank is possible even with several misses, like in osu!catch).</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">A</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 90% Accuracy.</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">B</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 80% Accuracy.</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">C</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Over 70% Accuracy.</td>
+</tr>
+<tr>
+<td class="osu-md__table-data osu-md__table-data--center" style="text-align: center">D</td>
+<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left">Anything else.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 class="osu-md__header osu-md__header--4">All</h4>
+<p class="osu-md__paragraph"><strong>Special grades</strong></p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">Silver SS (SSH) = Normal grade SS with <em><a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Hidden">Hidden</a></em> and/or <em><a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Flashlight">Flashlight</a></em> mod.</li>
+<li class="osu-md__list-item">Silver S  (SH)  = Normal grade S  with <em><a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Hidden">Hidden</a></em> and/or <em><a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Flashlight">Flashlight</a></em> mod.</li>
+</ul>
+<p class="osu-md__paragraph"><strong>Regarding the <em>Ranks</em> in profile page</strong></p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">Grades obtained will be set at the profile page under General-&gt;Ranks provided the in-game osu!account was still connected online with Bancho server when receiving the grade.
+<ul class="osu-md__list">
+<li class="osu-md__list-item osu-md__list-item--deep">
+<strong>Offline play</strong>, even with osu!account logged-in, <strong>will not be counted</strong>.</li>
+</ul>
+</li>
+<li class="osu-md__list-item">
+<strong>Grades given for profile depends on ranked/approved top score grade for a beatmap's difficulty in that game mode, not as whole.</strong>
+<ul class="osu-md__list">
+<li class="osu-md__list-item osu-md__list-item--deep">If a beatmap has three(3) ranked difficulties, and SS'ed all three of them in osu!catch; three(3) SS will be given for osu!catch's Ranks section, not just one(1) SS given.</li>
+<li class="osu-md__list-item osu-md__list-item--deep">However, if a new highscore (from better spinner bonus or game modifiers) was achieved from replaying an SS'ed ranked difficulty but was an S grade, then the SS counter will decrement by one(1) and S counter increment by one(1) instead.</li>
+</ul>
+</li>
+</ul>
+<h2 id="performance-points" class="osu-md__header osu-md__header--2">Performance Points</h2>
+<p class="osu-md__paragraph"><em>Full explanation: <a class="osu-md__link" href="Performance_Points/index.html" title="Performance Points">Performance Points</a></em></p>
+<p class="osu-md__paragraph">Performance points(pp) is a ranking metric aiming to be more contextually relevant to a continuous game like osu!.<br />It aims to shift the focus from being on the amount of time played to the actual skill of the player.<br />Performance points is heavily based on map difficulty, determined by a unique algorithm in every game mode.<br />Based on this difficulty alone, each of the scores will be rated and assigned a pp value.<br />Performance rank is predominantly based on performance on individual maps.<br />The easiest way to improve it is to score high on difficult songs, and playing more songs.<br />Do note that game modes are counted separately; playing osu!, osu!taiko, osu!catch, or osu!mania will raise the pp for the respective game mode.</p>
+<p class="osu-md__paragraph">For any questions regarding pp, please refer to the <a class="osu-md__link" href="Performance_Points.html" title="more info can be found on Performance Points under FAQ">wiki page for pp first</a>.</p>
+<hr />
+<h2 id="common-issues-and-questions" class="osu-md__header osu-md__header--2">Common issues and questions</h2>
+<h3 id="general" class="osu-md__header osu-md__header--3">General</h3>
+<h4 class="osu-md__header osu-md__header--4">Where to find and get the beatmaps?</h4>
+<p class="osu-md__paragraph"><em>Detailed explanation of the beatmaps: <a class="osu-md__link" href="Beatmaps/index.html" title="Beatmaps">Beatmaps</a></em></p>
+<p class="osu-md__paragraph">The main page, under the name <em><a class="osu-md__link" href="https://osu.ppy.sh/p/beatmaplist" title="Official beatmaplist">Beatmaps</a></em>.<br />Just remember to login to the website with an <em>osu!account</em> beforehand to allow download of beatmaps from the site.</p>
+<h4 class="osu-md__header osu-md__header--4">Can I disable Kiai Time?</h4>
+<p class="osu-md__paragraph"><strong>No</strong>, because unlike video, it is integrated to the game (as a part with the hit objects), thus cannot be disabled.</p>
+<h4 class="osu-md__header osu-md__header--4">The maps are too hard! Where can I find some easier maps?</h4>
+<p class="osu-md__paragraph">For osu!, <strong>Pokebis</strong> has compiled a set of beatmaps suitable for beginners to play.<br />It can be found here: <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/5456">https://osu.ppy.sh/community/forums/topics/5456</a></p>
+<p class="osu-md__paragraph">For osu!taiko, <strong>OnosakiHito</strong> has compiled a set of beatmaps for beginners to learn osu!taiko.<br />It can be found here: <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/175867">https://osu.ppy.sh/community/forums/topics/175867</a></p>
+<p class="osu-md__paragraph">For osu!catch, <strong>Kingkevin30</strong> has compiled a nice list of osu!catch beatmaps and basic explanation about osu!catch.<br />It can be found here: <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/131067">https://osu.ppy.sh/community/forums/topics/131067</a></p>
+<p class="osu-md__paragraph">For osu!mania, <strong>Entozer</strong> has compiled a decent list sorted by relative player's difficulties, with <strong>Drace</strong> providing an experienced gameplay insight for beginners starting out in osu!mania.<br />Both of it can be found here: <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/147552">https://osu.ppy.sh/community/forums/topics/147552</a> (<strong>Entozer</strong>'s beatmap guide), and <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/146615">https://osu.ppy.sh/community/forums/topics/146615</a> (<strong>Drace</strong>'s improvement guide)</p>
+<p class="osu-md__paragraph">Also, <a class="osu-md__link" href="https://osu.ppy.sh/beatmapsets/19928" title="Ranked osu!tutorial by Sushi">the ranked beatmap version of osu! tutorial</a> is good for practicing some of the possible mapping design.<br />It is an excellent training map for newbies and experienced players.</p>
+<p class="osu-md__paragraph">Alternatively, the website's beatmap searchbar has a feature to <a class="osu-md__link" href="https://osu.ppy.sh/?p=beatmaplist&amp;s=3" title="Sorted beatmaplist with easiest at top">sort the ranked beatmap list by difficulty</a>.<br />The easiest maps are at the top of the list.</p>
+<p class="osu-md__paragraph">Lastly, <strong>Rivenation</strong> did a project for <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/380485" title="osu!search - Advanced beatmap searching by Rivenation">advanced beatmap searching</a> named <a class="osu-md__link" href="http://osusearch.com/" title="osu!search">osu!search</a> which not only has the same features as the official beatmap searchbar but also has some neat features to define a specific beatmap requirement.<br />The unofficial beatmap searchbar can be found at <a class="osu-md__link" href="http://osusearch.com/">http://osusearch.com/</a>.</p>
+<h4 class="osu-md__header osu-md__header--4">What does Level in my profile actually do?</h4>
+<p class="osu-md__paragraph"><strong>Absolutely nothing</strong>.<br />There is no difference in any way when comparing a Level 100 player against a Level 1 player except the player's own skills and experience of the game mode in question.<br />There is no handicap for the lower level nor is there an advantage for the higher level (except personal experience and hardware used).</p>
+<p class="osu-md__paragraph">Level will be based on total score accumulated when online with account regardless of pass or fail on the beatmap.<br /><a class="osu-md__link" href="Score/index.html#level" title="more info can be found on Score under Level">Formula given here</a>.</p>
+<h4 class="osu-md__header osu-md__header--4">Why is my profile stats different ingame?</h4>
+<p class="osu-md__paragraph">Keep in mind that osu! has four game modes so you might be looking at the wrong game mode.</p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/f9ab6a9b5b5ac71a26bea557d342129e17633670/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f4641512f50726f66696c655f6d6f64655f627574746f6e732e676966" alt="Profile_Mode_Buttons" title="Profile mode buttons" /><em class="osu-md__figure-caption">Profile mode buttons</em></p>
+<p class="osu-md__paragraph"><em>Manually select the game mode to view at the profile.</em></p>
+<h4 class="osu-md__header osu-md__header--4">How do I change the default keyboard key input for my game mode of choice?</h4>
+<p class="osu-md__paragraph"><em>Full explanation: <a class="osu-md__link" href="Options.html" title="Options">Options</a></em></p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/9084c9c1b92961fbe9c28659fbf9f374e8be49e7/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f4f7074696f6e735f717569636b69636f6e732e6a7067" alt="Options sidebar with quickicons" title="Options quickicons" /><em class="osu-md__figure-caption">Options quickicons</em></p>
+<p class="osu-md__paragraph">From the <em>Input</em> icon in the <em>Options</em> sidebar as shown above, under <strong>Keyboard</strong> section as shown below.</p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/4e5dedf638c3169472bdafd903c9e03d4a624478/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f4f7074696f6e735f6b6579626f6172642e6a7067" alt="Options keyboard section" title="Options Input icon, Keyboard section" /><em class="osu-md__figure-caption">Options Input icon, Keyboard section</em></p>
+<h4 class="osu-md__header osu-md__header--4">Game over? Where did I mess up?</h4>
+<p class="osu-md__paragraph"><em>Full explanation: <a class="osu-md__link" href="Replay/index.html" title="Replay">Replay</a></em></p>
+<p class="osu-md__paragraph">After failing a beatmap, press the <code>F1</code> key to replay the currently failed play.<br />The replay ends when the screen darkens, with an osu!logo in the middle, rather than the game over screen.<br />To rewatch the replay again, hold the custom default grave/tilde (<code>`/~</code>) key (can be changed in Options sidebar; inside <em>Change keyboard bindings</em> as <strong>Quick Retry (hold briefly)</strong>) or <code>Ctrl</code>+<code>R</code> for a while.</p>
+<p class="osu-md__paragraph">Due to the non-standard replay screen, use the <code>Esc</code> key to return to Song Selection.<br />Retrying the play (as in, actual play) of the beatmap in this state is not possible.<br />It currently works in Solo mode only when given the game over screen.<br /><strong>This replay will not be saved nor allowed to be exported.</strong><br />To record the failed replay, please use external third-party software for now since osu! has yet to have native export support for failed replay.</p>
+<h4 class="osu-md__header osu-md__header--4">Does osu! has keyboard shortcuts?</h4>
+<p class="osu-md__paragraph"><em>Full list: <a class="osu-md__link" href="Shortcut_Key_Reference/index.html" title="Shortcut Key Reference">Shortcut Key Reference</a></em></p>
+<p class="osu-md__paragraph">Pressing the <code>Insert</code> key (in default keyboard setting) will hide, pause (if playing) and mute osu! into the <em>Windows</em> sidebar.<br />Find the <em>osu!logo</em> in the <em>Windows</em> sidebar, and click on it to return osu! to the state before pressing the key.<br />It is called the <strong>Boss key</strong>, and can be modified in <code>Change keyboard bindings</code> (in <code>Options</code>, under <em>Keyboard</em> section), located at the end of the <em>Universal</em> section.</p>
+<p class="osu-md__paragraph">Another interesting shortcut is <code>Alt</code>+<code>Enter</code>.<br />The shortcut toggles the fullscreen mode button in <code>Options</code>, but does not work during gameplay or in Multi.</p>
+<h4 class="osu-md__header osu-md__header--4">What should I backup when fresh installing osu! on a new device?</h4>
+<p class="osu-md__paragraph">The whole <code>osu!</code> folder, including hidden files, is the short answer.<br />On the new device after running <code>osu!install.exe</code> and completing osu! installation successfully, copy the backup <code>osu!</code> folder and merge to the new device's <code>osu!</code> folder.<br />If it ask for merging <code>.dll</code> or <code>.exe</code> files, ignore it.<br />Allow merging for everything else, including <code>.cfg</code> and <code>.db</code> files.</p>
+<h4 class="osu-md__header osu-md__header--4">Can I use osu! on my mobile device?</h4>
+<p class="osu-md__paragraph"><em>Full list: <a class="osu-md__link" href="Game_Modes/External_Ports/index.html" title="External Ports">Game Modes under External Ports section</a></em></p>
+<p class="osu-md__paragraph">The current osu! does not support any mobile platform.</p>
+<p class="osu-md__paragraph">However, there are other unofficial ports of osu! and a single official spin-off game for iOS which uses their own leaderboard and account system.</p>
+<p class="osu-md__paragraph">A few of the notable ports are:-</p>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">
+<img class="osu-md__image" src="https://i.ppy.sh/f8b581f28db6b637343cdb6f351653b120dee167/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f6f73752e706e67" alt="osu! icon" title="osu! icon" /> <a class="osu-md__link" href="FAQ/External_Ports/opsu%21.html" title="opsu! by itdelatrisu with fluddokt">opsu!</a> [Windows/OS X/Linux/Android]:<br />Java port of osu! chiefly done by <strong>itdelatrisu</strong> with <strong>fluddokt</strong> providing support for Android version.</li>
+<li class="osu-md__list-item">
+<img class="osu-md__image" src="https://i.ppy.sh/996a535f73b2d6eb62aa707984fb25a4685ee5b0/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f7461696b6f2e706e67" alt="osu!taiko icon" title="osu!taiko icon" /> <a class="osu-md__link" href="FAQ/External_Ports/T-Aiko%21.html" title="T-Aiko! v2 by low.moe team">T-Aiko! v2</a> [Android/iOS]:<br />osu!taiko mode ported by <strong>low.moe (Guy-kun) team</strong> with new daily ranked challenge and refined T-Aiko! leaderboard.</li>
+<li class="osu-md__list-item">
+<img class="osu-md__image" src="https://i.ppy.sh/f8b581f28db6b637343cdb6f351653b120dee167/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6d6f64652f6f73752e706e67" alt="osu! icon" title="osu! icon" /> <a class="osu-md__link" href="FAQ/External_Ports/osu%21stream.html" title="osu!stream by osu! team">osu!stream</a> [iOS]:<br />Experience the new spin-off of the osu! game mode for the iOS developed by osu! team from grounds up.</li>
+</ul>
+<h3 id="osu!" class="osu-md__header osu-md__header--3">osu!</h3>
+<h4 class="osu-md__header osu-md__header--4">Why am I seeing random white lines on screen every time I play?</h4>
+<p class="osu-md__paragraph">Make sure that the smoke/skywriting key binding is not the same as the key binding used to tap with when playing.</p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/2cdecc04faec185ed676c487ba024684f80e3f62/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6f73755f736d6f6b652e6a7067" alt="osu! smoke effect" title="Smoke Usage" /><em class="osu-md__figure-caption">Smoke Usage</em></p>
+<p class="osu-md__paragraph"><em>Usage of Smoke</em></p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/cefbc20d46e9b80c0e49e8394881e27472e37888/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f6f73755f736d6f6b655f7365742e6a7067" alt="osu! smoke settings" title="Smoke in key bindings" /><em class="osu-md__figure-caption">Smoke in key bindings</em></p>
+<p class="osu-md__paragraph"><em>Smoke in key bindings settings; hold <code>C</code> key to trigger by default in osu!</em></p>
+<h4 class="osu-md__header osu-md__header--4">Why do I not have the max possible combo when I have no misses?</h4>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/535ae86d9787894ebea078276ed3676712921896/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f536c696465727469636b732e706e67" alt="Image showing a slider with slider ticks, with top part during Edit and bottom part during play" title="Image showing a slider with slider ticks, with top part during Edit and bottom part during play" /><em class="osu-md__figure-caption">Image showing a slider with slider ticks, with top part during Edit and bottom part during play</em></p>
+<p class="osu-md__paragraph"><em>Top image shows a slider with all the slider ticks shown in Edit mode; Bottom image shows the same slider during play, with some slider ticks obstructed by start and end circle of the slider.</em></p>
+<p class="osu-md__paragraph"><strong>A slider was released early (meaning that the ball was released before it had finished the ending slider point).</strong></p>
+<p class="osu-md__paragraph">A slider is composed of a starting circle point, spaced smaller circles known as slider ticks, reverse arrow points (if used, it will be treated as starting circle point instead; it is a proper slider in reverse), and an ending circle point.<br />Each of those points on a slider will add one to the combo.<br />Note that the starting circle point is worth 30 points, the slider ticks are worth 10 points each, the reverse arrow points are worth 30 points each, and the end circle point is worth 300 (or geki), 100 (or katu), or 50 points depending on how the slider was completed.</p>
+<p class="osu-md__paragraph">Slider ticks only appears inside its own slider path; if the slider ticks are too close to the start or end circle as shown in the image above, it will be hidden inside the start or end circle.<br />Hidden slider ticks still counts into combo and score, so it must be collected along with the visible slider ticks.<br />If the slider has one or more reverse arrow points, then the slider ticks will reappear at the same place to be collected in reverse.</p>
+<p class="osu-md__paragraph">If miss the timing to tap the starting circle point, miss the slider ticks, or miss the reverse arrow points, combo will break (it should trigger a combo break sound when the combo is high enough) but it is not considered a miss.<br />However, if miss the ending circle point, combo does not break and does not increment by one.<br />It is also not considered a miss; instead, a 100 (or katu for end of the combo) will be given for the entire slider, assuming at least the slider starting circle point done properly, and completed all the slider ticks/reverse arrow points when given.<br />Notably, <a class="osu-md__link" href="Game_Modifiers.html" title="more info can be found on Game Modifiers under Sudden Death">Sudden Death</a> game mod will not trigger its effect of immediate game over when missing the ending circle point (since the combo did not break, the Sudden Death effect was not triggered).</p>
+<p class="osu-md__paragraph">These situations, caused by a slider, are collectively called <strong>sliderbreak</strong>.<br />A max combo play can be known by checking the result screen for the <em>Perfect</em> notice on the performance graph; not having the <em>Perfect</em> notice, especially without any miss, usually means there is one or more sliderbreak occurred during play.</p>
+<p class="osu-md__paragraph"><a class="osu-md__link" href="https://gaming.stackexchange.com/questions/221663/i-fcd-a-song-why-is-my-combo-lower-than-people-on-the-high-scores">Answer source with test example in gaming section of stackexchange</a></p>
+<h3 id="osu!taiko" class="osu-md__header osu-md__header--3">osu!taiko</h3>
+<h4 class="osu-md__header osu-md__header--4">What does &quot;Use Taiko skin for Taiko mode&quot; in Options under Skin section do?</h4>
+<p class="osu-md__paragraph">The button only works if a folder named <code>taiko</code> (capitalisation does not matter) inside the <code>Skins</code> folder of the <code>osu!</code> file directory existed.</p>
+<p class="osu-md__paragraph">When enabled, it will use the <code>taiko</code> folder's skin elements when playing in osu!taiko, regardless of current skin's taiko elements.<br />If the <code>taiko</code> folder was not found, or disabled, it will use the current skin's taiko elements when available; default if all/certain taiko skin element was not found.</p>
+<p class="osu-md__paragraph"><strong>Ancient trivia note:</strong> <code>taiko</code> folder used to hold <em><a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/41319" title="Taiko Skin version 6.0 by LuigiHann">Taiko by LuiginHann</a></em> skin, which could be downloaded from the now-deprecated <code>osume.exe</code> (an osu! updater when osu! need to update) under Skin tab.<br />As the button does not check whether the folder contains elements from <em>LuigiHann's skin</em>, it was quickly noted by the community and used as a personal global osu!taiko skin folder.</p>
+<h3 id="beatmapping" class="osu-md__header osu-md__header--3">Beatmapping</h3>
+<h4 class="osu-md__header osu-md__header--4">&quot;This beatmap you're trying to submit isn't owned by you!&quot;</h4>
+<p class="osu-md__paragraph"><em>For unranked beatmaps only.</em></p>
+<p class="osu-md__figure-container"><img class="osu-md__figure-image" src="https://i.ppy.sh/5580168338283a82817ddd8ca2c06183668fbada/68747470733a2f2f6f73752e7070792e73682f68656c702f77696b692f7368617265642f426561746d61705f6e6f745f6f776e65642e706e67" alt="Example of an .osu file content" title="Example of an .osu file content" /><em class="osu-md__figure-caption">Example of an .osu file content</em></p>
+<p class="osu-md__paragraph">Please follow these steps:-</p>
+<ol class="osu-md__list">
+<li class="osu-md__list-item">Leave the editor (or close osu!) to make sure the changes apply properly</li>
+<li class="osu-md__list-item">Check the name of the beatmap's folder
+<ul class="osu-md__list">
+<li class="osu-md__list-item osu-md__list-item--deep">If it starts with numbers, remove them. Otherwise, osu! will treat it as BeatmapSetID</li>
+</ul>
+</li>
+<li class="osu-md__list-item">Make sure that the <code>.mp3</code> does not start with numbers. Edit the filename in the <code>.osu</code> files if it does.</li>
+<li class="osu-md__list-item">Open all the <code>.osu</code> files with a text editor (<em>Notepad</em> will work)
+<ul class="osu-md__list">
+<li class="osu-md__list-item osu-md__list-item--deep">Set your name as creator (and replace it in the file name as well)</li>
+<li class="osu-md__list-item osu-md__list-item--deep">Set the BeatmapID to 0</li>
+<li class="osu-md__list-item osu-md__list-item--deep">Set the BeatmapSetID to -1</li>
+</ul>
+</li>
+</ol>
+<h2 id="credits" class="osu-md__header osu-md__header--2">Credits</h2>
+<ul class="osu-md__list">
+<li class="osu-md__list-item">peppy's superseded web FAQ (<code>/p/faq/</code> which this page was based on; currently removed)</li>
+<li class="osu-md__list-item">Peter Lambert - osu! tutorial (<a class="osu-md__link" href="https://osu.ppy.sh/beatmapsets/3756" title="Installer's osu!tutorial by peppy">Original tutorial</a>, <a class="osu-md__link" href="https://osu.ppy.sh/beatmapsets/19928" title="Ranked osu!tutorial by Sushi">Ranked beatmap ver.</a>)</li>
+<li class="osu-md__list-item">Pokebis's Beginner's Training <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/5456" title="Beginner Training by Pokebis">[1]</a>
+</li>
+<li class="osu-md__list-item">OnosakiHito's TBT Project [Training Manual For Taiko Beginner v2] <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/175867" title="TBT Project [Training Manual For Taiko Beginner v2] by OnosakiHito">[2]</a>
+</li>
+<li class="osu-md__list-item">Kingkevin30's CBT Project <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/131067" title="CBT Project by Kingkevin30">[3]</a>
+</li>
+<li class="osu-md__list-item">Entozer's osu!mania maps, sorted by difficulty  <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/147552" title="osu!mania maps, sorted by difficulty by Entozer">[4]</a>
+</li>
+<li class="osu-md__list-item">Drace's [GUIDE] How to improve in osu!mania <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/147552" title="[GUIDE] How to improve in osu!mania by Drace">[5]</a>
+</li>
+<li class="osu-md__list-item">Rivenation's osu!search - Advanced beatmap searching <a class="osu-md__link" href="https://osu.ppy.sh/community/forums/topics/380485" title="osu!search - Advanced beatmap searching by Rivenation">[6]</a>
+</li>
+<li class="osu-md__list-item">Wikipedia <a class="osu-md__link" href="https://en.wikipedia.org/wiki/Osu!_Tatakae!_Ouendan" title="Wikipedia entry for Osu! Tatakae! Ouendan">[7]</a>, <a class="osu-md__link" href="https://en.wikipedia.org/wiki/Taiko_no_Tatsujin" title="Wikipedia entry for Taiko no Tatsujin">[8]</a>
+</li>
+</ul>
+</div>
+                            </div>
+        </div>
+    </div>
+                    </div>
 {{ end }}

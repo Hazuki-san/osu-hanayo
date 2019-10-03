@@ -4,135 +4,270 @@
 {{ $   := . }}
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" sizes="16x16" href="../favicon-16x16.png">
+<link rel="manifest" href="https://new.bigtu.vip/static/--copy--/site.webmanifest">
+<link rel="mask-icon" href="https://osu.ppy.sh/safari-pinned-tab.svg" color="#e2609a">
+<meta name="msapplication-TileColor" content="#603cba">
+<meta name="theme-color" content="hsl(333, 10%, 40%)"> 
 
-		<title>{{ if .TitleBar }}{{ .T .TitleBar }} - {{ end }}Ripple</title>
+<meta charset="utf-8">
+<meta name="description" content="osu! - Everything you ever wanted to know about BanchoBot!">
+<meta name="keywords" content="osu, peppy, ouendan, elite, beat, agents, ds, windows, game, taiko, tatsujin, simulator, sim, xna, ddr, beatmania, osu!, osume">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" type="text/css" href="/static/{{ if $ds }}dark/{{ end }}semantic.min.css?{{ unixNano }}">
-		<link rel="stylesheet" type="text/css" href="/static/ripple.css?{{ unixNano }}">
-		<link rel="stylesheet" type="text/css" href="/static/snow/snow.css?{{ unixNano }}">
-	</head>
-	<body {{ if $ds }} class="ds"{{ end }}>
-		{{/*
-			If we're asked to disable the hugeheading, but a KyutGrill is set, it will become the background of the page.
-			This is mainly used in user profiles, allowing users to set their profile background.
-			If we're asked to disable the hugeheading, and a KyutGrill is not set, navbar has the `dropped` class.
-		*/}}
-		<div class="ui full height main wrapper"
-			{{ if and .DisableHH .KyutGrill }}
-				style="background-image: url('{{ if .KyutGrillAbsolute }}{{ .KyutGrill }}{{ else }}/static/headers/{{ .KyutGrill }}{{ end }}');"
-			{{ else if .SolidColour }}
-				style="background-color: {{ .SolidColour }}"
-			{{ end }}>
+<meta name="csrf-param" content="_token">
+<meta name="csrf-token" content="yePBa4SO6Czc2ssX70II9aF6LmTx0ztW2GzRzgtE">
+
+<meta name="turbolinks-cache-control" content="no-preview">
+
+    <meta name="ga-tracking-id" content="UA-4774947-8">
+
+<link href='https://fonts.googleapis.com/css?family=Exo+2:300,300italic,200,200italic,400,400italic,500,500italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" media="all" href="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/vendor/_photoswipe-default-skin/default-skin.css">
+<link rel="stylesheet" media="all" href="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/css/app8140.css" data-turbolinks-track="reload">
+
+<script>
+    var currentLocale = "en";
+    var fallbackLocale = "en";
+</script>
+
+<script src="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/js/vendor41d5.js" data-turbolinks-track="reload"></script>
+<script src="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/js/app-deps9d58.js" data-turbolinks-track="reload"></script>
+<script src="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/js/locales/enc469.js" data-turbolinks-track="reload"></script>
+
+<script src="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/js/commons73e3.js" data-turbolinks-track="reload"></script>
+<script src="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/js/app285e.js" data-turbolinks-track="reload"></script>
+<script src="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/vendor/js/timeago-locales/jquery.timeago.en.js" data-turbolinks-track="reload"></script>
+
+    <script src="https://new.bigtu.vip/static/--copy--/osu.ppy.sh/vendor/js/moment-locales/en-gb.js" data-turbolinks-track="reload"></script>
+    <body
+        class="
+            osu-layout
+            osu-layout--body
+            t-section
+            action-profile
+            
+	{{ if $ds }}ds{{ end }}">
 			{{ template "navbar" . }}
-			{{ if not .DisableHH }}
-				<div class="huge heading {{ if .HeadingOnRight }}right{{ end }} dropped"
-					style="background-image: url('{{ if .KyutGrillAbsolute }}{{ .KyutGrill }}{{ else }}/static/headers/{{ or .KyutGrill "default.jpg" }}{{ end }}');">
-					<div id="snow-container">
-						<div>
-							<div class="snow large"></div>
-							<div class="snow large delayed"></div>
-							
-							<div class="snow medium"></div>
-							<div class="snow medium delayed"></div>
-							
-							<div class="snow small"></div>
-							<div class="snow small delayed"></div>
-						</div>
-					</div>
-					<div class="ui container">
-						<h1>{{ if .HeadingTitle }}{{ .T .HeadingTitle | html }}{{ else }}{{ .T .TitleBar }}{{ end }}</h1>
-					</div>
-				</div>
-			{{ end }}
-
-			<div class="h-container">
-				<div class="ui margined container" id="messages-container">
-				<noscript>Research has proven this website works 10000% better if you have JavaScript enabled.</noscript>
-				{{ if and .Context.User.Username (not (has .Context.User.Privileges 1)) }}
-					<div class="ui warning message">
-						{{ $.T "Your account is currently in restricted mode. You will not be able to do certain actions, and your profile can only be seen by you and by Ripple's staff. If you believe we have mistaken putting you in restricted mode, or a month has passed since you first saw this, then you can send an appeal at <a href='https://support.ripple.moe'>support.ripple.moe</a>." | html }}
-					</div>
-				{{ end }}
-				{{ if .Messages }}
-						{{ range $i, $v := .Messages }}
-							<div class="ui {{ $v.Type }} message">
-								<i class="close icon"></i>
-								{{ html $v.Content }}
-							</div>
-						{{ end }}
-				{{ end }}
-				{{ $settings := systemSettings "website_maintenance" "game_maintenance" "website_global_alert" }}
-				{{ with $settings.website_global_alert.String }}
-					<div class="ui warning message">
-						{{ . | html }}
-					</div>
-				{{ end }}
-				{{ with $settings.game_maintenance.Int }}
-					<div class="ui warning message">
-						{{ $.T "Ripple's score submission is currently in maintenance mode. You will not be allowed to submit scores for the time being." }}
-					</div>
-				{{ end }}
-				{{ with $settings.website_maintenance.Int }}
-					<div class="ui warning message">
-						{{ $.T "The Ripple website is currently in maintenance mode. Only certain users are allowed to access the full website." }}
-					</div>
-				{{ end }}
-				</div>
+			</div>
 				{{ template "tpl" . }}
-			</div>
+				<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-		</div>
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
 
-		<div class="footer">
-			{{ .T "&copy; 2015-%d Ripple, using Hanayo %s." (curryear) (version) | html }}
-			<a href="/team" title="{{ .T "Who is working on this thing?" }}"><i class="users icon"></i>{{ .T "Team" }}</a> |
-			<a href="https://docs.ripple.moe" title="59 6f 75 27 72 65 20 73 6f 20 31 33 33 37 2e"><i class="wrench icon"></i>{{ .T "Developer docs" }}</a> |
-			<a href="/changelog" title="{{ .T "See what changed!" }}"><i class="bug icon"></i>{{ .T "Changelog" }}</a> |
-			<a href="https://blog.ripple.moe"><i class="anchor icon"></i>{{ .T "Blog" }}</a> |
-			<a href="http://status.ripple.moe"><i class="signal icon"></i>{{ .T "Status" }}</a> |
-			<a href="https://zxq.co/ripple" title="{{ .T "What's going on under the hood?"}}{{/*'"*/}}"><i class="git square icon"></i></a>
-			<a href="https://twitter.com/_ripple" title="{{ .T "Follow us on Twitter!" }}"><i class="twitter icon"></i></a>
-			<a href="https://reddit.com/r/osuripple" title="{{ .T "Share irrelevant opinions on reddit!" }}"><i class="reddit square icon"></i></a> |
-			<div class="ui scrolling dropdown" style="margin-left: 5px;" id="language-selector">
-				{{ $lang := .Context.Language }}
-				{{ with $lang }}
-					{{ $info := languageInformationByNameShort . }}
-					<div class="text"><i class="{{ $info.CountryShort }} flag"></i>{{ $info.Name }}</div>
-				{{ else }}
-					<div class="default text">{{ .T "Language" }}</div>
-				{{ end }}
-				<i class="dropdown icon"></i>
-				<div class="menu">
-					{{ range languageInformation }}
-						<div class="{{ if eq .NameShort $lang }}selected {{ end }}item" data-lang="{{ .NameShort }}"><i class="{{ .CountryShort }} flag"></i>{{ .Name }}</div>
-					{{ end }}
-				</div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button type="button" class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button type="button" class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button type="button" class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="js-pswp-buttons"></div>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get modifier active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button type="button" class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button type="button" class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 			</div>
-		</div>
-		<script>
-			var hanayoConf = {
-				avatars:   {{ .Conf.AvatarURL }},
-				banchoAPI: {{ .Conf.BanchoAPI }},
-				baseAPI:   {{ .Conf.BaseAPIPublic }},
-				cheesegullAPI: {{ .Conf.CheesegullAPI }},
-				language:  {{ with $lang }}{{ . }}{{ else }}"en"{{ end }},
-			};
-			var currentUserID = {{ .Context.User.ID }};
-		</script>
-		{{/* If we got some more scripts to print, print'em */}}
-		<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2"></script>
-		<script src="/static/dist.min.js?{{ unixNano }}"></script>
-		{{ with $lang }}
-			<script src="/static/timeago-locale/jquery.timeago.{{ . }}.js"></script>
-		{{ end }}
-		{{ if .Scripts }}
-			{{ range .Scripts }}
-				<script src="{{ . }}?{{ unixNano }}"></script>
-			{{ end }}
-		{{ end }}
+		<footer class="no-print footer">
+            <div class="footer__row">
+                            <a class="footer__link" href="https://osu.ppy.sh/legal/terms">
+                    Terms
+                </a>
+                            <a class="footer__link" href="https://osu.ppy.sh/legal/privacy">
+                    Privacy
+                </a>
+                            <a class="footer__link" href="https://osu.ppy.sh/legal/copyright">
+                    Copyright (DMCA)
+                </a>
+                            <a class="footer__link" href="https://twitter.com/osustatus">
+                    Server Status
+                </a>
+                            <a class="footer__link" href="https://github.com/ppy">
+                    Source Code
+                </a>
+            
+                    </div>
+        <div class="footer__row">ppy powered 2007-2019</div>
+		
+		<div class="js-sync-height--target" data-sync-height-id="permanent-fixed-footer"></div>
+</footer>
+        
+        <div
+            class="fixed-bar
+                js-fixed-element
+                js-fixed-bottom-bar
+                js-sticky-footer--fixed-bar"
+        >
+            <div
+                class="js-permanent-fixed-footer
+                    js-sync-height--reference"
+                data-sync-height-target="permanent-fixed-footer"
+            >
+                            </div>
+        </div>
+        <audio class="js-audio" preload="auto"></audio>
+
+        <script data-turbolinks-eval="always">
+    var csrf = "yePBa4SO6Czc2ssX70II9aF6LmTx0ztW2GzRzgtE";
+    var section = "help";
+    var page = "wiki-show";
+    var canonicalUrl = "";
+    var reloadUrl = "";
+</script>
+
+<script class="js-current-user">
+    var currentUser = {};
+    // self-destruct to avoid rerun by turbolinks
+    $('.js-current-user').remove();
+</script>
+
+<div id="js-usercard__loading-template" class="hidden">
+    
+    <div class="js-react--user-card"></div>
+</div>
+        <div class="loading-overlay js-loading-overlay">
+    <div class="loading-overlay__container">
+                    <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--1">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--1
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--1
+                        loading-overlay__circle--hit"
+                ></div>
+                                <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--2">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--2
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--2
+                        loading-overlay__circle--hit"
+                ></div>
+                                <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--3">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--3
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--3
+                        loading-overlay__circle--hit"
+                ></div>
+                                <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--4">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--4
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--4
+                        loading-overlay__circle--hit"
+                ></div>
+                        </div>
+</div>
+        <div id="popup-container">
+    <div class="alert alert-dismissable popup-clone col-md-6 col-md-offset-3 text-center" style="display: none">
+        <button type="button" data-dismiss="alert" class="close"><i class="fas fa-times"></i></button>
+        <span class="popup-text"></span>
+    </div>
+    <div class="empty-popup empty-popup--clone" style="display: none">
+        <div class="popup-content"></div>
+    </div>
+</div>
+
+                
+
+    <div class="js-user-verification modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog--full">
+            <div class="user-verification-popup">
+                <div class="osu-layout__row">
+                    <div class="user-verification-popup__modal">
+                        <div class="js-user-verification--box user-verification-popup__box">
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	</body>
+	
+	{{ $lang := .Context.Language }}
+	{{ with $lang }}
+			<script src="/static/timeago-locale/jquery.timeago.{{ . }}.js"></script>
+	{{ end }}
+	
 </html>
+
 {{ end }}

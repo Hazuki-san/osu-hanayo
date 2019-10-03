@@ -1,0 +1,91 @@
+{{/*###
+Handler=/login
+*/}}
+{{ define "login_box" }}
+    <div class="login-box">
+    <div
+        class="
+            login-box__content
+            js-click-menu
+            js-nav2--centered-popup
+            js-nav2--login-box
+        "
+        data-click-menu-id="nav2-login-box"
+        data-visibility="hidden"
+    >
+        <form method="POST" action="https://osu.ppy.sh/session" accept-charset="UTF-8" class="
+                login-box__section
+                login-box__section--login
+                js-login-form
+                js-nav-popup--submenu
+            " data-remote><input name="_token" type="hidden" value="yePBa4SO6Czc2ssX70II9aF6LmTx0ztW2GzRzgtE">
+            <h2 class="login-box__row login-box__row--title">Sign In To Proceed</h2>
+
+            <div class="login-box__row login-box__row--inputs">
+                <input
+                    class="login-box__form-input js-login-form-input js-nav2--autofocus"
+                    name="username"
+                    placeholder="email address"
+                    required
+                />
+                <input
+                    class="login-box__form-input js-login-form-input"
+                    name="password"
+                    type="password"
+                    placeholder="password"
+                    required
+                />
+            </div>
+
+            <div class="login-box__row login-box__row--error js-login-form--error"></div>
+
+            <div class="login-box__row">
+                <a href="https://osu.ppy.sh/home/password-reset" class="login-box__link js-nav--hide">
+                    I&#039;ve forgotten my details
+                </a>
+            </div>
+
+            <div class="login-box__row login-box__row--actions">
+                <div class="login-box__action">
+                    <button
+                        class="btn-osu-big btn-osu-big--nav-popup"
+                        data-disable-with="Signing in..."
+                    >
+                        <div class="btn-osu-big__content">
+                            <span class="btn-osu-big__left">
+                                Sign in
+                            </span>
+
+                            <span class="fas fa-fw fa-sign-in-alt"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+                    <div class="login-box__section login-box__section--register">
+                <h2 class="login-box__row login-box__row--title">
+                    Don&#039;t have an account?
+                </h2>
+
+                <div class="login-box__row">
+                    You need an account, sir. Why don&#039;t you have one already?
+                </div>
+
+                <div class="login-box__row login-box__row--actions">
+                    <div class="login-box__action">
+                        <a href="https://osu.ppy.sh/p/register" class="btn-osu-big btn-osu-big--nav-popup">
+                            <div class="btn-osu-big__content">
+                                <span class="btn-osu-big__left">
+                                    Register
+                                </span>
+
+                                <span class="fas fa-fw fa-child"></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+</div>
+{{ end }}
