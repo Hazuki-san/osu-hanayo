@@ -3,7 +3,7 @@ package v1
 import (
 	"strings"
 
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 // Boilerplate errors

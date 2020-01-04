@@ -3,7 +3,7 @@ package websockets
 import (
 	"encoding/json"
 
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 // SetRestrictedVisibility sets whether the information of restricted users

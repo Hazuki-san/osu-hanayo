@@ -21,14 +21,14 @@ import (
 	"github.com/thehowl/qsql"
 	"gopkg.in/mailgun/mailgun-go.v1"
 	"gopkg.in/redis.v5"
-	"github.com/osuthailand/agplwarning"
+	"zxq.co/ripple/agplwarning"
 	"github.com/osuthailand/hanayo/modules/btcaddress"
 	"github.com/osuthailand/hanayo/modules/btcconversions"
 	"github.com/osuthailand/hanayo/routers/oauth"
 	"github.com/osuthailand/hanayo/routers/pagemappings"
 	"github.com/osuthailand/hanayo/services"
 	"github.com/osuthailand/hanayo/services/cieca"
-	"github.com/osuthailand/schiavolib"
+	"zxq.co/ripple/schiavolib"
 	"zxq.co/x/rs"
 )
 

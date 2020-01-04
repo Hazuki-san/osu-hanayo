@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 type rapLogData struct {

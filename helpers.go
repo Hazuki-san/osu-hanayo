@@ -16,7 +16,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/osuthailand/hanayo/modules/bbcode"
 	tp "github.com/osuthailand/hanayo/modules/top-passwords"
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 //go:generate go run scripts/generate_mappings.go -g

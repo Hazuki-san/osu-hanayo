@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 
 	"github.com/valyala/fasthttp"
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 type response404 struct {

@@ -7,7 +7,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/thehowl/go-osuapi"
 	"github.com/valyala/fasthttp"
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 // GetBeatmap retrieves general beatmap information.

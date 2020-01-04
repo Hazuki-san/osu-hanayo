@@ -18,7 +18,7 @@ import (
 	"github.com/pariz/gountries"
 	"github.com/rjeczalik/notify"
 	"github.com/thehowl/conf"
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 var templates = make(map[string]*template.Template)

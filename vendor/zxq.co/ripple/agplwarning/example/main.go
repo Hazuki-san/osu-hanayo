@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/osuthailand/agplwarning"
+	"zxq.co/ripple/agplwarning"
 )
 
 func main() {

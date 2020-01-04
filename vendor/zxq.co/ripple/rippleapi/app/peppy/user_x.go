@@ -7,7 +7,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/valyala/fasthttp"
 	"gopkg.in/thehowl/go-osuapi.v1"
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 	"zxq.co/x/getrank"
 )
 

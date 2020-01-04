@@ -13,7 +13,7 @@ import (
 	"github.com/valyala/fasthttp"
 	"gopkg.in/redis.v5"
 	"github.com/osuthailand/ocl"
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 // R is a redis client.

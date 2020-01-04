@@ -9,7 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/valyala/fasthttp"
-	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/api/common"
 )
 
 // Method wraps an API method to a HandlerFunc.
