@@ -135,11 +135,11 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/osuthailand/go-discord-oauth"
+  name = "zxq.co/ripple/go-discord-oauth"
 
 [[constraint]]
   branch = "master"
-  name = "github.com/osuthailand/playstyle"
+  name = "zxq.co/ripple/playstyle"
 
 [[constraint]]
   name = "github.com/osuthailand/rippleapi"
@@ -147,7 +147,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/osuthailand/schiavolib"
+  name = "zxq.co/ripple/schiavolib"
 
 [[constraint]]
   branch = "master"
@@ -155,4 +155,4 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/osuthailand/agplwarning"
+  name = "zxq.co/ripple/agplwarning"
