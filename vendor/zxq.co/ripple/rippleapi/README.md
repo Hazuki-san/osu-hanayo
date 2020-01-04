@@ -2,7 +2,7 @@
 
 This is the source code for Ripple's API.
 
-- Origin: https://git.zxq.co/ripple/rippleapi
+- Origin: https://git.github.com/osuthailand/rippleapi
 - Mirror: https://github.com/osuripple/api
 
 ## Note to fellow developers: this is not how you do it!

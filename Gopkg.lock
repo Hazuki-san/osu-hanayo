@@ -321,31 +321,31 @@
 
 [[projects]]
   branch = "master"
-  name = "zxq.co/ripple/agplwarning"
+  name = "github.com/osuthailand/agplwarning"
   packages = ["."]
   revision = "d3a3d0ee424fcb0bd09a651354c1735285f59f8c"
 
 [[projects]]
   branch = "master"
-  name = "zxq.co/ripple/go-discord-oauth"
+  name = "github.com/osuthailand/go-discord-oauth"
   packages = ["."]
   revision = "348e08feccb5ae7c1ea3b237769aeb757e393e0c"
 
 [[projects]]
   branch = "master"
-  name = "zxq.co/ripple/playstyle"
+  name = "github.com/osuthailand/playstyle"
   packages = ["."]
   revision = "198984a13cb6fccba0cdf9c08b3c624548f840eb"
 
 [[projects]]
   branch = "master"
-  name = "zxq.co/ripple/rippleapi"
+  name = "github.com/osuthailand/rippleapi"
   packages = ["common"]
   revision = "34f24b8de68b46de2cbbfce71bb17c8ad1279f0f"
 
 [[projects]]
   branch = "master"
-  name = "zxq.co/ripple/schiavolib"
+  name = "github.com/osuthailand/schiavolib"
   packages = ["."]
   revision = "9cdc674dad0700ec79618de4ab558db6ad1de372"
 

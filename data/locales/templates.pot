@@ -374,7 +374,7 @@ msgstr ""
 msgid "Welcome to Ripple."
 msgstr ""
 
-msgid "Ripple is a private osu! server, featuring multiplayer, PP, a very active community and a development team going strong implementing new features and squashing bugs. <a href='/about'>You can check out even more features here.</a> It has also a very friendly community, and it's <a href='https://zxq.co/ripple/ripple'>open source!</a> Just so you know, <b>we currently have %s users online and %s registered users!</b>"
+msgid "Ripple is a private osu! server, featuring multiplayer, PP, a very active community and a development team going strong implementing new features and squashing bugs. <a href='/about'>You can check out even more features here.</a> It has also a very friendly community, and it's <a href='https://github.com/osuthailand/ripple'>open source!</a> Just so you know, <b>we currently have %s users online and %s registered users!</b>"
 msgstr ""
 
 msgid "What are you waiting for? Join Ripple! It's risk-free: you won't get your account banned on the official server if you play on Ripple.<br>You can also switch anytime between the official osu! server and Ripple!"
@@ -575,14 +575,14 @@ msgstr ""
 msgid "It has now evolved into the largest available osu! private server, with more than 50,000 registered users. <a href=\"/register\">Signing up</a> on Ripple won't result in getting your account on osu! restricted, so what are you waiting for?! Come join us! %s"
 msgstr ""
 
-msgid "In case you want to make sure we're not doing shady stuff with your data, you can also check the <a href=\"https://zxq.co/ripple/ripple\">source code</a> Ripple is running on."
+msgid "In case you want to make sure we're not doing shady stuff with your data, you can also check the <a href=\"https://github.com/osuthailand/ripple\">source code</a> Ripple is running on."
 msgstr ""
 
 # changelog.html
 msgid "This is the changelog. Changes are published here as soon as they hit the production status (as in, live on the website)."
 msgstr ""
 
-msgid "For various reasons, some software of Ripple does not contribute to the changelog, to which this website is a part of. In case you want to see the changelog of Hanayo, you can do so by <a href=\"https://zxq.co/ripple/hanayo/commits/master\">clicking here</a>."
+msgid "For various reasons, some software of Ripple does not contribute to the changelog, to which this website is a part of. In case you want to see the changelog of Hanayo, you can do so by <a href=\"https://github.com/osuthailand/hanayo/commits/master\">clicking here</a>."
 msgstr ""
 
 msgid "Author"

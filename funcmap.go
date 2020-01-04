@@ -20,13 +20,13 @@ import (
 	"github.com/russross/blackfriday"
 	"github.com/thehowl/qsql"
 	"golang.org/x/oauth2"
-	"zxq.co/ripple/go-discord-oauth"
-	"zxq.co/ripple/hanayo/modules/bbcode"
-	"zxq.co/ripple/hanayo/modules/btcaddress"
-	"zxq.co/ripple/hanayo/modules/doc"
-	"zxq.co/ripple/hanayo/modules/fa-semantic-mappings"
-	"zxq.co/ripple/playstyle"
-	"zxq.co/ripple/rippleapi/common"
+	"github.com/osuthailand/go-discord-oauth"
+	"github.com/osuthailand/hanayo/modules/bbcode"
+	"github.com/osuthailand/hanayo/modules/btcaddress"
+	"github.com/osuthailand/hanayo/modules/doc"
+	"github.com/osuthailand/hanayo/modules/fa-semantic-mappings"
+	"github.com/osuthailand/playstyle"
+	"github.com/osuthailand/rippleapi/common"
 )
 
 // funcMap contains useful functions for the various templates.

@@ -5,7 +5,7 @@ package v1
 import (
 	"time"
 
-	"zxq.co/ripple/rippleapi/common"
+	"github.com/osuthailand/rippleapi/common"
 )
 
 // MetaRestartGET restarts the API with Zero Downtime™.

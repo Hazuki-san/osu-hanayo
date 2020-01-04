@@ -11,8 +11,8 @@ import (
 
 	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
-	"zxq.co/ripple/rippleapi/common"
-	"zxq.co/ripple/schiavolib"
+	"github.com/osuthailand/rippleapi/common"
+	"github.com/osuthailand/schiavolib"
 )
 
 func register(c *gin.Context) {

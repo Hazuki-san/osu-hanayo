@@ -14,9 +14,9 @@ import (
 	"bytes"
 
 	"github.com/gin-gonic/gin"
-	"zxq.co/ripple/hanayo/modules/bbcode"
-	tp "zxq.co/ripple/hanayo/modules/top-passwords"
-	"zxq.co/ripple/rippleapi/common"
+	"github.com/osuthailand/hanayo/modules/bbcode"
+	tp "github.com/osuthailand/hanayo/modules/top-passwords"
+	"github.com/osuthailand/rippleapi/common"
 )
 
 //go:generate go run scripts/generate_mappings.go -g
