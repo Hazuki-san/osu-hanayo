@@ -20,12 +20,12 @@ import (
 	"github.com/russross/blackfriday"
 	"github.com/thehowl/qsql"
 	"golang.org/x/oauth2"
-	"osuthailand/playstyle/go-discord-oauth"
+	"zxq.co/ripple/go-discord-oauth"
 	"github.com/osuthailand/hanayo/modules/bbcode"
 	"github.com/osuthailand/hanayo/modules/btcaddress"
 	"github.com/osuthailand/hanayo/modules/doc"
 	"github.com/osuthailand/hanayo/modules/fa-semantic-mappings"
-	"osuthailand/playstyle/playstyle"
+	"zxq.co/ripple/playstyle"
 	"github.com/osuthailand/api/common"
 )
 

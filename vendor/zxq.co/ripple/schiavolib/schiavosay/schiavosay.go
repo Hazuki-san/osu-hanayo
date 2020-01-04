@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"git.github.com/osuthailand/schiavolib"
+	"git.zxq.co/ripple/schiavolib"
 )
 
 var (
