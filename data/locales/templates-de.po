@@ -827,21 +827,12 @@ msgstr ""
 
 msgid ""
 "In case you want to make sure we're not doing shady stuff with your data, "
-<<<<<<< HEAD
-"you can also check the <a href=\"https://zxq.co/ripple/ripple\">source "
-"code</a> Ripple is running on."
-msgstr ""
-"Wenn du sicher sein möchtest das wir keine dubiosen Sachen mit deinen "
-"privaten Daten machen, kannst du den <a href=\"https://zxq.co/ripple/ripple\""
-">source code</a> checken, auf dem Ripple läuft."
-=======
 "you can also check the <a href=\"https://github.com/osuthailand/ripple\">source "
 "code</a> Ainu! is running on."
 msgstr ""
 "Wenn du sicher sein möchtest das wir keine dubiosen Sachen mit deinen "
 "privaten Daten machen, kannst du den <a href=\"https://github.com/osuthailand/ripple\""
 ">source code</a> checken, auf dem Ainu! läuft."
->>>>>>> 5e6ddde... zxq.co/ripple > github.com/osuthailand
 
 # changelog.html
 msgid ""
