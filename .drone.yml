@@ -1,6 +1,6 @@
 workspace:
   base: /go
-  path: src/github.com/osuthailand/hanayo
+  path: src/github.com/Hazuki-san/osu-hanayo
 
 pipeline:
   build:

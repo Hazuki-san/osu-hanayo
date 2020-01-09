@@ -14,8 +14,8 @@ import (
 	"bytes"
 
 	"github.com/gin-gonic/gin"
-	"github.com/osuthailand/hanayo/modules/bbcode"
-	tp "github.com/osuthailand/hanayo/modules/top-passwords"
+	"github.com/Hazuki-san/osu-hanayo/modules/bbcode"
+	tp "github.com/Hazuki-san/osu-hanayo/modules/top-passwords"
 	"github.com/osuthailand/api/common"
 )
 

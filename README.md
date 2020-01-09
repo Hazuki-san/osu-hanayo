@@ -1,6 +1,6 @@
 # osu-hanayo
 
-This repository has a mirror [here](https://github.com/osuripple/hanayo). The original repo is still [here](https://github.com/osuthailand/hanayo).
+This repository has a mirror [here](https://github.com/osuripple/hanayo). The original repo is still [here](https://github.com/Hazuki-san/osu-hanayo).
 
 ## To fellow developers: this is not how you do it!
 
