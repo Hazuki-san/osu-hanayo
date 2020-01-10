@@ -1,0 +1,56 @@
+{{ define "footer" }}
+{{ with . }}
+<center><div class="footer twemoji">
+            
+            <font style='color:black'>
+            {{ .T "&copy; 2018-%d Ripple, osu!Ainu, Made with love by Aoba ❤ using Hanayo %s" (curryear) (version) | html }}  |
+            <div class="ui scrolling dropdown" style="margin-left: 5px;" id="language-selector">
+                {{ $lang := .Context.Language }}
+                {{ with $lang }}
+                    {{ $info := languageInformationByNameShort . }}
+                    <div class="text"><i class="{{ with $lang }}{{ . }}{{end}} flag"></i>{{ $info.Name }}</div>
+                {{ else }}
+                    <div class="default text">{{ .T "Language" }}</div>
+                {{ end }}
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    {{ range languageInformation }}
+                        <div class="{{ if eq .NameShort $lang }}selected {{ end }}item" data-lang="{{ .NameShort }}"><i class="{{ .CountryShort }} flag"></i>{{ .Name }}</div>
+                    {{ end }}
+                </div>
+                </div>
+            </font>
+        </div>
+        </center>
+        <script>
+            var hanayoConf = {
+                avatars:   {{ .Conf.AvatarURL }},
+                banchoAPI: {{ .Conf.BanchoAPI }},
+                baseAPI:   {{ .Conf.BaseAPIPublic }},
+                cheesegullAPI: {{ .Conf.CheesegullAPI }},
+                language:  {{ with $lang }}{{ . }}{{ else }}"en"{{ end }},
+            };
+            var currentUserID = {{ .Context.User.ID }};
+        </script>
+        {{/* If we got some more scripts to print, print'em */}}
+        <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2"></script>
+        <script src="/static/dist.min.js?{{ unixNano }}"></script>
+        <script src="/static/timeago-locale/jquery.timeago.{{ with $lang }}{{ . }}{{end}}.js"></script>
+        {{ if .Scripts }}
+            {{ range .Scripts }}
+                <script src="{{ . }}?{{ unixNano }}"></script>
+            {{ end }}
+        {{ end }}
+        
+            <!-- JavaScript
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+
+    <script src="/static/simplebar.js"></script> -->
+    </body>
+</html>
+{{ end }}
+{{ end }}

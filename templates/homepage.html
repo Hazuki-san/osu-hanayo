@@ -2,11 +2,284 @@
 Handler=/
 TitleBar=Home Page
 KyutGrill=homepage2.jpg
+Include=navbars/home.html
 */}}
 {{ define "tpl" }}
 {{ $cf := .ClientFlags }}
 {{ $ds := band $cf 1 }}
 {{ $   := . }}
+{{ if not .Context.User.ID }}
+<body
+        class="
+            osu-layout
+            osu-layout--body
+            t-section
+            action-index
+            osu-layout--body-landing
+        "
+    >
+        <style>
+            :root {
+                                --base-hue: 255;
+                --base-hue-deg: 255deg;
+            }
+        </style>
+        <div id="overlay" class="blackout blackout--overlay" style="display: none;"></div>
+        <div class="blackout js-blackout" data-visibility="hidden"></div>
+
+        
+                <div class="osu-layout__section osu-layout__section--full js-content home_index">
+                                            <nav class="osu-layout__row">
+        <!-- Navbar goes here -->
+        {{ template "navbar" }}
+        <!-- Under osu-layout__row -->
+        	</div>
+        </div>
+    </div>
+</div>
+
+    <div class="osu-page">
+        <div class="landing-hero">
+            <div class="landing-hero__bg-container">
+                <div class="landing-hero__bg-inner-container js-scale" data-scale="ws">
+                    
+                    <video
+                        class="landing-hero__bg js-autoplay"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        src="https://assets.ppy.sh/media/landing.mp4"
+                    ></video>
+                </div>
+            </div>
+
+            <div class="landing-hero__pippi">
+                <div class="landing-hero__pippi-logo"></div>
+            </div>
+
+            <div class="landing-hero__info">
+                <strong>15,210,892</strong> registered players,
+                <strong>15,335</strong> currently online in <strong>503</strong> games
+            </div>
+
+            <div class="landing-hero__messages">
+                <div class="landing-hero__message-extra-container">
+                    <div class="landing-hero__message-extra landing-hero__message-extra--top">
+                        <div class="landing-hero__logo"></div>
+                    </div>
+                </div>
+
+                <div class="landing-hero__slogan">
+                    <h1 class="landing-hero__slogan-main">
+                        the bestest free-to-win rhythm game
+                    </h1>
+
+                    <h2 class="landing-hero__slogan-sub">
+                        rhythm is just a click away
+                    </h2>
+                </div>
+
+                <div class="landing-hero__message-extra-container">
+                    <div class="landing-hero__message-extra landing-hero__message-extra--bottom">
+                        <a href="home/download.html" class="btn-osu-big btn-osu-big--download-landing">
+                            <span class="btn-osu-big__content">
+                                <span class="btn-osu-big__left">
+                                    <span class="btn-osu-big__text-top">
+                                        Download now
+                                    </span>
+                                </span>
+
+                                <span class="btn-osu-big__icon">
+                                    <span class="fas fa-download"></span>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+          	      </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer class="osu-layout__section osu-layout__section--landing-footer">
+        <div class="osu-layout__row osu-layout__row--landing-sitemap landing-sitemap">
+            <div class="osu-layout__col-container osu-layout__col-container--landing-sitemap">
+                                    <div class="osu-layout__col osu-layout__col--sm-4">
+                        <ul class="landing-sitemap__list">
+                            <li class="landing-sitemap__item">
+                                <div class="landing-sitemap__header">General</div>
+                            </li>
+                                                            <li class="landing-sitemap__item"><a href="home.html" class="landing-sitemap__link">Home</a></li>
+                                                            <li class="landing-sitemap__item"><a href="home/changelog.html" class="landing-sitemap__link">Changelog</a></li>
+                                                            <li class="landing-sitemap__item"><a href="beatmapsets.html" class="landing-sitemap__link">Beatmap Listing</a></li>
+                                                            <li class="landing-sitemap__item"><a href="home/download.html" class="landing-sitemap__link">Download osu!</a></li>
+                                                            <li class="landing-sitemap__item"><a href="https://osu.ppy.sh/help/wiki/Main_Page" class="landing-sitemap__link">Wiki</a></li>
+                                                    </ul>
+                    </div>
+                                    <div class="osu-layout__col osu-layout__col--sm-4">
+                        <ul class="landing-sitemap__list">
+                            <li class="landing-sitemap__item">
+                                <div class="landing-sitemap__header">Help &amp; Community</div>
+                            </li>
+                                                            <li class="landing-sitemap__item"><a href="https://osu.ppy.sh/help/wiki/FAQ" class="landing-sitemap__link">Frequently Asked Questions</a></li>
+                                                            <li class="landing-sitemap__item"><a href="community/forums.html" class="landing-sitemap__link">Community Forums</a></li>
+                                                            <li class="landing-sitemap__item"><a href="community/livestreams.html" class="landing-sitemap__link">Live Streams</a></li>
+                                                            <li class="landing-sitemap__item"><a href="https://osu.ppy.sh/community/forums/topics/create?forum_id=5" class="landing-sitemap__link">Report an Issue</a></li>
+                                                    </ul>
+                    </div>
+                                    <div class="osu-layout__col osu-layout__col--sm-4">
+                        <ul class="landing-sitemap__list">
+                            <li class="landing-sitemap__item">
+                                <div class="landing-sitemap__header">Legal &amp; Status</div>
+                            </li>
+                                                            <li class="landing-sitemap__item"><a href="legal/terms.html" class="landing-sitemap__link">Terms</a></li>
+                                                            <li class="landing-sitemap__item"><a href="legal/privacy.html" class="landing-sitemap__link">Privacy</a></li>
+                                                            <li class="landing-sitemap__item"><a href="legal/copyright.html" class="landing-sitemap__link">Copyright (DMCA)</a></li>
+                                                            <li class="landing-sitemap__item"><a href="https://twitter.com/osustatus" class="landing-sitemap__link">Server Status</a></li>
+                                                            <li class="landing-sitemap__item"><a href="https://github.com/ppy" class="landing-sitemap__link">Source Code</a></li>
+                                                    </ul>
+                    </div>
+                            </div>
+        </div>
+
+        <div class="landing-footer-social">
+            <a href="home/support.html" class="landing-footer-social__icon landing-footer-social__icon--support">
+                <span class="fas fa-heart"></span>
+            </a>
+            <a href="https://osu.ppy.sh/help/wiki/Twitter" class="landing-footer-social__icon landing-footer-social__icon--twitter">
+                <span class="fab fa-twitter"></span>
+            </a>
+        </div>
+
+        <footer class="no-print footer footer--landing">
+        <div class="footer__row">ppy powered 2007-2020</div>
+
+    <div class="js-sync-height--target" data-sync-height-id="permanent-fixed-footer"></div>
+</footer>
+    </footer>
+
+    <div id="popup-container">
+    <div class="alert alert-dismissable popup-clone col-md-6 col-md-offset-3 text-center" style="display: none">
+        <button type="button" data-dismiss="alert" class="close"><i class="fas fa-times"></i></button>
+        <span class="popup-text"></span>
+    </div>
+    <div class="empty-popup empty-popup--clone" style="display: none">
+        <div class="popup-content"></div>
+    </div>
+</div>
+                    </div>
+        
+        <div
+            class="fixed-bar
+                js-fixed-element
+                js-fixed-bottom-bar
+                js-sticky-footer--fixed-bar"
+        >
+            <div
+                class="js-permanent-fixed-footer
+                    js-sync-height--reference"
+                data-sync-height-target="permanent-fixed-footer"
+            >
+                            </div>
+        </div>
+        <audio class="js-audio" preload="auto"></audio>
+
+        <script data-turbolinks-eval="always">
+    var csrf = "RYnm1ZGjPbYMN338mKfC0F3PErw2jAL51IpJsoRW";
+    var section = "home";
+    var page = "index";
+    var canonicalUrl = "";
+    var reloadUrl = "";
+</script>
+
+<script class="js-current-user">
+    var currentUser = {};
+    // self-destruct to avoid rerun by turbolinks
+    $('.js-current-user').remove();
+</script>
+
+<div id="js-usercard__loading-template" class="hidden">
+    
+    <div class="js-react--user-card"></div>
+</div>
+        <div class="loading-overlay js-loading-overlay">
+    <div class="loading-overlay__container">
+                    <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--1">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--1
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--1
+                        loading-overlay__circle--hit"
+                ></div>
+                                <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--2">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--2
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--2
+                        loading-overlay__circle--hit"
+                ></div>
+                                <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--3">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--3
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--3
+                        loading-overlay__circle--hit"
+                ></div>
+                                <div class="loading-overlay__follow-point
+                    loading-overlay__follow-point--4">
+                ›
+            </div>
+
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--4
+                        loading-overlay__circle--approach"
+                ></div>
+                            <div class="loading-overlay__circle
+                        loading-overlay__circle--4
+                        loading-overlay__circle--hit"
+                ></div>
+                        </div>
+</div>
+        <div id="popup-container">
+    <div class="alert alert-dismissable popup-clone col-md-6 col-md-offset-3 text-center" style="display: none">
+        <button type="button" data-dismiss="alert" class="close"><i class="fas fa-times"></i></button>
+        <span class="popup-text"></span>
+    </div>
+    <div class="empty-popup empty-popup--clone" style="display: none">
+        <div class="popup-content"></div>
+    </div>
+</div>
+
+            
+
+    <script id="json-posts" type="application/json">
+        [{"id":731,"edit_url":"https:\/\/github.com\/ppy\/osu-wiki\/tree\/master\/news\/2020-01-07-new-featured-artist-rivers-of-nihil.md","first_image":"https:\/\/assets.ppy.sh\/artists\/63\/header.jpg","published_at":"2020-01-07T12:00:00+00:00","updated_at":"2020-01-07T14:00:45+00:00","slug":"2020-01-07-new-featured-artist-rivers-of-nihil","title":"New Featured Artist: Rivers of Nihil"},{"id":730,"edit_url":"https:\/\/github.com\/ppy\/osu-wiki\/tree\/master\/news\/2020-01-05-monthly-beatmapping-contests-return.md","first_image":"\/help\/wiki\/shared\/news\/banners\/monthly-beatmapping-contest.png","published_at":"2020-01-05T02:00:00+00:00","updated_at":"2020-01-05T03:07:57+00:00","slug":"2020-01-05-monthly-beatmapping-contests-return","title":"Monthly Beatmapping Contests Return"},{"id":729,"edit_url":"https:\/\/github.com\/ppy\/osu-wiki\/tree\/master\/news\/2019-12-31-new-featured-artist-mylk.md","first_image":"https:\/\/assets.ppy.sh\/artists\/62\/header.jpg","published_at":"2019-12-31T08:00:00+00:00","updated_at":"2019-12-31T11:20:46+00:00","slug":"2019-12-31-new-featured-artist-mylk","title":"New Featured Artist: MYLK"},{"id":728,"edit_url":"https:\/\/github.com\/ppy\/osu-wiki\/tree\/master\/news\/2019-12-28-new-themed-beatmap-packs.md","first_image":"\/help\/wiki\/shared\/news\/banners\/beatmap-packs.jpg","published_at":"2019-12-28T05:00:00+00:00","updated_at":"2019-12-28T11:27:29+00:00","slug":"2019-12-28-new-themed-beatmap-packs","title":"New Themed Beatmap Packs"}]
+    </script>
+    </body>
+</html>
+{{ else }}
+{{ template "tpl" . }}
+<link rel="stylesheet" type="text/css" href="/static/{{ if $ds }}dark/{{ end }}semantic.min.css?{{ unixNano }}">
+<link rel="stylesheet" type="text/css" href="/static/ripple.css?{{ unixNano }}">
+{{ template "navbar" }}
 <div class="ui container">
 	<div class="ui center aligned segment">
 		<img src="/static/logos/logo-{{ randomLogoColour }}{{ if $ds }}-dark{{ end }}.svg">
@@ -58,4 +331,6 @@ KyutGrill=homepage2.jpg
 		</div>
 	{{ end }}
 </div>
+{{ end }}
+{{ template "footer" }}
 {{ end }}
