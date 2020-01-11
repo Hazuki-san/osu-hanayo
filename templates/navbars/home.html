@@ -1,5 +1,7 @@
 {{ define "navbar" }}
 {{ if not .Context.User.ID }}
+<div class="osu-layout__section osu-layout__section--full js-content home_index">
+<nav class="osu-layout__row">
 <div class="visible-xs no-print js-header--main">
     <div class="navbar-mobile-before"></div>
 
@@ -4070,7 +4072,7 @@
             </div>
 </div>
 </div>
-
-{{ template "login_box" . }}
+</div>
+</div>
 {{end}}
 {{end}}
