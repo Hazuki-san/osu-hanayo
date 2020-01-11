@@ -1,0 +1,2214 @@
+{{ define "navbar_404" }}
+{{ $   := . }}
+{{ if not .Context.User.ID }}
+<div class="visible-xs no-print js-header--main">
+    <div class="navbar-mobile-before"></div>
+
+    <div
+        class="
+            navbar-mobile
+            u-section--bg
+        "
+        role="navigation"
+    >
+        <div class="container">
+            <div class="navbar-header navbar-mobile__header">
+                <div class="navbar-mobile__header-section">
+                    <a class="navbar-mobile__logo" href="https://new.ainu.pw"></a>
+                    <span class="navbar-mobile__brand navbar-brand u-ellipsis-overflow">
+                        missing
+                    </span>
+                </div>
+
+                <div class="navbar-mobile__header-section navbar-mobile__header-section--buttons">
+                                            <a
+                            href="#"
+                            title="click to sign in"
+                            class="avatar avatar--navbar-mobile avatar--guest js-navbar-mobile--top-icon js-user-link"
+                        >
+                        </a>
+                    
+                    <button
+                        type="button"
+                        class="navbar-toggle navbar-mobile__toggle u-section--color-hover"
+                        data-toggle="collapse" data-target="#xs-navbar"
+                    >
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-mobile__toggle-icon">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse navbar-mobile__menu js-navbar-mobile--menu" id="xs-navbar">
+        <ul class="nav navbar-nav navbar-mobile__menu-items">
+            <li class="navbar-mobile-item navbar-mobile-item--user">
+            <a
+            class="js-user-link navbar-mobile-item__main navbar-mobile-item__main--user"
+            href="#"
+            title="click to sign in"
+            data-toggle="collapse"
+            data-target=".js-navbar-mobile--menu"
+        >
+            <span class="avatar avatar--guest avatar--navbar-mobile"></span>
+
+            Guest
+        </a>
+    </li>
+            <li class="navbar-mobile-item dropdown">
+        <a
+            data-toggle="dropdown"
+            class="navbar-mobile-item__main dropdown-toggle"
+            href="https://new.ainu.pw"
+        >
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+            home
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="expand-home">
+                                                                                <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/news"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        news
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/help/wiki/Team"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        team
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/changelog"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        changelog
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/download"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        download
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/search"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        search
+                    </a>
+                </li>
+                    </ul>
+    </li>
+    <li class="navbar-mobile-item dropdown">
+        <a
+            data-toggle="dropdown"
+            class="navbar-mobile-item__main dropdown-toggle"
+            href="https://new.ainu.pw/beatmapsets"
+        >
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+            beatmaps
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="expand-beatmaps">
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/beatmapsets"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        listing
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/beatmaps/artists"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        featured artists
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/beatmaps/packs"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        packs
+                    </a>
+                </li>
+                    </ul>
+    </li>
+    <li class="navbar-mobile-item dropdown">
+        <a
+            data-toggle="dropdown"
+            class="navbar-mobile-item__main dropdown-toggle"
+            href="https://new.ainu.pw/rankings/osu/performance"
+        >
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+            rankings
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="expand-rankings">
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/rankings/osu/performance"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        performance
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/rankings/osu/charts"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        spotlights
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/rankings/osu/score"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        score
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/rankings/osu/country"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        country
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/p/kudosu"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        kudosu
+                    </a>
+                </li>
+                    </ul>
+    </li>
+    <li class="navbar-mobile-item dropdown">
+        <a
+            data-toggle="dropdown"
+            class="navbar-mobile-item__main dropdown-toggle"
+            href="https://new.ainu.pw/community/forums"
+        >
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+            community
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="expand-community">
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/community/forums"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        forums
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/community/chat"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        chat
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/community/contests"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        contests
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/community/tournaments"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        tournaments
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/community/livestreams"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        live
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://discord.gg/ppy"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        development
+                    </a>
+                </li>
+                    </ul>
+    </li>
+    <li class="navbar-mobile-item dropdown">
+        <a
+            data-toggle="dropdown"
+            class="navbar-mobile-item__main dropdown-toggle"
+            href="https://new.ainu.pw/store/listing"
+        >
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+            store
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="expand-store">
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/store/listing"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        listing
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/store/cart"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        cart
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/store/orders"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        order history
+                    </a>
+                </li>
+                    </ul>
+    </li>
+    <li class="navbar-mobile-item dropdown">
+        <a
+            data-toggle="dropdown"
+            class="navbar-mobile-item__main dropdown-toggle"
+            href="https://new.ainu.pw/help/wiki/Main_Page"
+        >
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+            help
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="expand-help">
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/help/wiki/Main_Page"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        wiki
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/help/wiki/FAQ"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        faq
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/help/wiki/Rules"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        rules
+                    </a>
+                </li>
+                                            <li>
+                    <a
+                        class="navbar-mobile-item__submenu"
+                        href="https://new.ainu.pw/help/wiki/Help_Centre"
+                        data-toggle="collapse"
+                        data-target=".js-navbar-mobile--menu"
+                    >
+                        <span class="navbar-mobile-item__icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+
+                        no, really, i need help!
+                    </a>
+                </li>
+                    </ul>
+    </li>
+            <li class="navbar-mobile-item dropdown">
+    <a
+        data-toggle="dropdown"
+        class="navbar-mobile-item__main dropdown-toggle"
+        href="#"
+    >
+        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+            <i class="fas fa-chevron-right"></i>
+        </span>
+
+        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+            <i class="fas fa-chevron-down"></i>
+        </span>
+
+        <span
+            class="navbar-mobile-item__locale-flag"
+            style="background-image: url('/static/osu-web/images/flags/GB.png')"
+        ></span>
+
+        English
+    </a>
+
+    <ul class="dropdown-menu">
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=en"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/GB.png')"
+                    ></span>
+
+                    English
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=be"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/BY.png')"
+                    ></span>
+
+                    Беларуская мова
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=bg"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/BG.png')"
+                    ></span>
+
+                    Български
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=cs"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/CZ.png')"
+                    ></span>
+
+                    Česky
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=da"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/DK.png')"
+                    ></span>
+
+                    Dansk
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=de"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/DE.png')"
+                    ></span>
+
+                    Deutsch
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=el"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/GR.png')"
+                    ></span>
+
+                    Ελληνικά
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=es"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/ES.png')"
+                    ></span>
+
+                    Español
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=fi"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/FI.png')"
+                    ></span>
+
+                    Suomi
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=fr"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/FR.png')"
+                    ></span>
+
+                    Français
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=hu"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/HU.png')"
+                    ></span>
+
+                    Magyar
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=id"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/ID.png')"
+                    ></span>
+
+                    Bahasa Indonesia
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=it"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/IT.png')"
+                    ></span>
+
+                    Italiano
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=ja"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/JP.png')"
+                    ></span>
+
+                    日本語
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=ko"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/KR.png')"
+                    ></span>
+
+                    한국어
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=nl"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/NL.png')"
+                    ></span>
+
+                    Nederlands
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=no"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/NO.png')"
+                    ></span>
+
+                    Norsk
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=pl"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/PL.png')"
+                    ></span>
+
+                    Polski
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=pt"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/PT.png')"
+                    ></span>
+
+                    Português
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=pt-br"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/BR.png')"
+                    ></span>
+
+                    Português (Brasil)
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=ro"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/RO.png')"
+                    ></span>
+
+                    Română
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=ru"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/RU.png')"
+                    ></span>
+
+                    Русский
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=sk"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/SK.png')"
+                    ></span>
+
+                    Slovenčina
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=sv"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/SE.png')"
+                    ></span>
+
+                    Svenska
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=th"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/TH.png')"
+                    ></span>
+
+                    ไทย
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=tr"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/TR.png')"
+                    ></span>
+
+                    Türkçe
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=vi"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/VN.png')"
+                    ></span>
+
+                    Tiếng Việt
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=zh"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/CN.png')"
+                    ></span>
+
+                    简体中文
+                </a>
+            </li>
+                    <li>
+                <a
+                    class="navbar-mobile-item__submenu"
+                    href="https://new.ainu.pw/set-locale?locale=zh-tw"
+                    data-remote="1"
+                    data-method="POST"
+                    data-toggle="collapse"
+                    data-target=".js-navbar-mobile--menu"
+                >
+                    <span class="navbar-mobile-item__icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span
+                        class="navbar-mobile-item__locale-flag"
+                        style="background-image: url('/static/osu-web/images/flags/TW.png')"
+                    ></span>
+
+                    繁體中文（台灣）
+                </a>
+            </li>
+            </ul>
+</li>
+        </ul>
+    </div>
+
+    </div>
+
+<div
+    class="
+    js-pinned-header
+    hidden-xs
+    no-print
+    nav2-header
+    
+">
+    <div class="nav2-header__body">
+        <div class="nav2-header__menu-bg js-nav2--menu-bg" data-visibility="hidden"></div>
+        <div class="nav2-header__triangles"></div>
+        <div class="nav2-header__transition-overlay"></div>
+
+        <div class="osu-page">
+            <div class="nav2 js-nav-button">
+    <div class="nav2__colgroup nav2__colgroup--menu js-nav-button--container">
+        <div class="nav2__col nav2__col--logo">
+            <a href="https://new.ainu.pw" class="nav2__logo-link">
+                <div class="nav2__logo nav2__logo--bg"></div>
+                <div class="nav2__logo"></div>
+            </a>
+        </div>
+
+                    <div class="nav2__col nav2__col--menu">
+                <a
+                    class="nav2__menu-link-main js-menu"
+                    href="https://new.ainu.pw"
+                    data-menu-target="nav2-menu-popup-home"
+                    data-menu-show-delay="0"
+                >
+                    <span class="nav2__menu-link-main-text">
+                        home
+
+                                            </span>
+                </a>
+
+                <div class="nav2__menu-popup">
+                    <div
+                        class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        "
+                        data-menu-id="nav2-menu-popup-home"
+                        data-visibility="hidden"
+                    >
+                                                                                                                                            <a class="simple-menu__item u-section-home--before-bg-normal" href="https://new.ainu.pw/news">
+                                news
+                            </a>
+                                                                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://new.ainu.pw/help/wiki/Team">
+                                team
+                            </a>
+                                                                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://new.ainu.pw/changelog">
+                                changelog
+                            </a>
+                                                                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://new.ainu.pw/download">
+                                download
+                            </a>
+                                                                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://new.ainu.pw/search">
+                                search
+                            </a>
+                                            </div>
+                </div>
+            </div>
+                    <div class="nav2__col nav2__col--menu">
+                <a
+                    class="nav2__menu-link-main js-menu"
+                    href="https://new.ainu.pw/beatmapsets"
+                    data-menu-target="nav2-menu-popup-beatmaps"
+                    data-menu-show-delay="0"
+                >
+                    <span class="nav2__menu-link-main-text">
+                        beatmaps
+
+                                            </span>
+                </a>
+
+                <div class="nav2__menu-popup">
+                    <div
+                        class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        "
+                        data-menu-id="nav2-menu-popup-beatmaps"
+                        data-visibility="hidden"
+                    >
+                                                                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://new.ainu.pw/beatmapsets">
+                                listing
+                            </a>
+                                                                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://new.ainu.pw/beatmaps/artists">
+                                featured artists
+                            </a>
+                                                                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://new.ainu.pw/beatmaps/packs">
+                                packs
+                            </a>
+                                            </div>
+                </div>
+            </div>
+                    <div class="nav2__col nav2__col--menu">
+                <a
+                    class="nav2__menu-link-main js-menu"
+                    href="https://new.ainu.pw/rankings/osu/performance"
+                    data-menu-target="nav2-menu-popup-rankings"
+                    data-menu-show-delay="0"
+                >
+                    <span class="nav2__menu-link-main-text">
+                        rankings
+
+                                            </span>
+                </a>
+
+                <div class="nav2__menu-popup">
+                    <div
+                        class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        "
+                        data-menu-id="nav2-menu-popup-rankings"
+                        data-visibility="hidden"
+                    >
+                                                                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://new.ainu.pw/rankings/osu/performance">
+                                performance
+                            </a>
+                                                                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://new.ainu.pw/rankings/osu/charts">
+                                spotlights
+                            </a>
+                                                                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://new.ainu.pw/rankings/osu/score">
+                                score
+                            </a>
+                                                                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://new.ainu.pw/rankings/osu/country">
+                                country
+                            </a>
+                                                                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://new.ainu.pw/p/kudosu">
+                                kudosu
+                            </a>
+                                            </div>
+                </div>
+            </div>
+                    <div class="nav2__col nav2__col--menu">
+                <a
+                    class="nav2__menu-link-main js-menu"
+                    href="https://new.ainu.pw/community/forums"
+                    data-menu-target="nav2-menu-popup-community"
+                    data-menu-show-delay="0"
+                >
+                    <span class="nav2__menu-link-main-text">
+                        community
+
+                                            </span>
+                </a>
+
+                <div class="nav2__menu-popup">
+                    <div
+                        class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        "
+                        data-menu-id="nav2-menu-popup-community"
+                        data-visibility="hidden"
+                    >
+                                                                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://new.ainu.pw/community/forums">
+                                forums
+                            </a>
+                                                                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://new.ainu.pw/community/chat">
+                                chat
+                            </a>
+                                                                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://new.ainu.pw/community/contests">
+                                contests
+                            </a>
+                                                                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://new.ainu.pw/community/tournaments">
+                                tournaments
+                            </a>
+                                                                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://new.ainu.pw/community/livestreams">
+                                live
+                            </a>
+                                                                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://discord.gg/ppy">
+                                development
+                            </a>
+                                            </div>
+                </div>
+            </div>
+                    <div class="nav2__col nav2__col--menu">
+                <a
+                    class="nav2__menu-link-main js-menu"
+                    href="https://new.ainu.pw/store/listing"
+                    data-menu-target="nav2-menu-popup-store"
+                    data-menu-show-delay="0"
+                >
+                    <span class="nav2__menu-link-main-text">
+                        store
+
+                                            </span>
+                </a>
+
+                <div class="nav2__menu-popup">
+                    <div
+                        class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        "
+                        data-menu-id="nav2-menu-popup-store"
+                        data-visibility="hidden"
+                    >
+                                                                                <a class="simple-menu__item u-section-store--before-bg-normal" href="https://new.ainu.pw/store/listing">
+                                listing
+                            </a>
+                                                                                <a class="simple-menu__item u-section-store--before-bg-normal" href="https://new.ainu.pw/store/cart">
+                                cart
+                            </a>
+                                                                                <a class="simple-menu__item u-section-store--before-bg-normal" href="https://new.ainu.pw/store/orders">
+                                order history
+                            </a>
+                                            </div>
+                </div>
+            </div>
+                    <div class="nav2__col nav2__col--menu">
+                <a
+                    class="nav2__menu-link-main js-menu"
+                    href="https://new.ainu.pw/help/wiki/Main_Page"
+                    data-menu-target="nav2-menu-popup-help"
+                    data-menu-show-delay="0"
+                >
+                    <span class="nav2__menu-link-main-text">
+                        help
+
+                                            </span>
+                </a>
+
+                <div class="nav2__menu-popup">
+                    <div
+                        class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        "
+                        data-menu-id="nav2-menu-popup-help"
+                        data-visibility="hidden"
+                    >
+                                                                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://new.ainu.pw/help/wiki/Main_Page">
+                                wiki
+                            </a>
+                                                                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://new.ainu.pw/help/wiki/FAQ">
+                                faq
+                            </a>
+                                                                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://new.ainu.pw/help/wiki/Rules">
+                                rules
+                            </a>
+                                                                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://new.ainu.pw/help/wiki/Help_Centre">
+                                no, really, i need help!
+                            </a>
+                                            </div>
+                </div>
+            </div>
+        
+        <div class="nav2__col nav2__col--menu js-react--quick-search">
+            <a
+                href="https://new.ainu.pw/search"
+                class="
+                    nav2__menu-link-main
+                    nav2__menu-link-main--search
+                    
+                "
+            >
+                <span class="fas fa-search"></span>
+            </a>
+        </div>
+    </div>
+    <div class="nav2__colgroup js-nav-button--container">
+        <div class="nav2__col js-nav-button--item">
+            <a
+                href="https://new.ainu.pw/help/wiki/Twitter"
+                class="nav-button nav-button--social"
+                title="Twitter"
+            >
+                <span class="fab fa-twitter"></span>
+            </a>
+        </div>
+
+        <div class="nav2__col">
+            <a
+                href="https://new.ainu.pw/support"
+                class="nav-button nav-button--support"
+                title="support the game"
+            >
+                <span class="fas fa-heart"></span>
+            </a>
+        </div>
+
+        <div class="nav2__col">
+            <button
+                class="nav-button nav-button--stadium js-click-menu"
+                data-click-menu-target="nav2-locale-popup"
+            >
+                <img
+                    class="nav-button__locale-current-flag"
+                    alt="en"
+                    src="/static/osu-web/images/flags/GB.png"
+                >
+            </button>
+
+            <div class="nav-click-popup">
+                <div
+                    class="simple-menu simple-menu--nav2 simple-menu--nav2-locales js-click-menu js-nav2--centered-popup"
+                    data-click-menu-id="nav2-locale-popup"
+                    data-visibility="hidden"
+                >
+                    <div class="simple-menu__content">
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    simple-menu__item--active
+                                "
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/GB.png"
+                                        alt="en"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    English
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=be"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/BY.png"
+                                        alt="be"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Беларуская мова
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=bg"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/BG.png"
+                                        alt="bg"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Български
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=cs"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/CZ.png"
+                                        alt="cs"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Česky
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=da"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/DK.png"
+                                        alt="da"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Dansk
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=de"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/DE.png"
+                                        alt="de"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Deutsch
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=el"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/GR.png"
+                                        alt="el"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Ελληνικά
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=es"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/ES.png"
+                                        alt="es"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Español
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=fi"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/FI.png"
+                                        alt="fi"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Suomi
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=fr"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/FR.png"
+                                        alt="fr"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Français
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=hu"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/HU.png"
+                                        alt="hu"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Magyar
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=id"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/ID.png"
+                                        alt="id"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Bahasa Indonesia
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=it"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/IT.png"
+                                        alt="it"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Italiano
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=ja"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/JP.png"
+                                        alt="ja"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    日本語
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=ko"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/KR.png"
+                                        alt="ko"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    한국어
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=nl"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/NL.png"
+                                        alt="nl"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Nederlands
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=no"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/NO.png"
+                                        alt="no"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Norsk
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=pl"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/PL.png"
+                                        alt="pl"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Polski
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=pt"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/PT.png"
+                                        alt="pt"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Português
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=pt-br"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/BR.png"
+                                        alt="pt-br"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Português (Brasil)
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=ro"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/RO.png"
+                                        alt="ro"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Română
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=ru"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/RU.png"
+                                        alt="ru"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Русский
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=sk"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/SK.png"
+                                        alt="sk"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Slovenčina
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=sv"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/SE.png"
+                                        alt="sv"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Svenska
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=th"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/TH.png"
+                                        alt="th"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    ไทย
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=tr"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/TR.png"
+                                        alt="tr"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Türkçe
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=vi"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/VN.png"
+                                        alt="vi"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    Tiếng Việt
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=zh"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/CN.png"
+                                        alt="zh"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    简体中文
+                                </span>
+                            </button>
+                                                    <button
+                                type="button"
+                                class="
+                                    simple-menu__item
+                                    
+                                "
+                                                                    data-url="https://new.ainu.pw/set-locale?locale=zh-tw"
+                                    data-remote="1"
+                                    data-method="POST"
+                                                            >
+                                <span class="nav2-locale-item">
+                                    <img
+                                        src="/static/osu-web/images/flags/TW.png"
+                                        alt="zh-tw"
+                                        class="nav2-locale-item__flag"
+                                    >
+
+                                    繁體中文（台灣）
+                                </span>
+                            </button>
+                                            </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="nav2__col nav2__col--avatar">
+            <button
+        class="avatar
+        avatar--nav2
+        js-current-user-avatar
+        js-click-menu
+        js-user-login--menu
+        js-user-header avatar--guest"
+        data-click-menu-target="nav2-login-box"
+        title="click to sign in"
+    ></button>
+
+            <div class="nav-click-popup nav-click-popup--user js-user-header-popup">
+                            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+    <div class="js-pinned-header-sticky sticky-header js-sync-height--reference"
+     data-sync-height-target="sticky-header"
+     data-visibility="hidden"
+     data-visibility-animation="none"
+>
+    <div class="osu-page">
+        
+        
+            </div>
+</div>
+</div>
+
+    <div class="login-box">
+    <div
+        class="
+            login-box__content
+            js-click-menu
+            js-nav2--centered-popup
+            js-nav2--login-box
+        "
+        data-click-menu-id="nav2-login-box"
+        data-visibility="hidden"
+    >
+        <form method="POST" action="https://new.ainu.pw/session" accept-charset="UTF-8" class="
+                login-box__section
+                login-box__section--login
+                js-login-form
+                js-nav-popup--submenu
+            " data-remote><input name="_token" type="hidden" value="85aCF268SLpaYcDKCdDDfmM6tnE3X27c0WaARq3Z">
+            <h2 class="login-box__row login-box__row--title">Sign In To Proceed</h2>
+
+            <div class="login-box__row login-box__row--inputs">
+                <input
+                    class="login-box__form-input js-login-form-input js-nav2--autofocus"
+                    name="username"
+                    placeholder="username"
+                    required
+                />
+                <input
+                    class="login-box__form-input js-login-form-input"
+                    name="password"
+                    type="password"
+                    placeholder="password"
+                    required
+                />
+            </div>
+
+            <div class="login-box__row login-box__row--error js-login-form--error"></div>
+
+            <div class="login-box__row">
+                <a href="https://new.ainu.pw/password-reset" class="login-box__link js-nav--hide">
+                    I&#039;ve forgotten my details
+                </a>
+            </div>
+
+            <div class="login-box__row login-box__row--actions">
+                <div class="login-box__action">
+                    <button
+                        class="btn-osu-big btn-osu-big--nav-popup"
+                        data-disable-with="Signing in..."
+                    >
+                        <div class="btn-osu-big__content">
+                            <span class="btn-osu-big__left">
+                                Sign in
+                            </span>
+
+                            <span class="fas fa-fw fa-sign-in-alt"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="login-box__section login-box__section--register">
+            <h2 class="login-box__row login-box__row--title">
+                Don&#039;t have an account?
+            </h2>
+
+            <div class="login-box__row">
+                Download osu! to create your own account!
+            </div>
+
+            <div class="login-box__row login-box__row--actions">
+                <div class="login-box__action">
+                    <a href="https://new.ainu.pw/download" class="btn-osu-big btn-osu-big--nav-popup">
+                        <div class="btn-osu-big__content">
+                            <span class="btn-osu-big__left">
+                                Download
+                            </span>
+
+                            <span class="fas fa-fw fa-download"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="js-user-verification--reference"></div>
+
+            <div class="osu-page osu-page--notification-banners js-notification-banners">
+                            </div>
+{{ end }}
+{{ end }}
