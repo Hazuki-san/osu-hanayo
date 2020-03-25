@@ -42,12 +42,14 @@ var funcMap = template.FuncMap{
 	// navbarItem is a function to generate an item in the navbar.
 	// The reason why this exists is that I wanted to have the currently
 	// selected element in the navbar having the "active" class.
-	"navbarItem": func(currentPath, name, path string) template.HTML {
-		var act string
-		if path == currentPath {
-			act = "active "
-		}
-		return template.HTML(fmt.Sprintf(`<a class="%sitem" href="%s">%s</a>`, act, path, name))
+	"navbarItem": func(fuckthisshit, name, path string) template.HTML {
+		return template.HTML(fmt.Sprintf(`<a href="%s" class="landing-nav__link %s">%s</a>`, path, fuckthisshit, name))
+	},
+	"navbarCategoriesMobile": func(name, path string) template.HTML {
+		return template.HTML(fmt.Sprintf(`<li class="navbar-mobile-item dropdown"><a data-toggle="dropdown" class="navbar-mobile-item__main dropdown-toggle" href="%s"><span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed"><i class="fas fa-chevron-right"></i></span><span class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened"><i class="fas fa-chevron-down"></i></span>%s</a><ul class="dropdown-menu" role="menu" aria-labelledby="expand-%s">`, path, name, name))
+	},
+	"navbarItemMobile": func(name, path string) template.HTML {
+		return template.HTML(fmt.Sprintf(`<li><a class="navbar-mobile-item__submenu" href="%s" data-toggle="collapse" data-target=".js-navbar-mobile--menu"><span class="navbar-mobile-item__icon"><i class="fas fa-chevron-right"></i></span>%s</a></li>`, path, name))
 	},
 	// curryear returns the current year.
 	"curryear": func() int {
@@ -154,6 +156,26 @@ var funcMap = template.FuncMap{
 			}
 		}
 		return template.HTML(fmt.Sprintf(`<i class="%s flag"></i>%s`, strings.ToLower(s), c))
+	},
+	"navbarCountry": func(s string, name bool) template.HTML {
+		var c string
+		if name {
+			c = countryReadable(s)
+			if c == "" {
+				return "__"
+			}
+		}
+		return template.HTML(fmt.Sprintf(`<img src="/static/osu-web/images/flags/%s.png" alt="%s" class="nav2-locale-item__flag">`, s, c))
+	},
+	"about": func(s string, name bool) template.HTML {
+		var c string
+		if name {
+			c = countryReadable(s)
+			if c == "" {
+				return "__"
+			}
+		}
+		return template.HTML(fmt.Sprintf(`<td class="osu-md__table-data osu-md__table-data--left" style="text-align: left"><img class="osu-md__image" src="/static/osu-web/images/flags/%s.png" alt="" title="%s" width="16" height="11"/>`, s, c))
 	},
 	// humanize pretty-prints a float, e.g.
 	//     humanize(1000) == "1,000"
