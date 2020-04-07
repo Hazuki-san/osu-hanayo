@@ -30,12 +30,12 @@
 		{{ $user := . }}
 		<script id="json-user" type="application/json">
 		{
-  "id": {{ .id }},
+  "id": 1000,
   "username": "{{ .username }}",
   "join_date": "2019-09-17T15:36:04+00:00",
   "country": {
-    "code": "{{ .country }}",
-    "name": "{{ .country }}"
+    "code": "TH",
+    "name": "Thailand"
   },
   "avatar_url": "{{ config "AvatarURL" }}/{{ .id }}",
   "is_supporter": false,
@@ -71,14 +71,11 @@
     "medals",
     "historical"
   ],
-  {{ $d := qb "SELECT type, value FROM profile_backgrounds WHERE uid = ? LIMIT 1" .id }}
-  {{ $type  := or $d.type.Int -1 }}
-  {{ $value := or $d.value.String "" }}
-  "cover_url": {{ if and (eq $type 1) $value }}"https://bigtu.vip/static/profbackgrounds/{{ $value }}"{{ else }}"https://new.bigtu.vip/static/public/images/headers/profile-covers/c4.jpg"{{ end }},
+  "cover_url": "https://new.ainu.pw/static/public/images/headers/profile-covers/c4.jpg",
   "cover": {
-    "custom_url": {{ if eq $type 1 }}true{{ else }}false{{ end }},
-    "url": {{ if and (eq $type 1) $value }}"https://bigtu.vip/static/profbackgrounds/{{ $value }}"{{ else }}"https://new.bigtu.vip/static/public/images/headers/profile-covers/c4.jpg"{{ end }},
-    "id": "{{ if eq $type 1 }}null{{ else }}4{{ end }}"
+    "custom_url": true,
+    "url": "https://new.ainu.pw/static/public/images/headers/profile-covers/c4.jpg",
+    "id": "4"
   },
   "kudosu": {
     "total": null,
@@ -151,6 +148,6 @@
 		</script>
     
 		<script>
-			turbolinksReload.load('https://bigtu.vip/static/--copy--/osu.ppy.sh/users/../js/react/profile-paged3d5.js')
+			turbolinksReload.load('https://new.ainu.pw/static/osu-web/js/react/profile-page7d9d.js')
 		</script>
 {{ end }}{{ end }}{{ end }}
