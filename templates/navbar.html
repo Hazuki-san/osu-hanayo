@@ -1,0 +1,1395 @@
+{{ define "nav" }}
+<!-- Mobile -->
+<div id="overlay" class="blackout blackout--overlay" style="display: none;"></div>
+<div class="blackout js-blackout" data-visibility="hidden"></div>
+{{ if not .Context.User.ID }}
+<div class="visible-xs no-print js-header--main">
+    <div class="navbar-mobile-before"></div>
+
+    <div class="navbar-mobile" role="navigation">
+        <div class="navbar-mobile__header-section">
+            <a class="navbar-mobile__logo" href="https://osu.ppy.sh/home"></a>
+            <span class="navbar-mobile__brand u-ellipsis-overflow">
+                {{ if .TitleBar }}{{ .TitleBar }}{{ end }}
+            </span>
+        </div>
+
+        <div class="navbar-mobile__header-section navbar-mobile__header-section--buttons">
+            <button type="button" class="navbar-mobile__toggle js-click-menu" data-click-menu-target="mobile-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-mobile__toggle-icon">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div class="mobile-menu js-click-menu u-fancy-scrollbar" data-click-menu-id="mobile-menu" data-visibility="hidden" style="display: none;">
+        <div class="mobile-menu__content">
+            <div class="mobile-menu__tabs">
+                <button title="click to sign in" class="mobile-menu-tab mobile-menu-tab--user js-navbar-mobile--top-icon js-user-link">
+                    <span class="avatar avatar--full-rounded avatar--guest"></span>
+                </button>
+
+                <button class="mobile-menu-tab js-click-menu" data-click-menu-target="mobile-nav">
+                    <span class="fas fa-sitemap"></span>
+                </button>
+
+            </div>
+
+            <div class="mobile-menu__item js-click-menu" data-click-menu-id="mobile-user" data-visibility="hidden">
+                <div class="navbar-mobile-item js-click-menu--close">
+                    <a class="js-user-link navbar-mobile-item__main navbar-mobile-item__main--user" href="#" title="click to sign in">
+                        <span class="avatar avatar--guest avatar--navbar-mobile"></span>
+
+                        Guest
+                    </a>
+                </div>
+            </div>
+
+            <div class="mobile-menu__item js-click-menu" data-click-menu-id="mobile-nav" data-visibility="hidden">
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-home" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/home">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        home
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-home" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/news">
+                                news
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Team">
+                                team
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/changelog">
+                                changelog
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/download">
+                                download
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/search">
+                                search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-beatmaps" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/beatmapsets">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        beatmaps
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-beatmaps" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmapsets">
+                                listing
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmaps/artists">
+                                featured artists
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmaps/packs">
+                                packs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-rankings" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/rankings/osu/performance">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        rankings
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-rankings" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/performance">
+                                performance
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/charts">
+                                spotlights
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/score">
+                                score
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/country">
+                                country
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/p/kudosu">
+                                kudosu
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-community" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/community/forums">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        community
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-community" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/forums">
+                                forums
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/chat">
+                                chat
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/contests">
+                                contests
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/tournaments">
+                                tournaments
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/livestreams">
+                                live
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://discord.gg/ppy">
+                                development
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-store" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/store/listing">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        store
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-store" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/store/listing">
+                                listing
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/store/cart">
+                                cart
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/store/orders">
+                                order history
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-help" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/help/wiki/Main_Page">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        help
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-help" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Main_Page">
+                                wiki
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/FAQ">
+                                faq
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Rules">
+                                rules
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Help_Centre">
+                                no, really, i need help!
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar-mobile-item">
+                    <button class="navbar-mobile-item__main js-click-menu" data-click-menu-target="nav-mobile-locale">
+        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+            <i class="fas fa-chevron-right"></i>
+        </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+            <i class="fas fa-chevron-down"></i>
+        </span>
+
+                        <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/GB.png')"></span>
+
+                        English
+                    </button>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-locale" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=en" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/GB.png')"></span>
+
+                                English
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=ar" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/SA.png')"></span>
+
+                                اَلْعَرَبِيَّةُ‎
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=be" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/BY.png')"></span>
+
+                                Беларуская мова
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=bg" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/BG.png')"></span>
+
+                                Български
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=cs" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/CZ.png')"></span>
+
+                                Česky
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=da" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/DK.png')"></span>
+
+                                Dansk
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=de" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/DE.png')"></span>
+
+                                Deutsch
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=el" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/GR.png')"></span>
+
+                                Ελληνικά
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=es" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/ES.png')"></span>
+
+                                Español
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=fi" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/FI.png')"></span>
+
+                                Suomi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=fr" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/FR.png')"></span>
+
+                                Français
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=hu" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/HU.png')"></span>
+
+                                Magyar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=id" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/ID.png')"></span>
+
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=it" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/IT.png')"></span>
+
+                                Italiano
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=ja" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/JP.png')"></span>
+
+                                日本語
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=ko" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/KR.png')"></span>
+
+                                한국어
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=nl" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/NL.png')"></span>
+
+                                Nederlands
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=no" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/NO.png')"></span>
+
+                                Norsk
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=pl" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/PL.png')"></span>
+
+                                Polski
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=pt" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/PT.png')"></span>
+
+                                Português
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=pt-br" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/BR.png')"></span>
+
+                                Português (Brasil)
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=ro" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/RO.png')"></span>
+
+                                Română
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=ru" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/RU.png')"></span>
+
+                                Русский
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=sk" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/SK.png')"></span>
+
+                                Slovenčina
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=sv" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/SE.png')"></span>
+
+                                Svenska
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=th" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/TH.png')"></span>
+
+                                ไทย
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=tr" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/TR.png')"></span>
+
+                                Türkçe
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=uk" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/UA.png')"></span>
+
+                                українська мова
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=vi" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/VN.png')"></span>
+
+                                Tiếng Việt
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=zh" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/CN.png')"></span>
+
+                                简体中文
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/set-locale?locale=zh-tw" data-remote="1" data-method="POST">
+                                <span class="navbar-mobile-item__locale-flag" style="background-image: url('/images/flags/TW.png')"></span>
+
+                                繁體中文（台灣）
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{{ else }}
+<div class="visible-xs no-print js-header--main">
+    <div class="navbar-mobile-before"></div>
+
+    <div class="navbar-mobile" role="navigation">
+        <div class="navbar-mobile__header-section">
+            <a class="navbar-mobile__logo" href="https://new.ainu.pw"></a>
+            <span class="navbar-mobile__brand u-ellipsis-overflow">
+                {{ if .TitleBar }}{{ .TitleBar }}{{ end }}
+            </span>
+        </div>
+
+        <div class="navbar-mobile__header-section navbar-mobile__header-section--buttons">
+            <button type="button" class="navbar-mobile__toggle js-click-menu js-click-menu--active" data-click-menu-target="mobile-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-mobile__toggle-icon">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    {{ if .Context.User.ID }}
+    <div class="mobile-menu js-click-menu u-fancy-scrollbar js-click-menu--active" data-click-menu-id="mobile-menu" data-visibility="visible" style="display: block;">
+        <div class="mobile-menu__content">
+            <div class="mobile-menu__tabs">
+                <a href="https://osu.ppy.sh/users/13910881" data-click-menu-target="mobile-user" class="mobile-menu-tab mobile-menu-tab--user js-click-menu">
+                    <span class="avatar avatar--full-rounded" style="background-image: url('https://a.ainu.pw/{{ .Context.User.ID }}');"></span>
+                </a>
+
+                <button class="mobile-menu-tab js-click-menu js-click-menu--active" data-click-menu-target="mobile-nav">
+                    <span class="fas fa-sitemap"></span>
+                </button>
+
+                <button class="mobile-menu-tab js-click-menu" data-click-menu-target="mobile-search">
+                    <span class="fas fa-search"></span>
+                </button>
+
+                <a class="mobile-menu-tab js-click-menu js-react--chat-icon" data-chat-icon="{&quot;type&quot;:&quot;mobile&quot;}" href="https://osu.ppy.sh/community/chat" data-react-turbolinks-loaded="1"><span class="notification-icon notification-icon--mobile"><i class="fas fa-comment-alt"></i><span class="notification-icon__count">0</span></span></a>
+
+                <button class="mobile-menu-tab js-click-menu js-react--notification-icon" data-click-menu-target="mobile-notification" data-notification-icon="{&quot;type&quot;:&quot;mobile&quot;}" data-react-turbolinks-loaded="1"><span class="notification-icon notification-icon--mobile"><i class="fas fa-inbox"></i><span class="notification-icon__count">0</span></span></button>
+            </div>
+
+            <div class="mobile-menu__item js-click-menu" data-click-menu-id="mobile-user" data-visibility="hidden">
+                <div class="navbar-mobile-item js-click-menu--close">
+                    <div class="navbar-mobile-item__main js-react--user-card" data-user="{&quot;id&quot;:{{ .Context.User.ID }},&quot;username&quot;:&quot;{{ .Context.User.ID }}&quot;,&quot;join_date&quot;:&quot;2019-02-09T20:05:55+00:00&quot;,&quot;country&quot;:{&quot;code&quot;:&quot;DK&quot;,&quot;name&quot;:&quot;Denmark&quot;,&quot;avatar_url&quot;:&quot;https:\/\/a.ainu.pw\/{{ .Context.User.ID }}?1552151765.jpeg&quot;,&quot;is_supporter&quot;:false,&quot;has_supported&quot;:false,&quot;is_restricted&quot;:false,&quot;is_gmt&quot;:false,&quot;is_nat&quot;:false,&quot;is_bng&quot;:false,&quot;is_full_bn&quot;:false,&quot;is_limited_bn&quot;:false,&quot;is_bot&quot;:false,&quot;is_active&quot;:true,&quot;is_moderator&quot;:false,&quot;interests&quot;:&quot;Developing&quot;,&quot;occupation&quot;:&quot;Imagine imaging&quot;,&quot;title&quot;:null,&quot;location&quot;:null,&quot;last_visit&quot;:&quot;2020-03-13T20:17:00+00:00&quot;,&quot;is_online&quot;:true,&quot;twitter&quot;:null,&quot;lastfm&quot;:null,&quot;skype&quot;:null,&quot;website&quot;:null,&quot;discord&quot;:null,&quot;playstyle&quot;:[&quot;mouse&quot;,&quot;keyboard&quot;],&quot;playmode&quot;:&quot;osu&quot;,&quot;pm_friends_only&quot;:true,&quot;post_count&quot;:0,&quot;profile_colour&quot;:null,&quot;profile_order&quot;:[&quot;top_ranks&quot;,&quot;historical&quot;,&quot;recent_activity&quot;,&quot;me&quot;,&quot;medals&quot;,&quot;beatmaps&quot;,&quot;kudosu&quot;],&quot;cover_url&quot;:&quot;https:\/\/osu.ppy.sh\/images\/headers\/profile-covers\/c2.jpg&quot;,&quot;cover&quot;:{&quot;custom_url&quot;:null,&quot;url&quot;:&quot;https:\/\/osu.ppy.sh\/images\/headers\/profile-covers\/c2.jpg&quot;,&quot;id&quot;:&quot;2&quot;},&quot;kudosu&quot;:{&quot;total&quot;:0,&quot;available&quot;:0},&quot;max_blocks&quot;:25,&quot;max_friends&quot;:250,&quot;blocks&quot;:[],&quot;friends&quot;:[{&quot;target_id&quot;:2070907,&quot;relation_type&quot;:&quot;friend&quot;,&quot;mutual&quot;:0},{&quot;target_id&quot;:10650020,&quot;relation_type&quot;:&quot;friend&quot;,&quot;mutual&quot;:1},{&quot;target_id&quot;:10688796,&quot;relation_type&quot;:&quot;friend&quot;,&quot;mutual&quot;:1},{&quot;target_id&quot;:11249506,&quot;relation_type&quot;:&quot;friend&quot;,&quot;mutual&quot;:1},{&quot;target_id&quot;:13049090,&quot;relation_type&quot;:&quot;friend&quot;,&quot;mutual&quot;:1},{&quot;target_id&quot;:14475860,&quot;relation_type&quot;:&quot;friend&quot;,&quot;mutual&quot;:1}],&quot;is_admin&quot;:false,&quot;unread_pm_count&quot;:0,&quot;user_preferences&quot;:{&quot;ranking_expanded&quot;:true}}" data-react-turbolinks-loaded="1"><div class="user-card user-card--highlightable user-card--card"><a href="https://osu.ppy.sh/users/13910881" class="user-card__background-container"><img class="user-card__background" src="https://osu.ppy.sh/images/headers/profile-covers/c2.jpg"><div class="user-card__background-overlay user-card__background-overlay--online"></div></a><div class="user-card__card"><div class="user-card__content user-card__content--details"><div class="user-card__user"><div class="user-card__avatar-space"><div class="user-card__avatar-spinner user-card__avatar-spinner--loaded"><div class="la-ball-clip-rotate la-ball-clip-rotate--loaded"></div></div><img class="user-card__avatar user-card__avatar--loaded" src="https://a.ainu.pw/{{ .Context.User.ID }}"></div></div><div class="user-card__details"><div class="user-card__icons"><a class="user-card__icon user-card__icon--flag" href="https://osu.ppy.sh/rankings/osu/performance"><span class="flag-country flag-country--full" title="Denmark" style="background-image: url(&quot;/images/flags/DK.png&quot;);"></span></a><div class="user-card__icon"></div></div><div class="user-card__username"><div class="u-ellipsis-overflow">_Ryoko</div></div></div></div><div class="user-card__content user-card__content--status"><div class="user-card__status"><div class="user-card__status-icon-container"><div class="user-card__status-icon user-card__status-icon--online"></div></div><div class="user-card__status-messages"><span class="user-card__status-message user-card__status-message--sub u-ellipsis-overflow"></span><span class="user-card__status-message u-ellipsis-overflow">Online</span></div></div><div class="user-card__icons user-card__icons--menu"></div></div></div></div></div>
+
+                    <a class="navbar-mobile-item__main" href="https://ainu.pw/users/{{ .Context.User.ID }}">
+                        My Profile
+                    </a>
+
+                    <a class="navbar-mobile-item__main" href="https://osu.ppy.sh/home/friends">
+                        Friends
+                    </a>
+
+                    <a class="navbar-mobile-item__main" href="https://osu.ppy.sh/home/account/edit">
+                        Settings
+                    </a>
+
+                    <a class="navbar-mobile-item__main" href="https://ainu.pw/logout?k={{ printf "%s" (.Session.Get "logout" ) }}" onclick="return confirm('Are you sure you want to sign out? :(');">Sign out</a>
+
+                </div>
+            </div>
+
+            <div class="mobile-menu__item js-click-menu js-click-menu--active" data-click-menu-id="mobile-nav" data-visibility="visible">
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-home" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/home">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        home
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-home" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Team">
+                                team
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/download">
+                                download
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-beatmaps" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/beatmapsets">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        beatmaps
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-beatmaps" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmapsets">
+                                listing
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmaps/artists">
+                                featured artists
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-rankings" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/rankings/osu/performance">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        rankings
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-rankings" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/performance">
+                                performance
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/score">
+                                score
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-community" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/community/forums">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        community
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-community" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/chat">
+                                chat
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://discord.gg/ppy">
+                                development
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-help" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/help/wiki/Main_Page">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        help
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-help" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Main_Page">
+                                wiki
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/FAQ">
+                                faq
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Rules">
+                                rules
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Help_Centre">
+                                no, really, i need help!
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ else }}
+    <div class="mobile-menu js-click-menu u-fancy-scrollbar js-click-menu--active" data-click-menu-id="mobile-menu" data-visibility="visible" style="display: block;">
+        <div class="mobile-menu__content">
+            <div class="mobile-menu__tabs">
+                <button title="click to sign in" class="mobile-menu-tab mobile-menu-tab--user js-navbar-mobile--top-icon js-user-link">
+                    <span class="avatar avatar--full-rounded avatar--guest"></span>
+                </button>
+
+                <button class="mobile-menu-tab js-click-menu js-click-menu--active" data-click-menu-target="mobile-nav">
+                    <span class="fas fa-sitemap"></span>
+                </button>
+
+            </div>
+
+            <div class="mobile-menu__item js-click-menu" data-click-menu-id="mobile-user" data-visibility="hidden">
+                <div class="navbar-mobile-item js-click-menu--close">
+                    <a class="js-user-link navbar-mobile-item__main navbar-mobile-item__main--user" href="#" title="click to sign in">
+                        <span class="avatar avatar--guest avatar--navbar-mobile"></span>
+
+                        Guest
+                    </a>
+                </div>
+            </div>
+
+            <div class="mobile-menu__item js-click-menu js-click-menu--active" data-click-menu-id="mobile-nav" data-visibility="visible">
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-home" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/home">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        home
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-home" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/news">
+                                news
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Team">
+                                team
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/changelog">
+                                changelog
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/download">
+                                download
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/home/search">
+                                search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-beatmaps" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/beatmapsets">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        beatmaps
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-beatmaps" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmapsets">
+                                listing
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmaps/artists">
+                                featured artists
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/beatmaps/packs">
+                                packs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-rankings" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/rankings/osu/performance">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        rankings
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-rankings" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/performance">
+                                performance
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/charts">
+                                spotlights
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/score">
+                                score
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/rankings/osu/country">
+                                country
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/p/kudosu">
+                                kudosu
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-community" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/community/forums">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        community
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-community" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/forums">
+                                forums
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/chat">
+                                chat
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/contests">
+                                contests
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/tournaments">
+                                tournaments
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/community/livestreams">
+                                live
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://discord.gg/ppy">
+                                development
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-store" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/store/listing">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        store
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-store" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/store/listing">
+                                listing
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/store/cart">
+                                cart
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/store/orders">
+                                order history
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-mobile-item">
+                    <a data-click-menu-target="nav-mobile-help" class="navbar-mobile-item__main js-click-menu" href="https://osu.ppy.sh/help/wiki/Main_Page">
+            <span class="navbar-mobile-item__icon navbar-mobile-item__icon--closed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+
+                        <span class="navbar-mobile-item__icon navbar-mobile-item__icon--opened">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+
+                        help
+                    </a>
+
+                    <ul class="navbar-mobile-item__submenu js-click-menu" data-click-menu-id="nav-mobile-help" data-visibility="hidden">
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Main_Page">
+                                wiki
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/FAQ">
+                                faq
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Rules">
+                                rules
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-mobile-item__submenu-item js-click-menu--close" href="https://osu.ppy.sh/help/wiki/Help_Centre">
+                                no, really, i need help!
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+<!-- Computer thing shit fuck me please I don't wanna do this, I regret asking my community, I should've sticked with the one I was using, look at me now wasting my time on trying to make navbars work, thank you. -->
+{{ if not .Context.User.ID }}
+<div class="
+    js-pinned-header
+    hidden-xs
+    no-print
+    nav2-header
+
+">
+    <div class="nav2-header__body">
+        <div class="nav2-header__menu-bg js-nav2--menu-bg" data-visibility="hidden"></div>
+        <div class="nav2-header__triangles"></div>
+        <div class="nav2-header__transition-overlay"></div>
+
+        <div class="osu-page">
+            <div class="nav2 js-nav-button">
+                <div class="nav2__colgroup nav2__colgroup--menu js-nav-button--container">
+                    <div class="nav2__col nav2__col--logo">
+                        <a href="https://osu.ppy.sh/home" class="nav2__logo-link">
+                            <div class="nav2__logo nav2__logo--bg"></div>
+                            <div class="nav2__logo"></div>
+                        </a>
+                    </div>
+
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://ainu.pw/home" data-menu-target="nav2-menu-popup-home" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        home
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-home" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://osu.ppy.sh/home/news">
+                                    news
+                                </a>
+                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://osu.ppy.sh/help/wiki/Team">
+                                    team
+                                </a>
+                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://osu.ppy.sh/home/changelog">
+                                    changelog
+                                </a>
+                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://osu.ppy.sh/home/download">
+                                    download
+                                </a>
+                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://osu.ppy.sh/home/search">
+                                    search
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://osu.ppy.sh/beatmapsets" data-menu-target="nav2-menu-popup-beatmaps" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        beatmaps
+
+                                                    <span class="nav2__menu-link-bar u-section--bg-normal"></span>
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-beatmaps" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://osu.ppy.sh/beatmapsets">
+                                    listing
+                                </a>
+                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://osu.ppy.sh/beatmaps/artists">
+                                    featured artists
+                                </a>
+                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://osu.ppy.sh/beatmaps/packs">
+                                    packs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://osu.ppy.sh/rankings/osu/performance" data-menu-target="nav2-menu-popup-rankings" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        rankings
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-rankings" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://osu.ppy.sh/rankings/osu/performance">
+                                    performance
+                                </a>
+                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://osu.ppy.sh/rankings/osu/score">
+                                    score
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://osu.ppy.sh/community/forums" data-menu-target="nav2-menu-popup-community" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        community
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-community" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://osu.ppy.sh/community/chat">
+                                    chat
+                                </a>
+                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://discord.gg/xktAAnD">
+                                    development
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://osu.ppy.sh/help/wiki/Main_Page" data-menu-target="nav2-menu-popup-help" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        help
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-help" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://osu.ppy.sh/help/wiki/Main_Page">
+                                    wiki
+                                </a>
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://osu.ppy.sh/help/wiki/FAQ">
+                                    faq
+                                </a>
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://osu.ppy.sh/help/wiki/Rules">
+                                    rules
+                                </a>
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://osu.ppy.sh/help/wiki/Help_Centre">
+                                    no, really, i need help!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav2__colgroup js-nav-button--container">
+                    <div class="nav2__col js-nav-button--item">
+                        <a href="https://discord.gg/xktAAnD" class="nav-button nav-button--social" title="Discord">
+                            <span class="fab fa-discord"></span>
+                        </a>
+                    </div>
+                    <div class="nav2__col nav2__col--avatar">
+                        <button class="avatar avatar--nav2 js-current-user-avatar js-click-menu js-user-login--menu js-user-header avatar--guest" data-click-menu-target="nav2-login-box" title="click to sign in"></button>
+                        <div class="nav-click-popup nav-click-popup--user js-user-header-popup">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="js-pinned-header-sticky sticky-header js-sync-height--reference" data-sync-height-target="sticky-header" data-visibility="hidden" data-visibility-animation="none">
+        <div class="osu-page">
+        </div>
+    </div>
+</div>
+{{ else }}
+<div class="
+    js-pinned-header
+    hidden-xs
+    no-print
+    nav2-header
+
+">
+    <div class="nav2-header__body">
+        <div class="nav2-header__menu-bg js-nav2--menu-bg" data-visibility="hidden"></div>
+        <div class="nav2-header__triangles"></div>
+        <div class="nav2-header__transition-overlay"></div>
+
+        <div class="osu-page">
+            <div class="nav2 js-nav-button">
+                <div class="nav2__colgroup nav2__colgroup--menu js-nav-button--container">
+                    <div class="nav2__col nav2__col--logo">
+                        <a href="https://ainu.pw/home" class="nav2__logo-link">
+                            <div class="nav2__logo nav2__logo--bg"></div>
+                            <div class="nav2__logo"></div>
+                        </a>
+                    </div>
+
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://ainu.pw/home" data-menu-target="nav2-menu-popup-home" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        home
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-home" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://ainu.pw/help/wiki/Team">
+                                    team
+                                </a>
+                                <a class="simple-menu__item u-section-home--before-bg-normal" href="https://ainu.pw/home/download">
+                                    download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://osu.ppy.sh/beatmapsets" data-menu-target="nav2-menu-popup-beatmaps" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        beatmaps
+
+                                                    <span class="nav2__menu-link-bar u-section--bg-normal"></span>
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-beatmaps" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://ainu.pw/beatmapsets">
+                                    listing
+                                </a>
+                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://ainu.pw/beatmaps/artists">
+                                    featured artists
+                                </a>
+                                <a class="simple-menu__item u-section-beatmaps--before-bg-normal" href="https://ainu.pw/beatmaps/packs">
+                                    packs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://ainu.pw/rankings/osu/performance" data-menu-target="nav2-menu-popup-rankings" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        rankings
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-rankings" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://ainu.pw/rankings/osu/performance">
+                                    performance
+                                </a>
+                                <a class="simple-menu__item u-section-rankings--before-bg-normal" href="https://ainu.pw/rankings/osu/score">
+                                    score (work in progress)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://osu.ppy.sh/community/forums" data-menu-target="nav2-menu-popup-community" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        community
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-community" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://osu.ppy.sh/community/chat">
+                                    chat
+                                </a>
+                                <a class="simple-menu__item u-section-community--before-bg-normal" href="https://discord.gg/ppy">
+                                    development
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav2__col nav2__col--menu">
+                        <a class="nav2__menu-link-main js-menu" href="https://osu.ppy.sh/help/wiki/Main_Page" data-menu-target="nav2-menu-popup-help" data-menu-show-delay="0">
+                    <span class="nav2__menu-link-main-text">
+                        help
+
+                                            </span>
+                        </a>
+
+                        <div class="nav2__menu-popup">
+                            <div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            simple-menu--nav2-transparent
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-help" data-visibility="hidden">
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://ainu.pw/help/wiki/Main_Page">
+                                    wiki
+                                </a>
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://ainu.pw/help/wiki/FAQ">
+                                    faq
+                                </a>
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://ainu.pw/help/wiki/Rules">
+                                    rules
+                                </a>
+                                <a class="simple-menu__item u-section-help--before-bg-normal" href="https://ainu.pw/help/wiki/Help_Centre">
+                                    no, really, i need help!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav2__col nav2__col--menu js-react--quick-search-button" data-react-turbolinks-loaded="1"><a class="nav2__menu-link-main nav2__menu-link-main--search js-login-required--click" href="https://osu.ppy.sh/home/search"><span class="fas fa-search"></span></a></div>
+                </div>
+                <div class="nav2__colgroup js-nav-button--container">
+                    <div class="nav2__col js-nav-button--item">
+                        <a href="https://discord.gg/xktAAnD" class="nav-button nav-button--social" title="Discord">
+                            <span class="fab fa-discord"></span>
+                        </a>
+                    </div>
+                    <div class="nav2__col">
+                        <a class="nav-button nav-button--stadium js-react--chat-icon" href="https://osu.ppy.sh/community/chat" data-react-turbolinks-loaded="1"><span class="notification-icon"><i class="fas fa-comment-alt"></i><span class="notification-icon__count">0</span></span></a>
+                    </div>
+
+                    <div class="nav2__col">
+                        <button class="nav-button nav-button--stadium js-click-menu js-react--notification-icon" data-click-menu-target="nav2-notification-widget" data-react-turbolinks-loaded="1"><span class="notification-icon"><i class="fas fa-inbox"></i><span class="notification-icon__count">0</span></span></button>
+                        <div class="nav-click-popup js-click-menu js-react--notification-widget" data-click-menu-id="nav2-notification-widget" data-visibility="hidden" data-notification-widget="{&quot;extraClasses&quot;:&quot;js-nav2--centered-popup&quot;}" data-react-turbolinks-loaded="1"><div class="notification-popup u-fancy-scrollbar js-nav2--centered-popup hidden"><div class="notification-popup__scroll-container"><div class="notification-popup__filters"><button class="notification-popup__filter notification-popup__filter--active"><span class="notification-popup__filter-count">0</span><span>all</span></button></div><a class="notification-popup__filter" href="https://osu.ppy.sh/home/notifications">see all notifications</a><div class="notification-stacks"><p class="notification-popup__empty">All notifications read!</p></div></div></div></div>
+                    </div>
+
+                    <div class="nav2__col nav2__col--avatar">
+                        <a class="avatar avatar--nav2 js-current-user-avatar js-click-menu js-user-login--menu js-user-header" data-click-menu-target="nav2-user-popup" href="https://osu.ppy.sh/users/13910881" style="background-image:url('https://a.ainu.pw/{{ .Context.User.ID }}');"></a>
+
+                        <div class="nav-click-popup nav-click-popup--user js-user-header-popup">
+                            <div class="simple-menu simple-menu--nav2 js-click-menu js-nav2--centered-popup hidden" data-click-menu-id="nav2-user-popup" data-visibility="hidden" style="transform: translateX(45px);">
+                                <a href="https://osu.ppy.sh/users/{{ .Context.User.ID }}" class="simple-menu__header simple-menu__header--link js-current-user-cover" style="background-image:url('https://osu.ppy.sh/images/headers/profile-covers/c2.jpg');">
+                                    <img class="simple-menu__header-icon" src="/static/osu-web/images/icons/profile.svg" alt="">
+                                    <div>{{ .Context.User.Username }}</div>
+                                </a>
+
+                                <a class="simple-menu__item" href="https://ainu.pw/users/{{ .Context.User.ID }}">
+                                    My Profile
+                                </a>
+
+                                <a class="simple-menu__item" href="https://ainu.pw/home/friends">
+                                    Friends
+                                </a>
+
+                                <a class="simple-menu__item" href="https://ainu.pw/home/account/edit">
+                                    Settings
+                                </a>
+                                
+                                <a class="simple-menu__item" href="https://new.ainu.pw/logout?k={{ printf "%s" (.Session.Get "logout" ) }}" onclick="return confirm('Are you sure you want to sign out? :(');">Sign out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="js-pinned-header-sticky sticky-header js-sync-height--reference" data-sync-height-target="sticky-header" data-visibility="hidden" data-visibility-animation="none">
+        <div class="osu-page">
+
+
+            <div class="sticky-header__body">
+                <div class="js-sticky-header-breadcrumbs sticky-header__breadcrumbs">
+                    <div id="search-panel-breadcrumbs-portal"><ol class="sticky-header-breadcrumbs"><li class="sticky-header-breadcrumbs__item"><span class="sticky-header-breadcrumbs__link">Beatmaps</span></li><li class="sticky-header-breadcrumbs__item"><span class="sticky-header-breadcrumbs__link">search</span></li></ol></div></div>
+                <div class="js-sticky-header-content sticky-header__content">
+                    <div id="search-panel-content-portal"><div class="beatmapsets-search beatmapsets-search--sticky"><div class="beatmapsets-search__input-container"><input class="beatmapsets-search__input js-beatmapsets-search-input" type="textbox" name="search" placeholder="type in keywords..." value=""><div class="beatmapsets-search__icon"><i class="fas fa-search"></i></div></div><div class="beatmapsets-search__filters"><div class="beatmapsets-search-filter"><div class="beatmapsets-search-filter__items"><a href="https://osu.ppy.sh/beatmapsets?s=any" class="beatmapsets-search-filter__item" data-filter-value="any">Any</a><a href="https://osu.ppy.sh/beatmapsets" class="beatmapsets-search-filter__item beatmapsets-search-filter__item--active" data-filter-value="leaderboard">Has Leaderboard</a><a href="https://osu.ppy.sh/beatmapsets?s=ranked" class="beatmapsets-search-filter__item" data-filter-value="ranked">Ranked</a><a href="https://osu.ppy.sh/beatmapsets?s=qualified" class="beatmapsets-search-filter__item" data-filter-value="qualified">Qualified</a><a href="https://osu.ppy.sh/beatmapsets?s=loved" class="beatmapsets-search-filter__item" data-filter-value="loved">Loved</a><a href="https://osu.ppy.sh/beatmapsets?s=favourites" class="beatmapsets-search-filter__item" data-filter-value="favourites">Favourites</a><a href="https://osu.ppy.sh/beatmapsets?s=pending" class="beatmapsets-search-filter__item" data-filter-value="pending">Pending &amp; WIP</a><a href="https://osu.ppy.sh/beatmapsets?s=graveyard" class="beatmapsets-search-filter__item" data-filter-value="graveyard">Graveyard</a><a href="https://osu.ppy.sh/beatmapsets?s=mine" class="beatmapsets-search-filter__item" data-filter-value="mine">My Maps</a></div></div><div class="beatmapsets-search-filter"><div class="beatmapsets-search-filter__items"><a href="https://osu.ppy.sh/beatmapsets" class="beatmapsets-search-filter__item beatmapsets-search-filter__item--active">Any</a><a href="https://osu.ppy.sh/beatmapsets?m=0" class="beatmapsets-search-filter__item" data-filter-value="0">osu!</a><a href="https://osu.ppy.sh/beatmapsets?m=1" class="beatmapsets-search-filter__item" data-filter-value="1">osu!taiko</a><a href="https://osu.ppy.sh/beatmapsets?m=2" class="beatmapsets-search-filter__item" data-filter-value="2">osu!catch</a><a href="https://osu.ppy.sh/beatmapsets?m=3" class="beatmapsets-search-filter__item" data-filter-value="3">osu!mania</a></div></div></div></div></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
+{{ if not .Context.User.ID }}
+{{ template "login_box" }}
+{{ end }}
+{{ end }}

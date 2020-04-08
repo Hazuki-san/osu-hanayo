@@ -19,7 +19,14 @@ Include=navbars/404.html
         </style>
         <div id="overlay" class="blackout blackout--overlay" style="display: none;"></div>
         <div class="blackout js-blackout" data-visibility="hidden"></div>
-        {{ template "navbar_404" }}
+        <!-- this shall arise from heaven. -->
+        {{ if and (.Context.User.ID) (not .NavbarNoNo) }}
+            {{ template "nav" . }}
+        {{ else if not .Context.User.ID }}
+            {{ template "nav" . }}
+        {{ else }}
+            {{ template "nav" . }}
+        {{ end }}
 		<div class="osu-layout__section osu-layout__section--full js-content error_404">
                                         <div class="
     header-v4
