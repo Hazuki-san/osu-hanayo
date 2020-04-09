@@ -124,7 +124,7 @@
                                 <div class="profile-info__icons profile-info__icons--flag">
                                 	<a class="profile-info__flag profile-info__flag--country" href="https://osu.ppy.sh/rankings/osu/performance?country={{ .country }}">
                                 		<span class="profile-info__flag-flag">
-                                			<span class="flag-country flag-country--full" title="Australia" style="background-image: url(&quot;/static/osu-web/images/flags/{{ .country }}.png&quot;);">
+                                			<span class="flag-country flag-country--full" title="{{ printf "%s" (countryName .country true) }}" style="background-image: url(&quot;/static/osu-web/images/flags/{{ .country }}.png&quot;);">
                                 			</span>
                                 		</span>
                                 	<span class="profile-info__flag-text">
