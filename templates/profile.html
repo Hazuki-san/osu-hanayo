@@ -108,8 +108,13 @@
                             <!-- Very epic, wooooooooo -->
 
                             <div class="profile-info__icon-group">
+
                                 <div class="profile-info__icons">
-                                	<span class="profile-info__icon profile-info__icon--supporter" title="osu!supporter"><span class="fas fa-heart"></span><span class="fas fa-heart"></span><span class="fas fa-heart"></span></span>
+                                	<span class="profile-info__icon profile-info__icon--supporter" title="osu!supporter">
+                                        <span class="fas fa-heart"></span>
+                                        <span class="fas fa-heart"></span>
+                                        <span class="fas fa-heart"></span>
+                                    </span>
                                     {{ if $aoba }}
                                 	<span class="profile-info__icon">
                                         <div class="user-group-badge user-group-badge--profile-page" data-label="AOBA" style="--group-colour:#0066FF;" data-orig-title="Aoba" data-hasqtip="0" aria-describedby="qtip-0" title="Aoba"></div>
@@ -124,7 +129,7 @@
                                 <div class="profile-info__icons profile-info__icons--flag">
                                 	<a class="profile-info__flag profile-info__flag--country" href="https://osu.ppy.sh/rankings/osu/performance?country={{ .country }}">
                                 		<span class="profile-info__flag-flag">
-                                			<span class="flag-country flag-country--full" title="{{ printf "%s" (countryName .country true) }}" style="background-image: url(&quot;/static/osu-web/images/flags/{{ .country }}.png&quot;);">
+                                			<span class="flag-country flag-country--full" title='{{ printf "%s" (countryName .country true) }}' style="background-image: url(&quot;/static/osu-web/images/flags/{{ .country }}.png&quot;);">
                                 			</span>
                                 		</span>
                                 	<span class="profile-info__flag-text">
@@ -179,7 +184,13 @@
                         <div class="profile-detail-mobile__item">
                             <div class="value-display">
                                 <div class="value-display__label">Total Play Time</div>
-                                <div class="value-display__value"><span title="200 hours" data-tooltip-position="bottom center">disabled</span></div>
+                                <div class="value-display__value"><span title="200 hours" data-tooltip-position="bottom center">
+                                    {{ if gt (int .play_time) 0 }}
+                                    {{ hhmmdd .play_time }}
+                                    {{ else }}
+                                    {{ hhmm .play_time }}
+                                    {{ end }}
+                                </span></div>
                             </div>
                         </div>
                         <div class="profile-detail-mobile__item profile-detail-mobile__item">
@@ -274,7 +285,13 @@
                                 <div class="profile-detail__top-left-item">
                                     <div class="value-display">
                                         <div class="value-display__label">Total Play Time</div>
-                                        <div class="value-display__value">disabled</span></div>
+                                        <div class="value-display__value">
+                                            {{ if gt (int .play_time) 0 }}
+                                            {{ hhmmdd .play_time }}
+                                            {{ else }}
+                                            {{ hhmm .play_time }}
+                                            {{ end }}
+                                        </span></div>
                                     </div>
                                 </div>
                                 <div class="profile-detail__top-left-item">
