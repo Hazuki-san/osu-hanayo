@@ -185,7 +185,7 @@
                             <div class="value-display">
                                 <div class="value-display__label">Total Play Time</div>
                                 <div class="value-display__value"><span title="200 hours" data-tooltip-position="bottom center">
-                                    {{ if gt (int .play_time) 0 }}
+                                    {{ if gt (int .play_time) 86400 }}
                                     {{ hhmmdd .play_time }}
                                     {{ else }}
                                     {{ hhmm .play_time }}
@@ -286,7 +286,7 @@
                                     <div class="value-display">
                                         <div class="value-display__label">Total Play Time</div>
                                         <div class="value-display__value">
-                                            {{ if gt (int .play_time) 0 }}
+                                            {{ if gt (int .play_time) 86400 }}
                                             {{ hhmmdd .play_time }}
                                             {{ else }}
                                             {{ hhmm .play_time }}
