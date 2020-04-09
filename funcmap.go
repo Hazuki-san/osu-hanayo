@@ -155,7 +155,17 @@ var funcMap = template.FuncMap{
 				return ""
 			}
 		}
-		return template.HTML(fmt.Sprintf(`<i class="%s flag"></i>%s`, strings.ToLower(s), c))
+		return template.HTML(fmt.Sprintf(`%s`, c))
+	},
+	"countryName": func(s string, name bool) template.HTML {
+		var c string
+		if name {
+			c = countryReadable(s)
+			if c == "" {
+				return ""
+			}
+		}
+		return template.HTML(fmt.Sprintf(`%s`, c))
 	},
 	"navbarCountry": func(s string, name bool) template.HTML {
 		var c string
@@ -408,6 +418,16 @@ var funcMap = template.FuncMap{
 	// https://docs.ripple.moe/docs/banchoapi/v1
 	"bget": func(ept string, qs ...interface{}) map[string]interface{} {
 		d, err := http.Get(fmt.Sprintf(config.BanchoAPI+"/api/v1/"+ept, qs...))
+		if err != nil {
+			return nil
+		}
+		x := make(map[string]interface{})
+		data, _ := ioutil.ReadAll(d.Body)
+		json.Unmarshal(data, &x)
+		return x
+	},
+	"please": func(ept string, qs ...interface{}) map[string]interface{} {
+		d, err := http.Get(fmt.Sprintf(config.API+"/api/v1/"+ept, qs...))
 		if err != nil {
 			return nil
 		}

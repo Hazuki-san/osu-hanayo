@@ -25,6 +25,7 @@ var templates = make(map[string]*template.Template)
 var baseTemplates = [...]string{
 	"templates/base.html",
 	"templates/footer.html",
+	"templates/navbar.html",
 	"templates/login_box.html",
 	"templates/simplepag.html",
 }
@@ -146,6 +147,7 @@ type baseTemplateData struct {
 	HeadingOnRight    bool
 	Scripts           []string
 	KyutGrill         string
+	NavbarNoNo 		  bool
 	KyutGrillAbsolute bool
 	SolidColour       string
 	DisableHH         bool // HH = Huge Heading
@@ -261,6 +263,7 @@ type templateConfig struct {
 	TitleBar         string
 	KyutGrill        string
 	MinPrivileges    uint64
+	NavbarNoNo       bool
 	HugeHeadingRight bool
 	AdditionalJS     string
 }

@@ -73,6 +73,7 @@ func simple(c *gin.Context, p templateConfig, errs []message, requestInfo map[st
 		TitleBar:       p.TitleBar,
 		KyutGrill:      p.KyutGrill,
 		Scripts:        p.additionalJS(),
+		NavbarNoNo:     p.NavbarNoNo,
 		HeadingOnRight: p.HugeHeadingRight,
 		FormData:       normaliseURLValues(c.Request.PostForm),
 		RequestInfo:    requestInfo,
