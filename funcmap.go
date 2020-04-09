@@ -167,16 +167,6 @@ var funcMap = template.FuncMap{
 		}
 		return template.HTML(fmt.Sprintf(`%s`, c))
 	},
-	"countryName": func(s string, name bool) template.HTML {
-		var c string
-		if name {
-			c = countryReadable(s)
-			if c == "" {
-				return ""
-			}
-		}
-		return template.HTML(fmt.Sprintf(`%s`, c))
-	},
 	"navbarCountry": func(s string, name bool) template.HTML {
 		var c string
 		if name {
