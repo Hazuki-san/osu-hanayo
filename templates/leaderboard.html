@@ -19,314 +19,114 @@ KyutGrill=leaderboard2.jpg
         --base-hue-deg: 115deg;
     }
 </style>
-<div class="osu-layout__section osu-layout__section--full js-content rankings_index">
-                                            <div class="
-    header-v4
-    header-v4--rankings
-    
-    
-">
-
-        {{ if and (.Context.User.ID) (not .NavbarNoNo) }}
-            {{ template "nav" . }}
-        {{ else if not .Context.User.ID }}
-            {{ template "nav" . }}
-        {{ else }}
-            {{ template "nav" . }}
-        {{ end }}
-
-    <div class="header-v4__container header-v4__container--main">
-        <div class="header-v4__bg-container">
-            <div class="header-v4__bg "></div>
-        </div>
-
-        <div class="header-v4__content">
-                            <div class="header-v4__row header-v4__row--title">
-                                            <div class="header-v4__icon"></div>
-                        <div class="header-v4__title">
-                            ranking
-                        </div>
-                    
-                    <div class="game-mode">
-    <ul class="game-mode__items">
-                    <li class="game-mode__item">
-                <a class="
-                        game-mode-link
-                         game-mode-link--active
-                    " href="https://osu.ppy.sh/rankings/osu/performance">
-                    osu!
-                </a>
-            </li>
-                    <li class="game-mode__item">
-                <a class="
-                        game-mode-link
-                        
-                    " href="https://osu.ppy.sh/rankings/taiko/performance">
-                    osu!taiko
-                </a>
-            </li>
-                    <li class="game-mode__item">
-                <a class="
-                        game-mode-link
-                        
-                    " href="https://osu.ppy.sh/rankings/fruits/performance">
-                    osu!catch
-                </a>
-            </li>
-                    <li class="game-mode__item">
-                <a class="
-                        game-mode-link
-                        
-                    " href="https://osu.ppy.sh/rankings/mania/performance">
-                    osu!mania
-                </a>
-            </li>
-            </ul>
-</div>
-                </div>
-            
-            
-        </div>
+    {{ if and (.Context.User.ID) (not .NavbarNoNo) }}
+        {{ template "nav" . }}
+    {{ else if not .Context.User.ID }}
+        {{ template "nav" . }}
+    {{ else }}
+        {{ template "nav" . }}
+    {{ end }}
+    <link href="/static/react/css/main.7b6d3c17.chunk.css" rel="stylesheet">
+    <div class="osu-layout__section osu-layout__section--full js-content rankings_index">
+    {{ $favModeRaw := .Get "users/self/favourite_mode" }}
+    {{ $favMode := _or (atoi (.Gin.Query "mode")) $favModeRaw.favourite_mode (float 0) }}
+    <script>
+        var favouriteMode = {{ $favMode }};
+        var rx = 0;
+        var page = {{ .Gin.Query "p" | atoint | atLeastOne }};
+        var country = {{ .Gin.Query "country" }}.toLowerCase();
+        if (country.length != 2)
+            country = "";
+    </script>
+    <div id="app">
     </div>
-            <div class="header-v4__container">
-            <div class="header-v4__content">
-                <div class="header-v4__row header-v4__row--bar">
-                    <ul class="header-nav-v4 header-nav-v4--list">
-                                                                                <li class="header-nav-v4__item">
-                                                                    <a class="
-                                            header-nav-v4__link
-                                            header-nav-v4__link--active
-                                        " href="https://osu.ppy.sh/rankings/osu/performance">
-                                        <span class="fake-bold" data-content="performance">performance</span>
-                                    </a>
-                                                            </li>
-                                                                                <li class="header-nav-v4__item">
-                                                                    <a class="
-                                            header-nav-v4__link
-                                            
-                                        " href="https://osu.ppy.sh/rankings/osu/charts">
-                                        <span class="fake-bold" data-content="spotlights">spotlights</span>
-                                    </a>
-                                                            </li>
-                                                                                <li class="header-nav-v4__item">
-                                                                    <a class="
-                                            header-nav-v4__link
-                                            
-                                        " href="https://osu.ppy.sh/rankings/osu/score">
-                                        <span class="fake-bold" data-content="score">score</span>
-                                    </a>
-                                                            </li>
-                                                                                <li class="header-nav-v4__item">
-                                                                    <a class="
-                                            header-nav-v4__link
-                                            
-                                        " href="https://osu.ppy.sh/rankings/osu/country">
-                                        <span class="fake-bold" data-content="country">country</span>
-                                    </a>
-                                                            </li>
-                                            </ul>
-
-                                            <div class="header-nav-mobile">
-                            <a class="header-nav-mobile__toggle js-click-menu" data-click-menu-target="header-nav-mobile" href="https://osu.ppy.sh/rankings/osu/performance">
-                                performance
-
-                                <span class="header-nav-mobile__toggle-icon">
-                                    <span class="fas fa-chevron-down"></span>
-                                </span>
-                            </a>
-
-                            <ul class="header-nav-mobile__menu js-click-menu" data-click-menu-id="header-nav-mobile" data-visibility="hidden">
-                                                                    <li>
-                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/performance">
-                                            performance
-                                        </a>
-                                    </li>
-                                                                    <li>
-                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/charts">
-                                            spotlights
-                                        </a>
-                                    </li>
-                                                                    <li>
-                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/score">
-                                            score
-                                        </a>
-                                    </li>
-                                                                    <li>
-                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/country">
-                                            country
-                                        </a>
-                                    </li>
-                                                            </ul>
-                        </div>
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-    
-    <div class="osu-page osu-page--generic">
-                    <nav class="pagination-v2">
-        <div class="pagination-v2__col">
-                            <span class="pagination-v2__link pagination-v2__link--quick pagination-v2__link--disabled">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="hidden-xs">
-                        prev
-                    </span>
-                </span>
-                    </div>
-
-        <ul class="pagination-v2__col pagination-v2__col--pages">
-            
-            
-            
-                            <li class="pagination-v2__item">
-                                            <span class="pagination-v2__link pagination-v2__link--active">1</span>
-                                    </li>
-                            <li class="pagination-v2__item">
-                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">2</a>
-                                    </li>
-                            <li class="pagination-v2__item">
-                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=3#scores">3</a>
-                                    </li>
-            
-            
-            
-                            <li class="pagination-v2__item">
-                    <span class="pagination-v2__link">...</span>
-                </li>
-            
-            
-                            <li class="pagination-v2__item">
-                    <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=200#scores">200</a>
-                </li>
-                    </ul>
-
-        <div class="pagination-v2__col">
-                            <a class="pagination-v2__link pagination-v2__link--link pagination-v2__link--quick" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">
-                    <span class="hidden-xs">
-                        next
-                    </span>
-                    <i class="fas fa-angle-right"></i>
-                </a>
-                    </div>
-    </nav>
-        
-        <div class="ranking-page">
-            <div class="ranking-page__jump-target" id="scores"></div>
-                <table class="ranking-page-table">
-        <thead>
-            <tr>
-                <th class="ranking-page-table__heading"></th>
-                <th class="ranking-page-table__heading ranking-page-table__heading--main"></th>
-                <th class="ranking-page-table__heading">
-                    Accuracy
-                </th>
-                <th class="ranking-page-table__heading">
-                    Play Count
-                </th>
-                <th class="ranking-page-table__heading ranking-page-table__heading--focused">
-                    Performance
-                </th>
-                <th class="ranking-page-table__heading ranking-page-table__heading--grade">
-                    SS
-                </th>
-                <th class="ranking-page-table__heading ranking-page-table__heading--grade">
-                    S
-                </th>
-                <th class="ranking-page-table__heading ranking-page-table__heading--grade">
-                    A
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-                            <tr class="ranking-page-table__row">
-                    <td class="ranking-page-table__column ranking-page-table__column--rank">
-                        #1
-                    </td>
-                    <td class="ranking-page-table__column">
-                        <div class="ranking-page-table__user-link">
-                            <a href="https://osu.ppy.sh/rankings/osu/performance?country=DE">
-                                <span class="flag-country" style="background-image: url('/static/osu-web/images/flags/XX.png');" data-orig-title="Germany" data-hasqtip="0" aria-describedby="qtip-0"></span>
-                            </a>
-                            <a href="https://osu.ppy.sh/users/4504101" class="ranking-page-table__user-link-text js-usercard" data-user-id="4504101" data-tooltip-position="right center">
-                                This is just a preview.
-                            </a>
-                        </div>
-                    </td>
-                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
-                        98.15%
-                    </td>
-                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
-                        11,958
-                    </td>
-                    <td class="ranking-page-table__column ranking-page-table__column--focused">
-                        19,156
-                    </td>
-                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
-                        10
-                    </td>
-                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
-                        188
-                    </td>
-                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
-                        340
-                    </td>
-                </tr>
-                            
-                            
-                    </tbody>
-    </table>
-        </div>
-
-        
-                    <nav class="pagination-v2">
-        <div class="pagination-v2__col">
-                            <span class="pagination-v2__link pagination-v2__link--quick pagination-v2__link--disabled">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="hidden-xs">
-                        prev
-                    </span>
-                </span>
-                    </div>
-
-        <ul class="pagination-v2__col pagination-v2__col--pages">
-            
-            
-            
-                            <li class="pagination-v2__item">
-                                            <span class="pagination-v2__link pagination-v2__link--active">1</span>
-                                    </li>
-                            <li class="pagination-v2__item">
-                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">2</a>
-                                    </li>
-                            <li class="pagination-v2__item">
-                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=3#scores">3</a>
-                                    </li>
-            
-            
-            
-                            <li class="pagination-v2__item">
-                    <span class="pagination-v2__link">...</span>
-                </li>
-            
-            
-                            <li class="pagination-v2__item">
-                    <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=200#scores">200</a>
-                </li>
-                    </ul>
-
-             <div class="pagination-v2__col">
-                <a class="pagination-v2__link pagination-v2__link--link pagination-v2__link--quick" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">
-                    <span class="hidden-xs">
-                        next
-                    </span>
-                <i class="fas fa-angle-right"></i>
-                </a>
-            </div>
-        </nav>
-    </div>
+    <script src="/static/react/js/2.1ce98248.chunk.js" type="text/javascript"></script>
+    <script src="/static/react/js/main.f8edbcf6.chunk.js" type="text/javascript"></script>
+    <script>      
+        !(function(l) {
+            function e(e) {
+              for (
+                var r, t, n = e[0], o = e[1], u = e[2], f = 0, i = [];
+                f < n.length;
+               f++
+             )
+               (t = n[f]), p[t] && i.push(p[t][0]), (p[t] = 0);
+             for (r in o)
+               Object.prototype.hasOwnProperty.call(o, r) && (l[r] = o[r]);
+             for (s && s(e); i.length; ) i.shift()();
+             return c.push.apply(c, u || []), a();
+           }
+           function a() {
+             for (var e, r = 0; r < c.length; r++) {
+               for (var t = c[r], n = !0, o = 1; o < t.length; o++) {
+                 var u = t[o];
+                 0 !== p[u] && (n = !1);
+               }
+               n && (c.splice(r--, 1), (e = f((f.s = t[0]))));
+             }
+             return e;
+           }
+           var t = {},
+             p = { 1: 0 },
+             c = [];
+           function f(e) {
+             if (t[e]) return t[e].exports;
+             var r = (t[e] = { i: e, l: !1, exports: {} });
+             return l[e].call(r.exports, r, r.exports, f), (r.l = !0), r.exports;
+           }
+           (f.m = l),
+             (f.c = t),
+             (f.d = function(e, r, t) {
+               f.o(e, r) ||
+                 Object.defineProperty(e, r, { enumerable: !0, get: t });
+             }),
+             (f.r = function(e) {
+               "undefined" != typeof Symbol &&
+                 Symbol.toStringTag &&
+                 Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
+                 Object.defineProperty(e, "__esModule", { value: !0 });
+             }),
+             (f.t = function(r, e) {
+               if ((1 & e && (r = f(r)), 8 & e)) return r;
+               if (4 & e && "object" == typeof r && r && r.__esModule) return r;
+               var t = Object.create(null);
+               if (
+                 (f.r(t),
+                 Object.defineProperty(t, "default", { enumerable: !0, value: r }),
+                 2 & e && "string" != typeof r)
+               )
+                 for (var n in r)
+                   f.d(
+                     t,
+                     n,
+                     function(e) {
+                       return r[e];
+                     }.bind(null, n)
+                   );
+               return t;
+             }),
+             (f.n = function(e) {
+               var r =
+                 e && e.__esModule
+                   ? function() {
+                       return e.default;
+                     }
+                   : function() {
+                       return e;
+                     };
+               return f.d(r, "a", r), r;
+             }),
+             (f.o = function(e, r) {
+               return Object.prototype.hasOwnProperty.call(e, r);
+             }),
+             (f.p = "/");
+               var r = (window.webpackJsonp = window.webpackJsonp || []),
+                 n = r.push.bind(r);
+               (r.push = e), (r = r.slice());
+               for (var o = 0; o < r.length; o++) e(r[o]);
+               var s = n;
+               a();
+         })([]);
+    </script>
 </div>
 {{ end }}

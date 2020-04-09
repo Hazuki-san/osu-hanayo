@@ -55,8 +55,6 @@
         <link rel="stylesheet" type="text/css" href="/static/osu-web/css/app.css?{{ unixNano }}">
     </head>
     <body class="osu-layout osu-layout--body t-section action-index">
-        
-
         {{ template "tpl" . }}
     </body>
         <!-- style type="text/css">
@@ -71,7 +69,7 @@
         var hanayoConf = {
             avatars:   {{ .Conf.AvatarURL }},
             banchoAPI: {{ .Conf.BanchoAPI }},
-            baseAPI:   "https://ainu.pw",
+            baseAPI:   {{ .Conf.API }},
             cheesegullAPI: {{ .Conf.CheesegullAPI }},
             language:  {{ with $lang }}{{ . }}{{ else }}"GB"{{ end }},
         };
@@ -80,5 +78,11 @@
     {{/* If we got some more scripts to print, print'em */}}
     <script src="/static/dist.min.js?{{ unixNano }}"></script>
     <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2"></script>
+
+    {{ if .Scripts }}
+            {{ range .Scripts }}
+                <script src="{{ . }}?{{ unixNano }}"></script>
+        {{ end }}
+    {{ end }}
 </html>
 {{ end }}
