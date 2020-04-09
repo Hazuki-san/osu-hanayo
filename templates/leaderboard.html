@@ -4,55 +4,329 @@ TitleBar=Leaderboard
 KyutGrill=leaderboard2.jpg
 */}}
 {{ define "tpl" }}
-<div class="ui container">
-	{{ $favModeRaw := .Get "users/self/favourite_mode" }}
-	{{ $favMode := _or (atoi (.Gin.Query "mode")) $favModeRaw.favourite_mode (float 0) }}
-	<script>
-		var favouriteMode = {{ $favMode }};
-		var page = {{ .Gin.Query "p" | atoint | atLeastOne }};
-		var country = {{ .Gin.Query "country" }}.toLowerCase();
-		if (country.length != 2)
-			country = "";
-	</script>
-	<div class="ui four item menu" id="mode-menu">
-		{{ range $k, $v := modes }}
-			<a class="{{ favMode $favMode $k }}item" data-mode="{{ $k }}" href="/leaderboard?mode={{ $k }}">{{ $v }}</a>
-		{{ end }}
-	</div>
-	<div class="ui twelve item stackable menu">
-		{{ range countryList 11 }}
-			<a class="item lb-country" data-country="{{ . }}"><i class="{{ . }} flag nopad"></i></a>
-		{{ end }}
-		<a class="item" id="country-chooser-modal">...</a>
-	</div>
-	<table class="ui fixed table">
-		<thead>
-			{{ template "simplepag" 5 }}
-			<tr>
-				<th class="two wide">{{ .T "Rank" }} </th>
-				<th class="four wide">{{ .T "Player" }} </th>
-				<th class="four wide">{{ .T "PP/Score" }} </th>
-				<th class="three wide">{{ .T "Accuracy" }} </th>
-				<th class="three wide">{{ .T "Playcount" }} </th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-		<tfoot>
-			{{ template "simplepag" 5 }}
-		</tfoot>
-	</table>
-	<div class="ui modal">
-		<div class="content">
-			<div class="ui four column grid">
-				{{ range countryList 500 }}
-					{{ $short := . }}
-					{{ with country . true }}
-						<div class="ui clickable column lb-country" data-country="{{ $short }}">{{ . }}</div>
-					{{ end }}
-				{{ end }}
-			</div>
-		</div>
-	</div>
+{{ $favModeRaw := .Get "users/self/favourite_mode" }}
+{{ $favMode := _or (atoi (.Gin.Query "mode")) $favModeRaw.favourite_mode (float 0) }}
+<script>
+    var favouriteMode = {{ $favMode }};
+    var page = {{ .Gin.Query "p" | atoint | atLeastOne }};
+    var country = {{ .Gin.Query "country" }}.toLowerCase();
+    if (country.length != 2)
+        country = "";
+</script>
+<style>
+    :root {
+        --base-hue: 115;
+        --base-hue-deg: 115deg;
+    }
+</style>
+<div class="osu-layout__section osu-layout__section--full js-content rankings_index">
+                                            <div class="
+    header-v4
+    header-v4--rankings
+    
+    
+">
+
+        {{ if and (.Context.User.ID) (not .NavbarNoNo) }}
+            {{ template "nav" . }}
+        {{ else if not .Context.User.ID }}
+            {{ template "nav" . }}
+        {{ else }}
+            {{ template "nav" . }}
+        {{ end }}
+
+    <div class="header-v4__container header-v4__container--main">
+        <div class="header-v4__bg-container">
+            <div class="header-v4__bg "></div>
+        </div>
+
+        <div class="header-v4__content">
+                            <div class="header-v4__row header-v4__row--title">
+                                            <div class="header-v4__icon"></div>
+                        <div class="header-v4__title">
+                            ranking
+                        </div>
+                    
+                    <div class="game-mode">
+    <ul class="game-mode__items">
+                    <li class="game-mode__item">
+                <a class="
+                        game-mode-link
+                         game-mode-link--active
+                    " href="https://osu.ppy.sh/rankings/osu/performance">
+                    osu!
+                </a>
+            </li>
+                    <li class="game-mode__item">
+                <a class="
+                        game-mode-link
+                        
+                    " href="https://osu.ppy.sh/rankings/taiko/performance">
+                    osu!taiko
+                </a>
+            </li>
+                    <li class="game-mode__item">
+                <a class="
+                        game-mode-link
+                        
+                    " href="https://osu.ppy.sh/rankings/fruits/performance">
+                    osu!catch
+                </a>
+            </li>
+                    <li class="game-mode__item">
+                <a class="
+                        game-mode-link
+                        
+                    " href="https://osu.ppy.sh/rankings/mania/performance">
+                    osu!mania
+                </a>
+            </li>
+            </ul>
+</div>
+                </div>
+            
+            
+        </div>
+    </div>
+            <div class="header-v4__container">
+            <div class="header-v4__content">
+                <div class="header-v4__row header-v4__row--bar">
+                    <ul class="header-nav-v4 header-nav-v4--list">
+                                                                                <li class="header-nav-v4__item">
+                                                                    <a class="
+                                            header-nav-v4__link
+                                            header-nav-v4__link--active
+                                        " href="https://osu.ppy.sh/rankings/osu/performance">
+                                        <span class="fake-bold" data-content="performance">performance</span>
+                                    </a>
+                                                            </li>
+                                                                                <li class="header-nav-v4__item">
+                                                                    <a class="
+                                            header-nav-v4__link
+                                            
+                                        " href="https://osu.ppy.sh/rankings/osu/charts">
+                                        <span class="fake-bold" data-content="spotlights">spotlights</span>
+                                    </a>
+                                                            </li>
+                                                                                <li class="header-nav-v4__item">
+                                                                    <a class="
+                                            header-nav-v4__link
+                                            
+                                        " href="https://osu.ppy.sh/rankings/osu/score">
+                                        <span class="fake-bold" data-content="score">score</span>
+                                    </a>
+                                                            </li>
+                                                                                <li class="header-nav-v4__item">
+                                                                    <a class="
+                                            header-nav-v4__link
+                                            
+                                        " href="https://osu.ppy.sh/rankings/osu/country">
+                                        <span class="fake-bold" data-content="country">country</span>
+                                    </a>
+                                                            </li>
+                                            </ul>
+
+                                            <div class="header-nav-mobile">
+                            <a class="header-nav-mobile__toggle js-click-menu" data-click-menu-target="header-nav-mobile" href="https://osu.ppy.sh/rankings/osu/performance">
+                                performance
+
+                                <span class="header-nav-mobile__toggle-icon">
+                                    <span class="fas fa-chevron-down"></span>
+                                </span>
+                            </a>
+
+                            <ul class="header-nav-mobile__menu js-click-menu" data-click-menu-id="header-nav-mobile" data-visibility="hidden">
+                                                                    <li>
+                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/performance">
+                                            performance
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/charts">
+                                            spotlights
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/score">
+                                            score
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a class="header-nav-mobile__item" href="https://osu.ppy.sh/rankings/osu/country">
+                                            country
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <div class="osu-page osu-page--generic">
+                    <nav class="pagination-v2">
+        <div class="pagination-v2__col">
+                            <span class="pagination-v2__link pagination-v2__link--quick pagination-v2__link--disabled">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="hidden-xs">
+                        prev
+                    </span>
+                </span>
+                    </div>
+
+        <ul class="pagination-v2__col pagination-v2__col--pages">
+            
+            
+            
+                            <li class="pagination-v2__item">
+                                            <span class="pagination-v2__link pagination-v2__link--active">1</span>
+                                    </li>
+                            <li class="pagination-v2__item">
+                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">2</a>
+                                    </li>
+                            <li class="pagination-v2__item">
+                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=3#scores">3</a>
+                                    </li>
+            
+            
+            
+                            <li class="pagination-v2__item">
+                    <span class="pagination-v2__link">...</span>
+                </li>
+            
+            
+                            <li class="pagination-v2__item">
+                    <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=200#scores">200</a>
+                </li>
+                    </ul>
+
+        <div class="pagination-v2__col">
+                            <a class="pagination-v2__link pagination-v2__link--link pagination-v2__link--quick" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">
+                    <span class="hidden-xs">
+                        next
+                    </span>
+                    <i class="fas fa-angle-right"></i>
+                </a>
+                    </div>
+    </nav>
+        
+        <div class="ranking-page">
+            <div class="ranking-page__jump-target" id="scores"></div>
+                <table class="ranking-page-table">
+        <thead>
+            <tr>
+                <th class="ranking-page-table__heading"></th>
+                <th class="ranking-page-table__heading ranking-page-table__heading--main"></th>
+                <th class="ranking-page-table__heading">
+                    Accuracy
+                </th>
+                <th class="ranking-page-table__heading">
+                    Play Count
+                </th>
+                <th class="ranking-page-table__heading ranking-page-table__heading--focused">
+                    Performance
+                </th>
+                <th class="ranking-page-table__heading ranking-page-table__heading--grade">
+                    SS
+                </th>
+                <th class="ranking-page-table__heading ranking-page-table__heading--grade">
+                    S
+                </th>
+                <th class="ranking-page-table__heading ranking-page-table__heading--grade">
+                    A
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+                            <tr class="ranking-page-table__row">
+                    <td class="ranking-page-table__column ranking-page-table__column--rank">
+                        #1
+                    </td>
+                    <td class="ranking-page-table__column">
+                        <div class="ranking-page-table__user-link">
+                            <a href="https://osu.ppy.sh/rankings/osu/performance?country=DE">
+                                <span class="flag-country" style="background-image: url('/static/osu-web/images/flags/XX.png');" data-orig-title="Germany" data-hasqtip="0" aria-describedby="qtip-0"></span>
+                            </a>
+                            <a href="https://osu.ppy.sh/users/4504101" class="ranking-page-table__user-link-text js-usercard" data-user-id="4504101" data-tooltip-position="right center">
+                                This is just a preview.
+                            </a>
+                        </div>
+                    </td>
+                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                        98.15%
+                    </td>
+                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                        11,958
+                    </td>
+                    <td class="ranking-page-table__column ranking-page-table__column--focused">
+                        19,156
+                    </td>
+                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                        10
+                    </td>
+                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                        188
+                    </td>
+                    <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                        340
+                    </td>
+                </tr>
+                            
+                            
+                    </tbody>
+    </table>
+        </div>
+
+        
+                    <nav class="pagination-v2">
+        <div class="pagination-v2__col">
+                            <span class="pagination-v2__link pagination-v2__link--quick pagination-v2__link--disabled">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="hidden-xs">
+                        prev
+                    </span>
+                </span>
+                    </div>
+
+        <ul class="pagination-v2__col pagination-v2__col--pages">
+            
+            
+            
+                            <li class="pagination-v2__item">
+                                            <span class="pagination-v2__link pagination-v2__link--active">1</span>
+                                    </li>
+                            <li class="pagination-v2__item">
+                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">2</a>
+                                    </li>
+                            <li class="pagination-v2__item">
+                                            <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=3#scores">3</a>
+                                    </li>
+            
+            
+            
+                            <li class="pagination-v2__item">
+                    <span class="pagination-v2__link">...</span>
+                </li>
+            
+            
+                            <li class="pagination-v2__item">
+                    <a class="pagination-v2__link pagination-v2__link--link" href="https://osu.ppy.sh/rankings/osu/performance?page=200#scores">200</a>
+                </li>
+                    </ul>
+
+             <div class="pagination-v2__col">
+                <a class="pagination-v2__link pagination-v2__link--link pagination-v2__link--quick" href="https://osu.ppy.sh/rankings/osu/performance?page=2#scores">
+                    <span class="hidden-xs">
+                        next
+                    </span>
+                <i class="fas fa-angle-right"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
 </div>
 {{ end }}

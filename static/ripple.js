@@ -18,6 +18,7 @@
 
 // this object contains tiny snippets that were deemed too small to be worth
 // their own file.
+
 var singlePageSnippets = {
   "/2fa_gateway" : function() {
     $('#telegram-code')

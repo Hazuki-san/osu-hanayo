@@ -101,87 +101,61 @@
 
     <div class="js-nav-data" id="nav-data-landing" data-turbolinks-permanent></div>
     <div class="login-box login-box--landing">
-    <div
-        class="
-            login-box__content
-            js-click-menu
-            js-nav2--centered-popup
-            js-nav2--login-box
-        "
-        data-click-menu-id="nav2-login-box"
-        data-visibility="hidden"
-    >
-        <form method="POST" action="https://new.ainu.pw/session" accept-charset="UTF-8" class="
+    <div class="login-box__content js-click-menu js-nav2--centered-popup js-nav2--login-box js-click-menu--active" data-click-menu-id="nav2-login-box" data-visibility="visible" style="transform: translateX(1271px);">
+        <form id="login-form" accept-charset="UTF-8" class="
                 login-box__section
                 login-box__section--login
                 js-login-form
-                js-nav-popup--submenu
-            " data-remote><input name="_token" type="hidden" value="RYnm1ZGjPbYMN338mKfC0F3PErw2jAL51IpJsoRW">
+                js-nav-popup--submenu" method="POST" action="/login">
+            <input type="hidden" name="redir" value="{{ or (.Gin.Query "redir") .FormData.redir }}">
             <h2 class="login-box__row login-box__row--title">Sign In To Proceed</h2>
 
             <div class="login-box__row login-box__row--inputs">
-                <input
-                    class="login-box__form-input js-login-form-input js-nav2--autofocus"
-                    name="username"
-                    placeholder="username"
-                    required
-                />
-                <input
-                    class="login-box__form-input js-login-form-input"
-                    name="password"
-                    type="password"
-                    placeholder="password"
-                    required
-                />
+                <input class="login-box__form-input js-login-form-input js-nav2--autofocus" name="username" type="text" value="{{ .FormData.username }}" placeholder="username" required="">
+                <input class="login-box__form-input js-login-form-input" name="password" type="password" value="{{ .FormData.password }}" placeholder="password" required="">
             </div>
-
-            <div class="login-box__row login-box__row--error js-login-form--error"></div>
 
             <div class="login-box__row">
-                <a href="home/password-reset.html" class="login-box__link js-nav--hide">
-                    I&#039;ve forgotten my details
+                <a href="https://ainu.pw/home/password-reset" class="login-box__link js-nav--hide">
+                    I've forgotten my details
                 </a>
             </div>
-
             <div class="login-box__row login-box__row--actions">
                 <div class="login-box__action">
-                    <button
-                        class="btn-osu-big btn-osu-big--nav-popup"
-                        data-disable-with="Signing in..."
-                    >
+                    <button class="btn-osu-big btn-osu-big--nav-popup" type="submit" data-disable-with="Signing in...">
                         <div class="btn-osu-big__content">
-                            <span class="btn-osu-big__left">
-                                Sign in
-                            </span>
-
+                                    <span form="login-form" class="btn-osu-big__left">
+                                        Sign in
+                                    </span>
                             <span class="fas fa-fw fa-sign-in-alt"></span>
                         </div>
                     </button>
                 </div>
             </div>
         </form>
-
         <div class="login-box__section login-box__section--register">
             <h2 class="login-box__row login-box__row--title">
-                Don&#039;t have an account?
+                Don't have an account?
             </h2>
-
             <div class="login-box__row">
                 Download osu! to create your own account!
             </div>
-
             <div class="login-box__row login-box__row--actions">
                 <div class="login-box__action">
-                    <a href="home/download.html" class="btn-osu-big btn-osu-big--nav-popup">
+                    <a href="https://osu.ppy.sh/home/download" class="btn-osu-big btn-osu-big--nav-popup">
                         <div class="btn-osu-big__content">
-                            <span class="btn-osu-big__left">
-                                Download
-                            </span>
-
+                                    <span class="btn-osu-big__left">
+                                        Download
+                                    </span>
                             <span class="fas fa-fw fa-download"></span>
                         </div>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 {{ else }}
         
                     <div class="visible-xs no-print js-header--main">

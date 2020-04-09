@@ -4,34 +4,144 @@ TitleBar=Log in
 KyutGrill=login2.jpg
 */}}
 {{ define "tpl" }}
-<div class="ui container">
-	{{/* Not logged in block */}}
-	{{ if .Context.User.Username }}
-		<div class="ui segment">
-			{{ .T "You're already logged in!" }}
-		</div>
-	{{ else }}
-		<div class="tiny container">
-			<div class="ui raised segments">
-				<div class="ui segment">
-					<form id="login-form" class="ui form" method="post" action="/login">
-						<div class="field">
-							<label>{{ .T "Username (or email)" }}</label>
-							<input tabindex="1" type="text" name="username" placeholder="{{ .T "Username" }}" value="{{ .FormData.username }}" required>
-						</div>
-						<div class="field">
-							<label>{{ .T "Password" }} <a href="/pwreset">{{ .T "(forgot?)" }}</a></label>
-							<input tabindex="2" type="password" name="password" placeholder="{{ .T "Password" }}" value="{{ .FormData.password }}" required>
-						</div>
-						<input type="hidden" name="redir" value="{{ or (.Gin.Query "redir") .FormData.redir }}">
-						{{ ieForm .Gin }}
-					</form>
-				</div>
-				<div class="ui right aligned segment">
-					<button tabindex="3" class="ui primary button" type="submit" form="login-form">{{ .T "Submit" }}</button>
-				</div>
-			</div>
-		</div>
-	{{ end }}
-</div>
-{{ end }}
+    <body
+        class="
+            osu-layout
+            osu-layout--body
+            t-section
+            action-authorize
+            
+        "
+    >
+        <style>
+            :root {
+                --base-hue: 333;
+                --base-hue-deg: 333deg;
+            }
+
+            overflow: hidden
+        </style>
+        <div id="overlay" class="blackout blackout--overlay" style="display: none;"></div>
+        <div class="blackout js-blackout" data-visibility="hidden"></div>
+        <div class="osu-layout__section osu-layout__section--full js-content user_authorize">
+
+        {{ if .Context.User.Username }}
+                <div class="osu-layout__section osu-layout__section--full js-content home_verify_link">
+                                            <div class="dialog-form">
+    <div class="dialog-form__dialog">
+        <div class="dialog-form__row dialog-form__row--header"></div>
+
+            <div class="dialog-form__row dialog-form__row--title">
+                <div class="dialog-form__logo"></div>
+                <h1 class="dialog-form__title">Account Login</h1>
+            </div>
+
+            <div class="dialog-form__row dialog-form__row--verification-completed">
+                <div class="account-verification-message">
+                    <div class="account-verification-message__icon">
+                        <span class="far fa-check-circle"></span>
+                    </div>
+
+                    <div class="account-verification-message__title">
+                        You're already logged in
+                    </div>
+
+                    <div class="account-verification-message__text">
+                        You can close this tab/window now
+                    </div>
+                </div>
+            <div class="dialog-form__row dialog-form__row--buttons">
+                <a
+                    href="https://new.ainu.pw"
+                    class="dialog-form__button"
+                >
+                    Go back to home page
+                </a>
+
+                <a 
+                    class="dialog-form__button dialog-form__button--cancel"
+                    href="/logout?k={{ printf "%s" (.Session.Get "logout" ) }}"
+                    onclick="return confirm('Are you sure you want to sign out? :(');"
+                >
+                    Sign out
+                </a>
+            </div>
+        </div>
+    </div>
+{{ else }}
+        <form id="login-form" accept-charset="UTF-8" class="dialog-form js-login-form" method="POST" action="/login">
+        <div class="dialog-form__dialog">
+            <div class="dialog-form__row dialog-form__row--header"></div>
+            <div class="dialog-form__row dialog-form__row--title">
+                <div class="dialog-form__logo"></div>
+                <h1 class="dialog-form__title">Account Login</h1>
+            </div>
+
+            <div class="dialog-form__row dialog-form__row--label">
+                First, log into your account!
+            </div>
+
+            <div class="dialog-form__row dialog-form__row--input">
+                <input
+                    class="dialog-form__input js-login-form-input"
+                    name="username"
+                    placeholder="username"
+                    value="{{ .FormData.username }}"
+                    required
+                    autofocus
+                />
+            </div>
+
+            <div class="dialog-form__row dialog-form__row--input">
+                <input
+                    class="dialog-form__input js-login-form-input"
+                    name="password"
+                    type="password"
+                    placeholder="password"
+                    value="{{ .FormData.password }}"
+                    required
+                />
+            </div>
+
+            <div class="dialog-form__row dialog-form__row--error js-login-form--error">
+            <input type="hidden" name="redir" value="{{ or (.Gin.Query "redir") .FormData.redir }}">
+            </div>
+            {{ ieForm .Gin }}
+    </form>
+
+            <div class="dialog-form__row dialog-form__row--extra-link">
+                <a href="https://osu.ppy.sh/home/password-reset" class="dialog-form__extra-link">
+                    I've forgotten my details
+                </a>
+            </div>
+
+            <div class="dialog-form__row dialog-form__row--extra-link">
+                Don't have an account?
+                <a href="https://osu.ppy.sh/home/download" class="dialog-form__extra-link">
+                    Download osu! to create your own account!
+                </a>
+            </div>
+
+            <div class="dialog-form__row dialog-form__row--buttons">
+                <button
+                    class="dialog-form__button"
+                    data-disable-with="Signing in..."
+                    form="login-form"
+                    type="submit"
+                >
+                    Sign in
+                </button>
+
+                <a
+                    href="https://new.ainu.pw"
+                    class="dialog-form__button dialog-form__button--cancel"
+                >
+                    Cancel
+                </a>
+            </div>
+        </div>
+                    </div>
+        {{ end }}
+            </body>
+</html>
+{{end}}
