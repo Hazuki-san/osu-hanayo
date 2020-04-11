@@ -73,8 +73,8 @@
     <script>
             var hanayoConf = {
                 avatars:   {{ .Conf.AvatarURL }},
-                banchoAPI: "https://c.ainu.pw",
-                baseAPI:   "https://ainu.pw/api/v1/",
+                banchoAPI: {{ .Conf.BanchoAPI }},
+                baseAPI:   {{ .Conf.API }},
                 cheesegullAPI: {{ .Conf.CheesegullAPI }},
                 language:  {{ with $lang }}{{ . }}{{ else }}"en"{{ end }},
             };
