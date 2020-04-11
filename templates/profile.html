@@ -373,23 +373,6 @@
     <div class="osu-layout__section osu-layout__section--users-extra">
         <div class="osu-layout__row ui-sortable">
             <div data-page-id="me" class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
-            {{ if $aoba }}
-            <div class="page-extra page-extra--userpage">
-                    <div>
-                        <h2 class="title title--page-extra">bgm</h2></div>
-                    <div class="page-extra__content-overflow-wrapper-outer u-fancy-scrollbar">
-                        <div class="page-extra__content-overflow-wrapper-inner">
-                            <div>
-                                <div class="bbcode bbcode--profile-page">
-                                    <center>
-                                        <iframe width="660" height="370" allow="autoplay" src="https://www.youtube.com/embed/4vIrjQVcc3U?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </center>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{ end }}
                 {{ with $global.Get "users/userpage?id=%.0f" .id }}
                 {{ if .userpage }}
                 <div class="page-extra page-extra--userpage">

@@ -1,7 +1,11 @@
 {{ define "footer" }}
 <footer class="no-print footer">
     <div class="footer__row"> <a class="footer__link" href="https://osu.ppy.sh/legal/terms"> Terms </a> <a class="footer__link" href="https://osu.ppy.sh/legal/privacy"> Privacy </a> <a class="footer__link" href="https://osu.ppy.sh/legal/copyright"> Copyright (DMCA) </a> <a class="footer__link" href="https://twitter.com/osustatus"> Server Status </a> <a class="footer__link" href="https://github.com/osuthailand"> Source Code </a> </div>
-    <div class="footer__row">Copyright &copy; Ripple, osu!Ainu 2016-2020 and ppy 2007-2020</div>
+    <div class="footer__row">
+        <center>
+        {{ print "2016-" curryear }} Ripple&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{ print "2018-" curryear }} osu!Ainu&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{ print "2007-" curryear }} ppy Pty Ltd&nbsp;&nbsp;&nbsp;&nbsp;<br>Ainu is not affiliated with ppy Pty Ltd in any way.&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;"osu!" is a trademark of ppy Pty Ltd.
+        </center>
+    </div>
     <div class="js-sync-height--target" data-sync-height-id="permanent-fixed-footer"></div>
 </footer>
 {{ end }}
