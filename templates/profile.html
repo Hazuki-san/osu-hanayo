@@ -373,23 +373,6 @@
     <div class="osu-layout__section osu-layout__section--users-extra">
         <div class="osu-layout__row ui-sortable">
             <div data-page-id="me" class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
-            {{ if $aoba }}
-            <div class="page-extra page-extra--userpage">
-                    <div>
-                        <h2 class="title title--page-extra">bgm</h2></div>
-                    <div class="page-extra__content-overflow-wrapper-outer u-fancy-scrollbar">
-                        <div class="page-extra__content-overflow-wrapper-inner">
-                            <div>
-                                <div class="bbcode bbcode--profile-page">
-                                    <center>
-                                        <iframe width="660" height="370" allow="autoplay" src="https://www.youtube.com/embed/4vIrjQVcc3U?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </center>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{ end }}
                 {{ with $global.Get "users/userpage?id=%.0f" .id }}
                 {{ if .userpage }}
                 <div class="page-extra page-extra--userpage">
@@ -764,29 +747,7 @@
     </div>
 </div>
 </div>
-<footer class="no-print footer">
-            <div class="footer__row">
-                            <a class="footer__link" href="https://osu.ppy.sh/legal/terms">
-                    Terms
-                </a>
-                            <a class="footer__link" href="https://osu.ppy.sh/legal/privacy">
-                    Privacy
-                </a>
-                            <a class="footer__link" href="https://osu.ppy.sh/legal/copyright">
-                    Copyright (DMCA)
-                </a>
-                            <a class="footer__link" href="../../twitter.com/osustatus.html">
-                    Server Status
-                </a>
-                            <a class="footer__link" href="../../github.com/ppy.html">
-                    Source Code
-                </a>
-            
-                    </div>
-        <div class="footer__row">ppy powered 2007-2020</div>
-
-    <div class="js-sync-height--target" data-sync-height-id="permanent-fixed-footer"></div>
-</footer>
+{{ template "footer" }}
         
         <div
             class="fixed-bar
@@ -802,19 +763,6 @@
                             </div>
         </div>
         <audio class="js-audio" preload="auto"></audio>
-
-        <script data-turbolinks-eval="always">
-    var csrf = "nSaMOsvWsPT9ybiswJu3Re7LS4T17IDb7MUSw52g";
-    var canonicalUrl = "";
-    var reloadUrl = "";
-</script>
-
-<script class="js-current-user">
-    var currentUser = {};
-    // self-destruct to avoid rerun by turbolinks
-    $('.js-current-user').remove();
-</script>
-
 <div id="js-usercard__loading-template" class="hidden">
     
     <div class="js-react--user-card"></div>
@@ -884,10 +832,6 @@
         <div class="popup-content"></div>
     </div>
 </div>
-
-        <script id="json-route-section" type="application/json">
-            {"action":"show","controller":"users_controller","namespace":"main","section":"user"}
-        </script>
     <div id="qtip-0" class="qtip qtip-default qtip tooltip-default qtip-pos-bc" tracking="false" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="qtip-0-content" aria-hidden="true" data-qtip-id="0" style="z-index: 15001;">
 	<div class="qtip-tip" style="background-color: transparent !important; border: 0px !important; width: 10px; height: 8px; line-height: 8px; left: 50%; margin-left: -5px; bottom: -8px;">
 		<canvas width="10" height="8" style="background-color: transparent !important; border: 0px !important; width: 10px; height: 8px;">
