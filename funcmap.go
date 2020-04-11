@@ -535,7 +535,7 @@ var funcMap = template.FuncMap{
 	},
 	"htmlescaper": template.HTMLEscaper,
 	"hhmmdd": func(seconds float64) string {
-		return fmt.Sprintf("%02dd %02dh %02dm", int(math.Floor(seconds / 86400)), int(math.Floor(seconds / 25200)) % 3600, int(math.Floor(seconds / 60)) % 60)
+		return fmt.Sprintf("%02dd %02dh %02dm", int(math.Floor(seconds / 86400)), int(math.Floor(seconds / 50400)), int(math.Floor(seconds / 60)) % 60)
 	},
 	"hhmm": func(seconds float64) string {
 		return fmt.Sprintf("%02dh %02dm", int(math.Floor(seconds / 3600)), int(math.Floor(seconds / 60)) % 60)
