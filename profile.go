@@ -49,7 +49,7 @@ func userProfile(c *gin.Context) {
 	defer resp(c, 200, "profile.html", data)
 
 	if data.UserID == 0 {
-		data.TitleBar = "User not found"
+		data.TitleBar = "player info"
 		data.Messages = append(data.Messages, warningMessage{T(c, "That user could not be found.")})
 		return
 	}
@@ -69,7 +69,7 @@ func userProfile(c *gin.Context) {
 		}
 	}
 
-	data.TitleBar = T(c, "%s's profile", username)
+	data.TitleBar = T(c, "%s · player info", username)
 	data.DisableHH = true
 	data.Scripts = append(data.Scripts, "/static/profile.js")
 }
