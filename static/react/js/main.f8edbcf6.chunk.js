@@ -330,7 +330,7 @@
      return Object(d.a)(t, e), Object(o.a)(t, [{
       key: "formatNumber",
       value: function(e) {
-       return e.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")
+       return e.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
       }
      }, {
       key: "componentDidMount",
@@ -434,36 +434,32 @@
       value: function() {
        var e = this;
        return this.state.users.map(function(t, a) {
-        return s.a.createElement("div", {
-         className: "user-position",
+        return s.a.createElement("tr", {
+         className: "ranking-page-table__row",
          key: a
-        }, s.a.createElement("div", {
-         className: "good"
-        }, s.a.createElement("div", {
-         className: "columb col-1 center highlight ".concat(-1 !== [1, 2, 3].indexOf(t.chosen_mode.global_leaderboard_rank) ? "rat-pos" : "")
-        }, s.a.createElement("span", null, "#", t.chosen_mode.global_leaderboard_rank, " ", e.state.currentCountry.length > 1 ? s.a.createElement("span", {
-         className: "only-epic-color"
-        }, "(#".concat(t.chosen_mode.country_leaderboard_rank, ")")) : null)), s.a.createElement("div", {
-         className: "columb full-size flexer highlight"
-        }, s.a.createElement("img", {
-         src: "https://s.kurikku.pw/flags/".concat(t.country, ".png"),
-         alt: ""
-        }), s.a.createElement("a", {
+        }, s.a.createElement("td", {
+         className: "ranking-page-table__column ranking-page-table__column--rank"
+        }, e.state.currentCountry.length > 1 ? "#".concat(t.chosen_mode.country_leaderboard_rank) : "#".concat(t.chosen_mode.global_leaderboard_rank)),
+
+        s.a.createElement("td", {className: "ranking-page-table__column"},
+          s.a.createElement("div", {className: "ranking-page-table__user-link"},
+          s.a.createElement("a", {href: "?mode=0&p=1&country=".concat(t.country)},
+          s.a.createElement("span", {className: "flag-country",style: {backgroundImage: "url('https://new.ainu.pw/static/osu-web/images/flags/".concat(t.country) + ".png" + "')"}})),
+          s.a.createElement("a", {
+         className: "ranking-page-table__user-link-text js-usercard",
          href: "/u/".concat(t.id)
-        }, t.username)), s.a.createElement("div", {
-         className: "columb col-2 center highlight peppy-give-me-good-api"
-        }, s.a.createElement("span", null, e.formatNumber(t.chosen_mode.pp).replace(".", " "), "pp"))), s.a.createElement("div", {
-         className: "good2"
-        }, s.a.createElement("div", {
-         className: "columb col-2 center highlight peppy-give-me-good-api"
-        }, s.a.createElement("span", null, e.formatNumber(t.chosen_mode.pp).replace(".", " "), "pp")), s.a.createElement("div", {
-         className: "columb col-3 center"
-        }, s.a.createElement("span", null, t.chosen_mode.accuracy.toFixed(2), "%")), s.a.createElement("div", {
-         className: "columb col-4 center"
-        }, s.a.createElement("span", null, e.formatNumber(t.chosen_mode.playcount)))))
-       })
+        }, t.username))),
+
+        s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, e.formatNumber(t.chosen_mode.accuracy.toFixed(2)), "%"),
+        s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, e.formatNumber(t.chosen_mode.playcount)),
+        s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--focused"}, e.formatNumber(t.chosen_mode.pp), "pp"),
+        s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, e.formatNumber(t.ss_count)),
+        s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, e.formatNumber(t.s_count)),
+        s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, e.formatNumber(t.a_count))
+
+        )})
       }
-     }, {
+      }, {
       key: "renderPagination",
       value: function() {
        var e = this;
@@ -544,11 +540,26 @@
         	id: "mode-menu"
         }, ["osu!", "osu!taiko", "osu!catch", "osu!mania"].map(function(t, a) {
         return s.a.createElement("li", {
-         className: "".concat(a === +e.state.mode ? "game-mode-link game-mode-link--active" : "game-mode-link"),
+         className: "game-mode__item ".concat(a === +e.state.mode ? "game-mode-link game-mode-link--active" : "game-mode-link"),
          onClick: function(t) {
           e.getNewLeaderboard(1, "", a)
          }
-        }, t)}))))))), s.a.createElement("div", {
+        }, t)}))))))),
+
+      e.state.currentCountry.length > 1 ? 
+      s.a.createElement("div", {className: "osu-page osu-page--description"},
+       s.a.createElement("div", {className: "ranking-country-filter"}, "filtered by country: ",
+       s.a.createElement("div", {className: "ranking-country-filter__item"},
+        s.a.createElement("div", {className: "ranking-country-filter__flag"},
+        s.a.createElement("span", {className: "flag-country", style: { backgroundImage: "url('https://new.ainu.pw/static/osu-web/images/flags/".concat(e.state.currentCountry.toUpperCase()) + ".png" + "')"}}))
+        , "".concat(e.state.currentCountry.toUpperCase()),s.a.createElement("a", {
+          className: "ranking-country-filter__remove",
+          href: "/leaderboard"
+        },
+        s.a.createElement("i", {className: "fas fa-times"}))
+        ))) : null, 
+
+       s.a.createElement("div", {
         className: "osu-page osu-page--generic"
        }, this.renderPagination(), s.a.createElement("div", {
         className: "ranking-page"
@@ -573,11 +584,8 @@
        }, "S"), s.a.createElement("th", {
        	className: "ranking-page-table__heading ranking-page-table__heading--grade"
        }, "A"))), s.a.createElement("tbody", {
-       }, this.state.loaded ? this.renderLeaderboard() : s.a.createElement("div", {
-        className: "ui active dimmer"
-       }, s.a.createElement("div", {
-        className: "ui text loader only-white-color"
-       }, "Loading")))), this.renderPagination())))
+       }, this.state.loaded ? this.renderLeaderboard() : 
+       s.a.createElement("tr", {className: "ranking-page-table__row",key: a},s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--rank"}, "#0"),s.a.createElement("td", {className: "ranking-page-table__column"},s.a.createElement("div", {className: "ranking-page-table__user-link"},s.a.createElement("a", {href: "?mode=0&p=1&country=TH"},s.a.createElement("span", {className: "flag-country",style: {backgroundImage: "url('https://new.ainu.pw/static/osu-web/images/flags/XX.png')"}})),s.a.createElement("a", {className: "ranking-page-table__user-link-text js-usercard",href: "/u/0"}, "Unknown"))),s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, "100.00%"),s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, "1"),s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--focused"}, "727pp"),s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, "0"),s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, "0"),s.a.createElement("td", {className: "ranking-page-table__column ranking-page-table__column--dimmed"}, "0")),)), this.renderPagination())))
       }
      }]), t
     }(s.a.Component)),

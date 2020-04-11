@@ -9,7 +9,6 @@ Handler=/login
                 login-box__section--login
                 js-login-form
                 js-nav-popup--submenu" method="POST" action="/login">
-            <input type="hidden" name="redir" value="{{ or (.Gin.Query "redir") .FormData.redir }}">
             <h2 class="login-box__row login-box__row--title">Sign In To Proceed</h2>
 
             <div class="login-box__row login-box__row--inputs">
@@ -34,6 +33,7 @@ Handler=/login
                     </button>
                 </div>
             </div>
+            <input type="hidden" name="redir" value="{{ or (.Gin.Query "redir") .FormData.redir }}">
         </form>
         <div class="login-box__section login-box__section--register">
             <h2 class="login-box__row login-box__row--title">

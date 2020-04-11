@@ -56,6 +56,11 @@
     </head>
     <body class="osu-layout osu-layout--body t-section action-index">
         {{ template "tpl" . }}
+        {{ if .Messages }}
+            {{ range $i, $v := .Messages }}
+                {{ html $v.Content }}
+            {{ end }}
+        {{ end }}
     </body>
         <!-- style type="text/css">
     html, body {
@@ -66,15 +71,15 @@
     </style -->
 
     <script>
-        var hanayoConf = {
-            avatars:   {{ .Conf.AvatarURL }},
-            banchoAPI: {{ .Conf.BanchoAPI }},
-            baseAPI:   {{ .Conf.API }},
-            cheesegullAPI: {{ .Conf.CheesegullAPI }},
-            language:  {{ with $lang }}{{ . }}{{ else }}"GB"{{ end }},
-        };
-        var currentUserID = {{ .Context.User.ID }};
-    </script>
+            var hanayoConf = {
+                avatars:   {{ .Conf.AvatarURL }},
+                banchoAPI: "https://c.ainu.pw",
+                baseAPI:   "https://ainu.pw/api/v1/",
+                cheesegullAPI: {{ .Conf.CheesegullAPI }},
+                language:  {{ with $lang }}{{ . }}{{ else }}"en"{{ end }},
+            };
+            var currentUserID = {{ .Context.User.ID }};
+        </script>
     {{/* If we got some more scripts to print, print'em */}}
     <script src="/static/dist.min.js?{{ unixNano }}"></script>
     <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2"></script>

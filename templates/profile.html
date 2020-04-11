@@ -14,8 +14,11 @@
         {{ else }}
             {{ template "nav" . }}
         {{ end }}
-
+		<div class="js-user-verification--reference"></div>
+		<div class="osu-page osu-page--notification-banners js-notification-banners"></div>
+        <div class="osu-layout__section osu-layout__section--full js-content user_show">
         {{ if .UserID }}
+        {{ $ghost := eq .UserID 0 }}
         {{ $ac := eq .UserID 999 }}
         {{ $aoba := eq .UserID 1000 }}
         {{ $simon := eq .UserID 1106 }}
@@ -27,10 +30,9 @@
                 window.favouriteMode = {{ $favouritemode }};
                 window.userID = {{ .id }};
             </script>
-		<div class="js-user-verification--reference"></div>
-		<div class="osu-page osu-page--notification-banners js-notification-banners"></div>
-        <div class="osu-layout__section osu-layout__section--full js-content user_show">
-        	<div class="osu-layout osu-layout--full">
+
+
+<div class="osu-layout osu-layout--full">
     <div class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page" data-page-id="main">
         <div class="header-v4 header-v4--users">
             <div class="header-v4__container header-v4__container--main">
