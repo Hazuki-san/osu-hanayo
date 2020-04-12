@@ -17,6 +17,11 @@
 		<div class="js-user-verification--reference"></div>
 		<div class="osu-page osu-page--notification-banners js-notification-banners"></div>
         <div class="osu-layout__section osu-layout__section--full js-content user_show">
+        {{ if .Messages }}
+            {{ range $i, $v := .Messages }}
+                {{ html $v.Content }}
+            {{ end }}
+        {{ end }}
         {{ if .UserID }}
         {{ $ghost := eq .UserID 0 }}
         {{ $ac := eq .UserID 999 }}
@@ -709,9 +714,21 @@
         </div>
     </div>
 </div>
-        </div>
-		
-		<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
+<div id="qtip-0" class="qtip qtip-default qtip tooltip-default qtip-pos-bc" tracking="false" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="qtip-0-content" aria-hidden="true" data-qtip-id="0" style="z-index: 15001;">
+    <div class="qtip-tip" style="background-color: transparent !important; border: 0px !important; width: 10px; height: 8px; line-height: 8px; left: 50%; margin-left: -5px; bottom: -8px;">
+        <canvas width="10" height="8" style="background-color: transparent !important; border: 0px !important; width: 10px; height: 8px;">
+        </canvas>
+    </div>
+    <div class="qtip-content" id="qtip-0-content" aria-atomic="true">
+        <span style="display: block; visibility: visible;">
+           ppy
+        </span>
+    </div>
+</div>
+{{ end }}
+{{ end }}
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
     		<div class="pswp__bg"></div>
 
 	    <div class="pswp__scroll-wrap">
@@ -838,17 +855,4 @@
         <div class="popup-content"></div>
     </div>
 </div>
-    <div id="qtip-0" class="qtip qtip-default qtip tooltip-default qtip-pos-bc" tracking="false" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="qtip-0-content" aria-hidden="true" data-qtip-id="0" style="z-index: 15001;">
-	<div class="qtip-tip" style="background-color: transparent !important; border: 0px !important; width: 10px; height: 8px; line-height: 8px; left: 50%; margin-left: -5px; bottom: -8px;">
-		<canvas width="10" height="8" style="background-color: transparent !important; border: 0px !important; width: 10px; height: 8px;">
-		</canvas>
-	</div>
-	<div class="qtip-content" id="qtip-0-content" aria-atomic="true">
-        <span style="display: block; visibility: visible;">
-           ppy
-        </span>
-    </div>
-</div>
-{{ end }}
-{{ end }}
 {{ end }}

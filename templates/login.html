@@ -103,8 +103,9 @@ KyutGrill=login2.jpg
                 />
             </div>
 
-            <div class="dialog-form__row dialog-form__row--error js-login-form--error">
-            <input type="hidden" name="redir" value="{{ or (.Gin.Query "redir") .FormData.redir }}">
+                <input type="hidden" name="redir" value='{{ or (.Gin.Query "redir") .FormData.redir }}'>
+
+            <div class="dialog-form__row dialog-form__row--error js-login-form--error" id="messages-container">
             </div>
             {{ ieForm .Gin }}
     </form>
