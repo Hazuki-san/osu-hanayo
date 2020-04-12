@@ -342,8 +342,12 @@
                 {{ end }}
                 <div class="profile-links">
                     <div class="profile-links__row profile-links__row--0">
-                        <div class="profile-links__item js-tooltip-time" title="2007-08-28T03:09:12.000Z">Here since the beginning</div>
                         {{ $user := . }}
+                        {{ if eq $user.registered_on "2018-08-24T02:08:38+03:00" }}
+                        <div class="profile-links__item js-tooltip-time" title="{{ $user.registered_on }}">Here since the beginning</div>
+                        {{ else }}
+                        <div class="profile-links__item ">Joined <span class="js-tooltip-time profile-links__value" data-orig-title="{{ $user.registered_on }}" data-hasqtip="0" aria-describedby="qtip-0">{{ time $user.registered_on }}</span></div>
+                        {{ end }}
                         {{ with bget "isOnline?id=%.0f" .id }}
                         {{ if .result }}
                             <div class="profile-links__item ">Currently online</div>
@@ -355,11 +359,13 @@
                         <div class="profile-links__item ">Plays with <span class=" profile-links__value">{{ . }}</span></div>
                         {{ end }}
                     </div>
+                    {{ if $aoba }}
                     <div class="profile-links__row profile-links__row--2">
-                        <div class="profile-links__item"><span class="profile-links__icon" title="Twitter"><span class="fa-fw fab fa-twitter"></span></span><a href="https://twitter.com/ppy" class="profile-links__value profile-links__value--link">@ppy</a></div>
-                        <div class="profile-links__item"><span class="profile-links__icon" title="Discord"><span class="fa-fw fab fa-discord"></span></span><span class="profile-links__value"><a class="click-to-copy" data-tooltip-pin-position="true" data-tooltip-position="bottom center" data-tooltip-hide-events="mouseleave" href="#" title="click to copy to clipboard">ppy#0001<i class="fas fa-paste click-to-copy__icon"></i></a></span></div>
-                        <div class="profile-links__item"><span class="profile-links__icon" title="Website"><span class="fa-fw fas fa-link"></span></span><a href="https://ppy.sh" class="profile-links__value profile-links__value--link">ppy.sh</a></div>
+                        <div class="profile-links__item"><span class="profile-links__icon" title="Twitter"><span class="fa-fw fab fa-twitter"></span></span><a href="https://twitter.com/EagleJump_Aoba" class="profile-links__value profile-links__value--link">@EagleJump_Aoba</a></div>
+                        <div class="profile-links__item"><span class="profile-links__icon" title="Discord"><span class="fa-fw fab fa-discord"></span></span><span class="profile-links__value"><a class="click-to-copy" data-tooltip-pin-position="true" data-tooltip-position="bottom center" data-tooltip-hide-events="mouseleave" href="#" title="click to copy to clipboard">Aoba Suzukaze#0900<i class="fas fa-paste click-to-copy__icon"></i></a></span></div>
+                        <div class="profile-links__item"><span class="profile-links__icon" title="Website"><span class="fa-fw fas fa-link"></span></span><a href="https://new.ainu.pw" class="profile-links__value profile-links__value--link">ainu.pw</a></div>
                     </div>
+                    {{ end }}
                 </div>
             </div>
         </div>
