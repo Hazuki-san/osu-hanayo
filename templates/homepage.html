@@ -95,62 +95,7 @@ TitleBar=welcome
         </div>
     </div>
 </div>
-    <footer class="osu-layout__section osu-layout__section--landing-footer">
-        <div class="osu-layout__row osu-layout__row--landing-sitemap landing-sitemap">
-            <div class="osu-layout__col-container osu-layout__col-container--landing-sitemap">
-                                    <div class="osu-layout__col osu-layout__col--sm-4">
-                        <ul class="landing-sitemap__list">
-                            <li class="landing-sitemap__item">
-                                <div class="landing-sitemap__header">General</div>
-                            </li>
-                                                            <li class="landing-sitemap__item"><a href="home.html" class="landing-sitemap__link">Home</a></li>
-                                                            <li class="landing-sitemap__item"><a href="home/changelog.html" class="landing-sitemap__link">Changelog</a></li>
-                                                            <li class="landing-sitemap__item"><a href="beatmapsets.html" class="landing-sitemap__link">Beatmap Listing</a></li>
-                                                            <li class="landing-sitemap__item"><a href="home/download.html" class="landing-sitemap__link">Download osu!</a></li>
-                                                            <li class="landing-sitemap__item"><a href="https://osu.ppy.sh/help/wiki/Main_Page" class="landing-sitemap__link">Wiki</a></li>
-                                                    </ul>
-                    </div>
-                                    <div class="osu-layout__col osu-layout__col--sm-4">
-                        <ul class="landing-sitemap__list">
-                            <li class="landing-sitemap__item">
-                                <div class="landing-sitemap__header">Help &amp; Community</div>
-                            </li>
-                                                            <li class="landing-sitemap__item"><a href="https://osu.ppy.sh/help/wiki/FAQ" class="landing-sitemap__link">Frequently Asked Questions</a></li>
-                                                            <li class="landing-sitemap__item"><a href="community/forums.html" class="landing-sitemap__link">Community Forums</a></li>
-                                                            <li class="landing-sitemap__item"><a href="community/livestreams.html" class="landing-sitemap__link">Live Streams</a></li>
-                                                            <li class="landing-sitemap__item"><a href="https://osu.ppy.sh/community/forums/topics/create?forum_id=5" class="landing-sitemap__link">Report an Issue</a></li>
-                                                    </ul>
-                    </div>
-                                    <div class="osu-layout__col osu-layout__col--sm-4">
-                        <ul class="landing-sitemap__list">
-                            <li class="landing-sitemap__item">
-                                <div class="landing-sitemap__header">Legal &amp; Status</div>
-                            </li>
-                                                            <li class="landing-sitemap__item"><a href="legal/terms.html" class="landing-sitemap__link">Terms</a></li>
-                                                            <li class="landing-sitemap__item"><a href="legal/privacy.html" class="landing-sitemap__link">Privacy</a></li>
-                                                            <li class="landing-sitemap__item"><a href="legal/copyright.html" class="landing-sitemap__link">Copyright (DMCA)</a></li>
-                                                            <li class="landing-sitemap__item"><a href="https://twitter.com/osustatus" class="landing-sitemap__link">Server Status</a></li>
-                                                            <li class="landing-sitemap__item"><a href="https://github.com/ppy" class="landing-sitemap__link">Source Code</a></li>
-                                                    </ul>
-                    </div>
-                            </div>
-        </div>
-
-        <div class="landing-footer-social">
-            <a href="home/support.html" class="landing-footer-social__icon landing-footer-social__icon--support">
-                <span class="fas fa-heart"></span>
-            </a>
-            <a href="https://osu.ppy.sh/help/wiki/Twitter" class="landing-footer-social__icon landing-footer-social__icon--twitter">
-                <span class="fab fa-twitter"></span>
-            </a>
-        </div>
-
-        <footer class="no-print footer footer--landing">
-        <div class="footer__row">ppy powered 2007-2020</div>
-
-    <div class="js-sync-height--target" data-sync-height-id="permanent-fixed-footer"></div>
-</footer>
-    </footer>
+{{ template "welcome_footer" }}
 
     <div id="popup-container">
     <div class="alert alert-dismissable popup-clone col-md-6 col-md-offset-3 text-center" style="display: none">
@@ -414,6 +359,49 @@ TitleBar=welcome
             <div class="user-home__news">
                 <h2 class="user-home__news-title">News</h2>
 
+<div class="news-post-preview">
+    <a class="news-post-preview__image" href="https://ainu.pw/plays" style="background-image:url('https://cdn.discordapp.com/attachments/650361971572473866/698848734859100210/unknown.png');"></a>
+    <div class="news-post-preview__body">
+        <div class="news-post-preview__post-date js-tooltip-time" data-orig-title="2020-04-12 13:11:08 +0300 EEST" data-hasqtip="0">
+            <div class="news-post-preview__date">
+                12
+            </div>
+            <div class="news-post-preview__month-year">
+                                    Apr 2020
+                            </div>
+        </div>
+        <div class="news-post-preview__post-right">
+            <a href="{{ .Conf.DiscordServer }}" class="news-post-preview__post-title">
+                Top Plays are here!
+            </a>
+            <div class="news-post-preview__post-content">
+                <p>Wondering that who's gangster in the server? Well! You can check them here to find out who has the most PP in the server!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="news-post-preview">
+    <a class="news-post-preview__image" href="/u/{{ .Context.User.ID }}" style="background-image:url('https://cdn.discordapp.com/attachments/650361971572473866/698854458762985552/unknown.png');"></a>
+    <div class="news-post-preview__body">
+        <div class="news-post-preview__post-date js-tooltip-time" data-orig-title="2020-04-11T04:58:05+03:00" data-hasqtip="0">
+            <div class="news-post-preview__date">
+                11
+            </div>
+            <div class="news-post-preview__month-year">
+                                    Apr 2020
+                            </div>
+        </div>
+        <div class="news-post-preview__post-right">
+            <a href="{{ .Conf.DiscordServer }}" class="news-post-preview__post-title">
+                Ranks Counter are now available
+            </a>
+            <div class="news-post-preview__post-content">
+                <p>SS, S, A! Well... Ranks Counter is added to your profile! Check them out! Let's see how many ranks you got!</p>
+            </div>
+        </div>
+    </div>
+</div>
                                     
 <div class="news-post-preview">
     <a class="news-post-preview__image" href="#" style="background-image:url('https://cdn.discordapp.com/attachments/529327016533819422/697517418783834112/unknown.png');"></a>
@@ -454,50 +442,6 @@ TitleBar=welcome
             </a>
             <div class="news-post-preview__post-content">
                 <p>You wanted Ainu! to get better everyday? or you want to feed Simon so Aoba doesn't lose more ingredients in the house? You can donate us by clicking here.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="news-post-preview">
-    <a class="news-post-preview__image" href="{{ .Conf.DiscordServer }}" style="background-image:url('https://cdn.discordapp.com/attachments/529327016533819422/697518856910012421/unknown.png');"></a>
-    <div class="news-post-preview__body">
-        <div class="news-post-preview__post-date js-tooltip-time" data-orig-title="2020-04-08T21:55:21+03:00" data-hasqtip="0">
-            <div class="news-post-preview__date">
-                09
-            </div>
-            <div class="news-post-preview__month-year">
-                                    Apr 2020
-                            </div>
-        </div>
-        <div class="news-post-preview__post-right">
-            <a href="{{ .Conf.DiscordServer }}" class="news-post-preview__post-title">
-                Please report us bug!
-            </a>
-            <div class="news-post-preview__post-content">
-                <p>Since this website is based on Hanayo something might not compatible with osu!web. If you found any bugs please report them in Discord!</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="news-post-preview">
-    <a class="news-post-preview__image" href="{{ .Conf.DiscordServer }}" style="background-image:url('https://cdn.discordapp.com/attachments/529327016533819422/697518856910012421/unknown.png');"></a>
-    <div class="news-post-preview__body">
-        <div class="news-post-preview__post-date js-tooltip-time" data-orig-title="2020-04-08T21:55:21+03:00" data-hasqtip="0">
-            <div class="news-post-preview__date">
-                09
-            </div>
-            <div class="news-post-preview__month-year">
-                                    Apr 2020
-                            </div>
-        </div>
-        <div class="news-post-preview__post-right">
-            <a href="{{ .Conf.DiscordServer }}" class="news-post-preview__post-title">
-                Please report us bug!
-            </a>
-            <div class="news-post-preview__post-content">
-                <p>Since this website is based on Hanayo something might not compatible with osu!web. If you found any bugs please report them in Discord!</p>
             </div>
         </div>
     </div>
