@@ -27499,6 +27499,10 @@ table.order-line-items.table-fancy tr.warning>td {
   color: #1da1f2;
 }
 
+.landing-footer-social__icon--discord:focus,.landing-footer-social__icon--discord:hover {
+  color: #7289da;
+}
+
 .landing-graph {
   width: 100%;
   height: 100%;
