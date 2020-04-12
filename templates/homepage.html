@@ -1,6 +1,5 @@
 {{/*###
 Handler=/
-TitleBar=Home Page
 KyutGrill=homepage2.jpg
 Include=navbars/home.html
 NavbarNoNo=true
@@ -8,6 +7,9 @@ NavbarNoNo=true
 {{ define "tpl" }}
 {{ $   := . }}
 {{ if not .Context.User.ID }}
+{{/*###
+TitleBar=welcome
+*/}}
 <body
         class="
             osu-layout
@@ -17,6 +19,7 @@ NavbarNoNo=true
             osu-layout--body-landing
         "
     >
+    <title>welcome | Ainu</title>
         <style>
             :root {
                 --base-hue: 255;
@@ -261,6 +264,7 @@ NavbarNoNo=true
 </body>
 </html>
 {{ else }}
+<title>dashboard | Ainu</title>
 <style>
             :root {
                 --base-hue: 255;
@@ -476,6 +480,51 @@ NavbarNoNo=true
         </div>
     </div>
 </div>
+
+<div class="news-post-preview">
+    <a class="news-post-preview__image" href="{{ .Conf.DiscordServer }}" style="background-image:url('https://cdn.discordapp.com/attachments/529327016533819422/697518856910012421/unknown.png');"></a>
+    <div class="news-post-preview__body">
+        <div class="news-post-preview__post-date js-tooltip-time" data-orig-title="2020-04-08T21:55:21+03:00" data-hasqtip="0">
+            <div class="news-post-preview__date">
+                09
+            </div>
+            <div class="news-post-preview__month-year">
+                                    Apr 2020
+                            </div>
+        </div>
+        <div class="news-post-preview__post-right">
+            <a href="{{ .Conf.DiscordServer }}" class="news-post-preview__post-title">
+                Please report us bug!
+            </a>
+            <div class="news-post-preview__post-content">
+                <p>Since this website is based on Hanayo something might not compatible with osu!web. If you found any bugs please report them in Discord!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="news-post-preview">
+    <a class="news-post-preview__image" href="{{ .Conf.DiscordServer }}" style="background-image:url('https://cdn.discordapp.com/attachments/529327016533819422/697518856910012421/unknown.png');"></a>
+    <div class="news-post-preview__body">
+        <div class="news-post-preview__post-date js-tooltip-time" data-orig-title="2020-04-08T21:55:21+03:00" data-hasqtip="0">
+            <div class="news-post-preview__date">
+                09
+            </div>
+            <div class="news-post-preview__month-year">
+                                    Apr 2020
+                            </div>
+        </div>
+        <div class="news-post-preview__post-right">
+            <a href="{{ .Conf.DiscordServer }}" class="news-post-preview__post-title">
+                Please report us bug!
+            </a>
+            <div class="news-post-preview__post-content">
+                <p>Since this website is based on Hanayo something might not compatible with osu!web. If you found any bugs please report them in Discord!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
             <div class="user-home__right-sidebar">
@@ -722,6 +771,7 @@ NavbarNoNo=true
             </div>
         </div>
     </div>
-                    </div>
+</div>
+{{ template "footer" }}
 {{ end }}
 {{ end }}

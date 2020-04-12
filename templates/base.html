@@ -48,8 +48,9 @@
         </noscript>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>{{ if .TitleBar }}{{ .T .TitleBar }}{{ end }} {{ .T "| Ainu" }}</title>
+        {{ if .TitleBar }}
+        <title>{{ .T .TitleBar }} | {{ .T "Ainu" }}</title>
+        {{ end }}
 
         <link rel="stylesheet" media="all" href="https://osu.ppy.sh/vendor/_photoswipe-default-skin/default-skin.css">
         <link rel="stylesheet" type="text/css" href="/static/osu-web/css/app.css?{{ unixNano }}">
